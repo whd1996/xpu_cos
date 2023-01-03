@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+</head>
+<meta charset="utf8">
+<body>
+<center>
+    <form action="/user/login" method="post">
+        用户登录
+        <table border="1">
+            <tr>
+                <td>用户帐号:</td>
+                <td><input type="text" name="username"></td>
+            </tr>
+            <tr>
+                <td>用户密码:</td>
+                <td><input type="text" name="password"></td>
+            </tr>
+            <tr>
+                <td colspan="2"><input value="登录" type="button" onclick="userLogin()"> <input
+                        type="reset" value="重置"></td>
+            </tr>
+        </table>
+      <!-- <a href="/regist">点我注册！！</a>-->
+    </form>
+
+</center>
+<script>
+    function userLogin(){
+        alert("登录");
+        $.ajax({
+            url : "/user/login",
+            type : "post",
+            data : {
+                "username" : $("input[name='username']").val(),
+                "password" : $("input[name='password']").val(),
+            },
+            dataType : "json",
+            cache : false,
+            async : true,
+            success : function(data) {
+               alert(JSON.stringify(data))//将json对象转化成字符串
+            },
+            error : function(XMLHttpRequest, textStatus, errorThrown) {
+                alert("服务器错误！");
+            }
+        });
+    }
+
+</script>
+<script src="http://libs.baidu.com/jquery/2.1.4/jquery.min.js"></script>
+</body>
+</html>

@@ -1,12 +1,15 @@
 package com.xpu.controller;
 
+
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+
 
 @Controller
 public class IndexController {
-    @RequestMapping("/index")
+    @GetMapping("/index")
     public String toIndex(){
-        return "index";
+        System.out.println("1111");
+        return "login";
     }
 }
