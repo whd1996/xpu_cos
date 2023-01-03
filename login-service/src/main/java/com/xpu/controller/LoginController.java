@@ -19,9 +19,10 @@ public class LoginController {
     UserService  us;
     @RequestMapping ("/login")
     @ResponseBody
-    public String login(User user, HttpServletRequest req){
-        System.out.println(user);
+    public String login(@RequestBody User user, HttpServletRequest req){
+        System.out.println("前台： "+user);
         User loginuser=us.userLogin(user);
+        System.out.println("dao查到的： "+loginuser);
         req.getSession().setAttribute("user",loginuser);
         HashMap<String,String> map =new HashMap<>();
         if(loginuser!=null)

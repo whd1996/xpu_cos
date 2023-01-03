@@ -26,21 +26,23 @@
 </center>
 <script>
     function userLogin(){
-        alert("登录");
+        let username = $("input[name='username']").val();
+        let password = $("input[name='password']").val();
         $.ajax({
-            url : "/user/login",
-            type : "post",
-            data : {
-                "username" : $("input[name='username']").val(),
-                "password" : $("input[name='password']").val(),
+            url: "/user/login",
+            type: "post",
+            data: JSON.stringify({
+                'username': username,
+                'password': password
+            }),
+            dataType: "json",
+            contentType: "application/json;charset=utf-8",
+            cache: false,
+            async: true,
+            success: function (data) {
+                alert(JSON.stringify(data))//将json对象转化成字符串
             },
-            dataType : "json",
-            cache : false,
-            async : true,
-            success : function(data) {
-               alert(JSON.stringify(data))//将json对象转化成字符串
-            },
-            error : function(XMLHttpRequest, textStatus, errorThrown) {
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
                 alert("服务器错误！");
             }
         });
