@@ -6,12 +6,17 @@ xpu 软件工程2002班第一组 客户订购系统 在线仓库
 #### 软件架构
 软件架构说明
 
+前后端分离项目，采用分布式架构，
+前端使用vue框架
+后端使用SpringCloud微服务框架开发
+主要技术有
+SpringCloud+SpringBoot+MybatisPlus+Redis
 #### 安装教程
-
-1.  xxxx
-2.  xxxx
-3.  xxxx
-
+基本环境搭建
+1.  安装nacos
+2.  安装mysql8.0+,jdk1.8
+3.  安装redis
+4.  安装Node.js
 #### 使用说明
 
 1.  xxxx
