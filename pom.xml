@@ -6,18 +6,18 @@
     <artifactId>XPU-COS</artifactId>
     <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
-    <modules>
-        <module>login-service</module>
-     <!--   <module>admin-service</module>
-        <module>gateway-api</module>-->
-
-    </modules>
-    <!--父工程-->
     <parent>
         <artifactId>spring-boot-starter-parent</artifactId>
         <groupId>org.springframework.boot</groupId>
         <version>2.1.5.RELEASE</version>
     </parent>
+    <!--父工程-->
+    <modules>
+        <module>login-service</module>
+        <!--<module>admin-service</module>-->
+        <module>gateway-api</module>
+
+    </modules>
 
     <properties>
         <java.version>1.8</java.version>
