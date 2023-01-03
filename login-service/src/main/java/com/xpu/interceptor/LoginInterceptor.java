@@ -47,13 +47,14 @@ public class LoginInterceptor implements HandlerInterceptor {
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object obj) throws Exception {
 		HttpSession session = request.getSession();
 		Boolean isLogin = (Boolean) session.getAttribute("isLogin");
-		System.out.println("\n拦截器。。。" + request.getRequestURL() + "---" + isLogin);
+		String str=isLogin==null?"未登录":"已登录";
+		System.out.println("\n拦截器。。。" + request.getRequestURL() + "---" + str);
 		if (isLogin == null || !isLogin) {
 			String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
 					+ request.getContextPath();
-			/*response.setContentType("text/html");
+			response.setContentType("text/html");
 			response.setCharacterEncoding("UTF-8");
-			response.getWriter().print("请先登录！");*/
+			response.getWriter().print("请先登录！");
 			response.sendRedirect(basePath + "/login.html");
 			return false;
 		}
