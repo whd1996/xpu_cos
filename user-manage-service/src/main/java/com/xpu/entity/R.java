@@ -5,13 +5,15 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.io.Serializable;
+
 /**
  * @Description 发给前端的统一数据格式
  */
 @Data
 @NoArgsConstructor
 @ApiModel(value="通用响应",description="通用响应对象")
-public class R {
+public class R implements Serializable {
     @ApiModelProperty(value = "返回操作状态", example = "true")
     private Boolean flag;
     @ApiModelProperty(value = "返回对象", example = "Object")

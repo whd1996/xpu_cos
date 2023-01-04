@@ -32,4 +32,12 @@ public class UserController {
         boolean flag = userService.delete(id);
         return  new R(flag,flag?"删除成功":"删除失败");
     }
+    @ResponseBody
+    @GetMapping("/selectUserById")
+    public R selectUserById(Integer id){
+        System.out.println("前台：userId是"+id);
+        User user = userService.selectUserById(id);
+        boolean flag=(user!=null);
+        return  new R(flag,user,flag?"查询成功！":"无该用户！");
+    }
 }
