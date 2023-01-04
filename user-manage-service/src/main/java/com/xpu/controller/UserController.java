@@ -3,12 +3,8 @@ package com.xpu.controller;
 import com.xpu.entity.R;
 import com.xpu.entity.User;
 import com.xpu.service.UserService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 
@@ -39,5 +35,12 @@ public class UserController {
         User user = userService.selectUserById(id);
         boolean flag=(user!=null);
         return  new R(flag,user,flag?"查询成功！":"无该用户！");
+    }
+    @ResponseBody
+    @PostMapping ("/updateUser")
+    public R updateUserByID( @RequestBody User user){
+        int count = userService.updateUser(user);
+        boolean flag=(count>0);
+        return  new R(flag,flag?"更新成功！":"更新失败！");
     }
 }
