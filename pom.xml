@@ -14,9 +14,8 @@
     <!--父工程-->
     <modules>
         <module>login-service</module>
-        <!--<module>admin-service</module>-->
         <module>gateway-api</module>
-
+        <module>user-manage-service</module>
     </modules>
 
     <properties>
