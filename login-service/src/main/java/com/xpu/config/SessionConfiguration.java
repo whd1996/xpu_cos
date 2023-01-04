@@ -34,6 +34,7 @@ public class SessionConfiguration implements WebMvcConfigurer {
 		excludePathList.add("/user/login");
 		excludePathList.add("/login");
 		excludePathList.add("/user/loginByAnnotation");
+		excludePathList.add("/v2/api-docs-ext");
 		excludePathList.add("/user/foundPwd");
 		excludePathList.add("/user/logout");
 		//excludePathList.add("/user/listUserRole");//测试用
