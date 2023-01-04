@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 public interface UserService {
     int insertUser(User record);
     boolean delete(Integer id);
-
+    User selectUserById(Integer id);
 }
 
 
