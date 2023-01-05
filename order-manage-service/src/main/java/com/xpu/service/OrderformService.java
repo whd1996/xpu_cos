@@ -6,4 +6,6 @@ public interface OrderformService extends IService<Orderform>{
 
 
     int addOrder(Orderform orderform);
+
+    Orderform selectOrderById(Integer id);
 }
