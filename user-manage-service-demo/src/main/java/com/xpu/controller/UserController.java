@@ -3,6 +3,7 @@ package com.xpu.controller;
 import com.xpu.entity.R;
 import com.xpu.entity.User;
 import com.xpu.service.UserService;
+import com.xpu.utils.MD5Utils;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,6 +17,7 @@ public class UserController {
     @PostMapping("/addUser")
     public R addUser(@RequestBody User user){
         System.out.println("前台：user"+user);
+        user.setPassword(MD5Utils.getMD5(user.getPassword()));
         int count = userService.insertUser(user);
         System.out.println(count);
         boolean flag =(count>0)?true:false;
