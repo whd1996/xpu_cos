@@ -46,7 +46,6 @@ public class LoginController {
             System.out.println("dao查到的： " + loginuser);
             HttpSession session = req.getSession();
             session.setAttribute("user", loginuser);
-
             req.getSession().setAttribute("isLogin", true);
             boolean loginFlag = (loginuser != null);
             return new R(loginFlag, loginuser, loginFlag ? "用户登录成功" : "用户登录失败");
