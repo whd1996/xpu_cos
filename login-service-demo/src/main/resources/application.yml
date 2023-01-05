@@ -17,8 +17,17 @@ spring:
     nacos:
       discovery:
         server-addr: localhost:8848
-    #resources:
-    # static-locations: classpath:/static
+  # Redis服务地址
+  redis:
+    host: 127.0.0.1
+    # Redis服务器连接端口
+    port: 6379
+    # Redis服务器连接密码（默认为空）
+    password:
+    # session配置
+  session:
+      timeout: 86400 # 设置session失效时间
+      store-type: redis # 修改spring-session存储配置，默认存储到服务器内存中，现在设置存到redis中（关键）
 
   # 数据源配置
   datasource:

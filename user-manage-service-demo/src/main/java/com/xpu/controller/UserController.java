@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 
 @Controller
 public class UserController {
@@ -32,7 +33,9 @@ public class UserController {
     }
     @ResponseBody
     @GetMapping("/selectUserById")
-    public R selectUserById(Integer id){
+    public R selectUserById(Integer id, HttpServletRequest req){
+        User user1 = (User) req.getSession().getAttribute("user");
+        System.out.println("当前登录的是："+user1);
         System.out.println("前台：userId是"+id);
         User user = userService.selectUserById(id);
         boolean flag=(user!=null);

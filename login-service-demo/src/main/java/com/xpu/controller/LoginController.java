@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.util.HashMap;
 
 @Api(tags = "用户登录管理")
 @Controller
@@ -33,9 +34,13 @@ public class LoginController {
             @ApiResponse(code = 401, message = "无权限")
     }
     )
-    public R login(@RequestBody User user,HttpServletRequest req) {
-
-            System.out.println("前台： " + user);
+    public R login(@RequestBody HashMap<String, Object> map,User user,HttpServletRequest req) {
+        int flag = (int) map.get("flag");
+        HashMap userMap = (HashMap) map.get("user");
+        user.setUsername((String) userMap.get("username"));
+        user.setPassword((String) userMap.get("password"));
+        //System.out.println((flag == 0 ? "管理员" : "客户"));
+        if (flag == 1) {
             user.setPassword(MD5Utils.getMD5(user.getPassword()));
             User loginuser = us.userLogin(user);
             System.out.println("dao查到的： " + loginuser);
@@ -43,10 +48,13 @@ public class LoginController {
             session.setAttribute("user", loginuser);
 
             req.getSession().setAttribute("isLogin", true);
-            boolean flag1=(loginuser!=null);
-
-            return new R(flag1,loginuser,flag1?"用户登录成功":"登录失败");
-
+            boolean loginFlag = (loginuser != null);
+            return new R(loginFlag, loginuser, loginFlag ? "用户登录成功" : "用户登录失败");
+        } else if (flag==0) {
+            //管理登录业务
+            return new R("管理登录业务");
+        }
+        return  new R("登录失败");
     }
 
     @ApiOperation(value = "注解形式开发的登录接口", notes = "注解形式开发的登录接口的说明")
