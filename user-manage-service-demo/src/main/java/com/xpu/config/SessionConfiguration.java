@@ -13,6 +13,7 @@ import org.springframework.web.servlet.view.JstlView;
 import javax.annotation.Resource;
 import java.util.ArrayList;
 import java.util.List;
+
 //登录拦截器配置
 @Configuration
 public class SessionConfiguration implements WebMvcConfigurer {

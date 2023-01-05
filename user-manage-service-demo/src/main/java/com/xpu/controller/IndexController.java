@@ -18,7 +18,6 @@ public class IndexController {
     @ApiOperation(value = "跳转接口", notes = "页面跳转的说明")
     @GetMapping("/index")
     public String toIndex(){
-
         return "login";
     }
     @GetMapping("/toLogin")

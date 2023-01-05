@@ -1,6 +1,7 @@
 package com.xpu.utils;
 
 import org.springframework.util.DigestUtils;
+
 /**
  * MD5加密 用户密码
  * @author whd
@@ -9,7 +10,8 @@ import org.springframework.util.DigestUtils;
 public class MD5Utils {
 
     //盐
-    private static final String salt = "这个串是XPU-cos系统Md5加密所用盐值-万鸿达、陈永涛、李欣宇、陈永涛、付利文、梁帅";
+    private static final String salt = "这个串是XPU-COS系统Md5加密所用盐值-万鸿达、" +
+            "陈永涛、寇喆、李鹏飞、张嘉奇、史绪豪、凌寒、李欣宇";
 
     public static String getMD5(String string){
         String val = string+salt;

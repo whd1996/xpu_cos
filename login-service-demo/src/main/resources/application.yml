@@ -11,6 +11,18 @@ spring:
     view:
       prefix: /static/
       suffix: .html
+  resources:
+    static-locations: classpath:/static/
+  thymeleaf:
+    prefix: classpath:/static/
+    check-template-location: true
+    cache: false
+    suffix: .html #模板后缀
+    encoding: UTF-8 #编码
+    mode: HTML #模板
+    servlet:
+      content-type: text/html
+
   application:
     name: login-service-demo
   cloud:
