@@ -9,11 +9,13 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.io.Serializable;
+
 @ApiModel(value="`user`")
 @Data
 @NoArgsConstructor
 @TableName(value = "`user`")
-public class User {
+public class User implements Serializable {
     @TableId(value = "id", type = IdType.AUTO)
     @ApiModelProperty(value="")
     private Integer id;
