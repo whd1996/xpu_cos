@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xpu.dao.InvoiceMapper">
+  <resultMap id="BaseResultMap" type="com.xpu.entity.Invoice">
+    <!--@mbg.generated-->
+    <!--@Table invoice-->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="user_ID" jdbcType="INTEGER" property="userId" />
+    <result column="commodity_ID" jdbcType="INTEGER" property="commodityId" />
+    <result column="invoice_Date" jdbcType="DATE" property="invoiceDate" />
+    <result column="orderForm_ID" jdbcType="INTEGER" property="orderformId" />
+    <result column="invoice_Drawer" jdbcType="VARCHAR" property="invoiceDrawer" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, user_ID, commodity_ID, invoice_Date, orderForm_ID, invoice_Drawer
+  </sql>
+</mapper>
