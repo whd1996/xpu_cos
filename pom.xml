@@ -17,6 +17,7 @@
         <module>gateway-api</module>
         <module>user-manage-service-demo</module>
         <module>order-manage-service</module>
+        <module>invoice-manage-service</module>
     </modules>
 
     <properties>
