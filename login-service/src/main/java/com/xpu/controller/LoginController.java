@@ -58,10 +58,11 @@ public class LoginController {
             session.setAttribute("user", loginuser);
             req.getSession().setAttribute("isLogin", true);
             boolean loginFlag = (loginuser != null);
-            if (loginuser.getRoleId() == 0)
-                return new R(loginFlag, loginuser, loginFlag ? "采购员登录成功" : "采购员登录失败");
-            else
-                return new R(loginFlag, loginuser, loginFlag ? "客户登录成功" : "客户登录失败");
+            if (loginFlag)
+                if (loginuser.getRoleId() == 0)
+                    return new R(loginFlag, loginuser, loginFlag ? "采购员登录成功" : "采购员登录失败");
+                else
+                    return new R(loginFlag, loginuser, loginFlag ? "客户登录成功" : "客户登录失败");
         } else if (flag==0) {
             //管理登录业务
            Admin admin= new Admin();
