@@ -1,5 +1,5 @@
 server:
-  port: 8090
+  port: 8093
   servlet:
     encoding:
         force: true
@@ -7,44 +7,23 @@ server:
         charset: utf-8
     context-path: /
 spring:
-  mvc:
-    view:
-      prefix: /static/
-      suffix: .html
-  resources:
-    static-locations: classpath:/static/
-  thymeleaf:
-    prefix: classpath:/static/
-    check-template-location: true
-    cache: false
-    suffix: .html #模板后缀
-    encoding: UTF-8 #编码
-    mode: HTML #模板
-    servlet:
-      content-type: text/html
-
   application:
-    name: login-service-demo
+    name: buy-service
   cloud:
     nacos:
       discovery:
         server-addr: localhost:8848
   # Redis服务地址
   redis:
-    host: 127.0.0.1
-    # Redis服务器连接端口
-    port: 6379
-    # Redis服务器连接密码（默认为空）
-    password:
-    # session配置
-  session:
-      timeout: 86400 # 设置session失效时间
-      store-type: redis # 修改spring-session存储配置，默认存储到服务器内存中，现在设置存到redis中（关键）
-
+      host: 127.0.0.1
+  # Redis服务器连接端口
+      port: 6379
+  # Redis服务器连接密码（默认为空）
+      password:
   # 数据源配置
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource
-    url: jdbc:mysql://localhost:3306/xpu-cos-demo?serverTimezone=Asia/Shanghai&useSSL=false
+    url: jdbc:mysql://localhost:3306/xpu-cos?serverTimezone=Asia/Shanghai&useSSL=false
     username: root
     password: 123456
     driver-class-name: com.mysql.cj.jdbc.Driver

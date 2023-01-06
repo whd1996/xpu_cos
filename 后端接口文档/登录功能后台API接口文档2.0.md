@@ -4,7 +4,7 @@
 
 **简介**：XPU-COS项目SwaggerAPI管理
 
-**HOST**:localhost:8090
+**HOST**:localhost:8080
 
 
 **联系人**:
@@ -44,14 +44,7 @@
 
 | 参数名称         | 说明     |     in |  是否必须      |  类型   |  schema  |
 | ------------ | -------------------------------- |-----------|--------|----|--- |
-|address|   | query | false |string  |    |
-|id|   | query | false |integer  |    |
 |map| map  | body | true |object  |    |
-|nickname|   | query | false |string  |    |
-|roleId|   | query | false |integer  |    |
-|userName|   | query | false |string  |    |
-|userPassward|   | query | false |string  |    |
-|userPhone|   | query | false |string  |    |
 
 **响应数据**:
 
@@ -92,7 +85,7 @@
 **接口说明**:页面跳转的说明
 
 
-**接口地址**:`/index`
+**接口地址**:`/`
 
 
 **请求方式**：`GET`
