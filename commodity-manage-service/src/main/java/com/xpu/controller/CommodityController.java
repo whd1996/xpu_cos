@@ -37,6 +37,7 @@ public class CommodityController {
         return new R(flag, flag ? "插入成功" : "插入失败");
     }
 
+
     @ResponseBody
     @GetMapping("/deleteCommodityById")
     @ApiOperation(value = "商品删除接口", notes = "商品删除接口的说明")
@@ -50,6 +51,7 @@ public class CommodityController {
         boolean flag = (count > 0);
         return new R(flag,flag?"删除成功" : "删除失败");
     }
+
 
 
     @ResponseBody
@@ -66,6 +68,8 @@ public class CommodityController {
         return new R(flag,commodity,flag ? "查询成功" : "查询失败");
     }
 
+
+
     @ResponseBody
     @GetMapping("/selectALLCommodity")
     @ApiOperation(value = "商品查询接口", notes = "")
@@ -79,6 +83,8 @@ public class CommodityController {
 
         return JSON.toJSONString(commodityList);
     }
+
+
 
         @GetMapping("/updateCommodityById")
         @ResponseBody
