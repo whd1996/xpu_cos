@@ -1,5 +1,6 @@
 package com.xpu.controller;
 
+import com.alibaba.fastjson.JSON;
 import com.xpu.entity.Invoice;
 import com.xpu.entity.R;
 import com.xpu.service.InvoiceService;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
+import java.util.ArrayList;
 
 @Controller
 public class InvoiceController {
@@ -46,5 +48,12 @@ public class InvoiceController {
         int count = invoiceService.updateInvoice(invoice);
         boolean flag = (count > 0);
         return new R(flag, flag ? "更新成功！" : "更新失败！");
+    }
+    @ResponseBody
+    @GetMapping("/selectALLInvoice")
+    public String selectALLInvoice() {
+        ArrayList<Invoice> invoiceList = invoiceService.selectALLInvoice();
+
+        return JSON.toJSONString(invoiceList);
     }
 }

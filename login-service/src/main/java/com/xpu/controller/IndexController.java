@@ -23,6 +23,6 @@ public class IndexController {
     }
     @GetMapping("/toLogin")
     public String toLogin(){
-        return "toLogin";
+            return "toLogin";
     }
 }
