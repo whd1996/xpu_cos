@@ -16,34 +16,27 @@ import java.io.Serializable;
 @NoArgsConstructor
 @TableName(value = "`user`")
 public class User implements Serializable {
-    @TableId(value = "id", type = IdType.AUTO)
-    @ApiModelProperty(value="")
+    @TableId(value = "user表主键id，业务无关", type = IdType.AUTO)
     private Integer id;
 
     @TableField(value = "user_Name")
-    @ApiModelProperty(value="用户")
+    @ApiModelProperty(value="用户名",example = "zhangsan")
     private String userName;
 
     @TableField(value = "user_Passward")
     @ApiModelProperty(value="用户密码",example = "1234")
     private String userPassward;
 
-    @TableField(value = "nickName")
-    @ApiModelProperty(value="昵称",example = "张三")
     private String nickname;
 
-    @TableField(value = "user_phone")
-    @ApiModelProperty(value="用户电话",example = "12345678910")
+
     private String userPhone;
 
-    @TableField(value = "address")
-    @ApiModelProperty(value="地址",example = "陕西")
+
     private String address;
 
-    @TableField(value = "role_ID")
-    @ApiModelProperty(value="角色标志",example = "001")
-    private Integer roleId;
 
+    private Integer roleId;
     public static final String COL_ID = "id";
 
     public static final String COL_USER_NAME = "user_Name";

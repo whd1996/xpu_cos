@@ -6,7 +6,10 @@ import com.xpu.entity.User;
 import com.xpu.service.AdminService;
 import com.xpu.service.UserService;
 import com.xpu.utils.MD5Utils;
-import io.swagger.annotations.*;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiResponse;
+import io.swagger.annotations.ApiResponses;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -41,9 +44,10 @@ public class LoginController {
             @ApiResponse(code = 401, message = "无权限")
     }
     )
-    public R login(@RequestBody HashMap<String, Object> map,User user,HttpServletRequest req) {
+    public R login(@RequestBody HashMap<String, Object> map,HttpServletRequest req) {
         int flag = (int) map.get("flag");
         HashMap userMap = (HashMap) map.get("user");
+        User user = new User();
         user.setUserName((String) userMap.get("username"));
         user.setUserPassward((String) userMap.get("password"));
         if (flag == 1) {
