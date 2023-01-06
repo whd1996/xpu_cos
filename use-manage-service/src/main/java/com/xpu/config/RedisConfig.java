@@ -27,9 +27,10 @@ import java.time.Duration;
 public class RedisConfig extends CachingConfigurerSupport {
     /**
      * 自定义配置 RedisTemplate
-     * @Primary注解 默认加载此配置 忽略 RedisAutoConfiguration 的 stringRedisTemplate 配置
+     *
      * @param factory
      * @return
+     * @Primary注解 默认加载此配置 忽略 RedisAutoConfiguration 的 stringRedisTemplate 配置
      */
 
     @Bean
@@ -62,6 +63,7 @@ public class RedisConfig extends CachingConfigurerSupport {
     /**
      * 修改 Cacheable 默认序列化方式 使用Redis配置的序列化
      * 解决 @Cacheable 序列化失败 而 RedisUtil可以成功 问题
+     *
      * @param redisTemplate RedisTemplate
      * @return RedisCacheManager
      */

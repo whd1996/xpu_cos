@@ -6,15 +6,13 @@ import com.xpu.entity.R;
 import com.xpu.service.InvoiceService;
 import io.swagger.annotations.Api;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import java.util.ArrayList;
 
 @Controller
+@RequestMapping("/invoice")
 @Api(tags = "发票管理接口")
 public class InvoiceController {
     @Resource

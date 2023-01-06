@@ -8,7 +8,37 @@ spring:
       discovery:
         server-addr: localhost:8848
     gateway:
-      # 网关配置跨域请求
+      routes:
+        - id: commodity-manage-service
+          uri: lb://commodity-manage-service
+          order: 0
+          predicates:
+            - Path=/commodity/**
+        - id: invoice-manage-service
+          uri: lb://invoice-manage-service
+          order: 0
+          predicates:
+            - Path=/invoice/**
+        - id: login-service            # 路由的唯一标识
+          uri: lb://login-service   # 如果断言成功，将要转发去的地址
+          order: 0                    # 优先级，越小优先级越高
+          predicates: # 断言，满足所有断言，才会进行转发
+            - Path=/user/**        # 注意：这是使用= 不是：
+        - id: order-manage-service
+          uri: lb://order-manage-service
+          order: 0
+          predicates:
+            - Path=/order/**
+        - id: purchaseorder-manage-service
+          uri: lb://purchaseorder-manage-service
+          order: 0
+          predicates:
+            - Path=/purchaseorder/**
+        - id: user-manage-service
+          uri: lb://user-manage-service
+          order: 0
+          predicates:
+            - Path=/userinfo/**
       globalcors:
         corsConfigurations:
           '[/**]':
@@ -21,19 +51,5 @@ spring:
               - DELETE
               - PUT
               - OPTION
+              -
       # 开启服务发现
-      discovery:
-        locator:
-          enabled: true   # 通过微服务名称进行路由，实现动态路由和负载均衡
-
-      # 配置网关路线
-      routes:
-        - id: payment_routh           # 路由的Id，没有固定规则但要求唯一，建议配合服务名
-          uri: lb://cloud-payment-service  # 匹配后提供服务的路由地址
-          predicates:
-            - Path=/payment/getPaymentById/**    # 断言 路径相匹配的进行路由
-
-        - id: payment_routh2           # 路由的Id，没有固定规则但要求唯一，建议配合服务名
-          uri: lb://cloud-payment-service   # 匹配后提供服务的路由地址
-          predicates:
-            - Path=/payment/feignTimeout/**    # 断言 路径相匹配的进行路由
