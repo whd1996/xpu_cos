@@ -1,6 +1,7 @@
 package com.xpu.controller;
 
 import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.serializer.SerializerFeature;
 import com.xpu.entity.*;
 import com.xpu.service.CommodityService;
 import com.xpu.service.InvoiceService;
@@ -33,17 +34,17 @@ public class BuyController{
     @ResponseBody
 
     @ApiOperation(value = "购买商品", notes = "购买商品接口的说明\n" +
-            "参数类型为 购买商品的id,购买数量num,商品单价 price")
+            "参数类型为 购买商品的id,购买数量num")
     @ApiResponses({
             @ApiResponse(code = 200, message = "调用成功"),
             @ApiResponse(code = 401, message = "无权限")
     }
     )
     @GetMapping("buyCommodity")
-    public R buyCommodity( int id,int num,double price, HttpServletRequest req) {
+    public R buyCommodity(int id, int num, HttpServletRequest req) {
         User loginuser = (User) req.getSession().getAttribute("user");
-        System.out.println("当前客户:" + loginuser.getNickname());
         if (loginuser != null) {
+            System.out.println("当前客户:" + loginuser.getNickname());
             //根据参数查询商品信息
             Commodity good = commodityService.selectCommodityById(id);
             //减少库存数量
@@ -52,12 +53,14 @@ public class BuyController{
                 if (good.getCommodityRepertory() < num) {
                     return new R(false, "库存不足,无法购买");
                 }
+                if (good.getUpordown() < 1)
+                    return new R(false, "商品还未上架");
                 //新增订单
                 Orderform order = new Orderform();
                 order.setCommodityId(id);
                 order.setUserId(loginuser.getId());
                 order.setCommodityAmount(num);
-                order.setOrderformPrice(price * num);
+                order.setOrderformPrice(good.getCommodityPrice() * num);
                 System.out.println(order);
                 int count = orderformService.addOrder(order);
                 boolean orderAddSuccess = count > 0;
@@ -73,15 +76,14 @@ public class BuyController{
                 invoice.setInvoiceDrawer("XPU");
                 int invoiceCount = invoiceService.addInvoice(invoice);
                 boolean invoiceAddSuccess = invoiceCount > 0;
-                if (commodityUpdateSuccess && invoiceAddSuccess && orderAddSuccess){
+                if (commodityUpdateSuccess && invoiceAddSuccess && orderAddSuccess) {
                     HashMap<String, Object> map = new HashMap<>();
-                    map.put("good",good);//商品信息
-                    map.put("invoice",invoice);//发票信息
-                    map.put("order",order);//订单信息
-                    map.put("invoiceCost",num*price);//发票金额
-                    return new R(true, JSON.toJSONString(map),"购买成功");
+                    map.put("good", good);//商品信息
+                    map.put("invoice", invoice);//发票信息
+                    map.put("order", order);//订单信息
+                    map.put("invoiceCost", num * good.getCommodityPrice());//发票金额
+                    return new R(true, JSON.toJSONStringWithDateFormat(map, "yyyy-MM-dd HH:mm:ss", SerializerFeature.WriteDateUseDateFormat), "购买成功");
                 }
-
 
             } else
                 return new R(false, "无该商品");

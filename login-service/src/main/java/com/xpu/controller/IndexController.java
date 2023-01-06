@@ -19,7 +19,7 @@ public class IndexController {
     @GetMapping("/")
     public String toIndex(){
 
-        return "login";
+        return "login.html";
     }
     @GetMapping("/toLogin")
     public String toLogin(){

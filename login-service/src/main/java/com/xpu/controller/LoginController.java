@@ -32,7 +32,8 @@ public class LoginController {
 
     @PostMapping("/login")
     @ResponseBody
-    @ApiOperation(value = "登录接口", notes = "登录接口的说明,参数类型如 {\n" +
+    @ApiOperation(value = "登录接口", notes = "登录接口的说明,参数类型如\n" +
+            "{\n" +
             "    \"flag\" :1,\n" +
             "    \"user\":{   \n" +
             "    \"username\": \"abc\",\n" +
@@ -45,6 +46,7 @@ public class LoginController {
     }
     )
     public R login(@RequestBody HashMap<String, Object> map,HttpServletRequest req) {
+        System.out.println(map);
         int flag = (int) map.get("flag");
         HashMap userMap = (HashMap) map.get("user");
         User user = new User();
@@ -71,7 +73,7 @@ public class LoginController {
             HttpSession session = req.getSession();
             Admin loginAdmin = adminService.adminLogin(admin);
             if (loginAdmin != null) {
-                session.setAttribute("user", loginAdmin);
+                session.setAttribute("admin", loginAdmin);
                 req.getSession().setAttribute("isLogin", true);
                 return new R(true, loginAdmin, "管理员登录成功");
             }

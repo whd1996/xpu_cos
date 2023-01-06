@@ -9,6 +9,12 @@ spring:
         server-addr: localhost:8848
     gateway:
       routes:
+
+        - id: buy-service
+          uri: lb://buy-service
+          order: 0
+          predicates:
+            - Path=/buy/**
         - id: commodity-manage-service
           uri: lb://commodity-manage-service
           order: 0
