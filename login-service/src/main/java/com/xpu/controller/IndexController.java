@@ -16,7 +16,7 @@ public class IndexController {
             @ApiResponse(code = 401, message = "无权限")
     })
     @ApiOperation(value = "跳转接口", notes = "页面跳转的说明")
-    @GetMapping("/index")
+    @GetMapping("/")
     public String toIndex(){
 
         return "login";
