@@ -22,7 +22,7 @@
 **接口说明**:商品新增接口的说明
 
 
-**接口地址**:`/addCommodity`
+**接口地址**:`/commodity/addCommodity`
 
 
 **请求方式**：`POST`
@@ -103,7 +103,7 @@
 **接口说明**:商品删除接口的说明
 
 
-**接口地址**:`/deleteCommodityById`
+**接口地址**:`/commodity/deleteCommodityById`
 
 
 **请求方式**：`GET`
@@ -160,7 +160,7 @@
 
 
 
-**接口地址**:`/selectALLCommodity`
+**接口地址**:`/commodity/selectALLCommodity`
 
 
 **请求方式**：`GET`
@@ -205,7 +205,7 @@
 **接口说明**:根据id商品查询接口的说明
 
 
-**接口地址**:`/selectCommodityById`
+**接口地址**:`/commodity/selectCommodityById`
 
 
 **请求方式**：`GET`
@@ -260,7 +260,7 @@
 **接口说明**:商品修改接口的说明
 
 
-**接口地址**:`/updateCommodityById`
+**接口地址**:`/commodity/updateCommodityById`
 
 
 **请求方式**：`GET`
@@ -287,9 +287,9 @@
 
 ```json
 {
-	"data": "Object",
-	"flag": true,
-	"msg": "消息"
+  "data": "Object",
+  "flag": true,
+  "msg": "消息"
 }
 ```
 
