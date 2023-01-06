@@ -7,6 +7,7 @@ import org.apache.ibatis.annotations.Select;
 
 @Mapper
 public interface UserMapper extends BaseMapper<User> {
-    @Select("select * from user where username = #{userName} and password = #{userPassward}")
+    @Select(" select id,user_Name,user_Passward,nickName,user_phone,address,role_ID from user " +
+            "where user_Name=#{userName} and user_Passward = #{userPassward}")
     User userLogin(User user);
 }

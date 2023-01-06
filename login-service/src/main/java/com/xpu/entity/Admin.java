@@ -24,15 +24,15 @@ public class Admin implements Serializable {
     private Integer id;
 
     @TableField(value = "admin_Name")
-    @ApiModelProperty(value="")
+    @ApiModelProperty(value="管理员用户名" ,example = "admin")
     private String adminName;
 
     @TableField(value = "admin_Password")
-    @ApiModelProperty(value="")
+    @ApiModelProperty(value="管理员密码",example = "admin")
     private String adminPassword;
 
     @TableField(value = "`name`")
-    @ApiModelProperty(value="")
+    @ApiModelProperty(value="管理员姓名")
     private String name;
 
     public static final String COL_ID = "id";
