@@ -12,10 +12,7 @@ import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -26,7 +23,7 @@ import java.util.HashMap;
 @RequestMapping("/user")
 public class LoginController {
     @Autowired
-    UserService us;
+    UserService userService;
     @Autowired
     AdminService adminService;
 
@@ -54,13 +51,13 @@ public class LoginController {
         user.setUserPassward((String) userMap.get("password"));
         if (flag == 1) {
             user.setUserPassward(MD5Utils.getMD5(user.getUserPassward()));
-            User loginuser = us.userLogin(user);
+            User loginuser = userService.userLogin(user);
             if (loginuser != null) {
                 System.out.println("dao查到的： " + loginuser);
                 HttpSession session = req.getSession();
                 session.setAttribute("user", loginuser);
                 session.setAttribute("isLogin", true);
-                if (loginuser.getRoleId() == 0)
+                if (loginuser.getRoleId() == 1)
                     return new R(true, loginuser, "采购员登录成功");
                 else
                     return new R(true, loginuser, "客户登录成功");
@@ -78,7 +75,28 @@ public class LoginController {
                 return new R(true, loginAdmin, "管理员登录成功");
             }
         }
-        return  new R("登录失败");
+        return new R("登录失败");
     }
+
+    @PostMapping("/register")
+    @ResponseBody
+    @ApiOperation(value = "注册接口", notes = "注册需要除id外的字段必填")
+    @ApiResponses({
+            @ApiResponse(code = 200, message = "调用成功"),
+            @ApiResponse(code = 401, message = "无权限")
+    }
+    )
+    public R register(@RequestBody User user) {
+        boolean flag = userService.userRegister(user);
+        return new R(flag, flag ? "注册成功" : "注册失败");
+    }
+
+    @GetMapping("logout")
+    @ApiOperation(value = "退出登录接口", notes = "清空session后退出")
+    public String logout(HttpServletRequest req) {
+        req.getSession().invalidate();//清空session 返回登录页
+        return "login";
+    }
+
 
 }
