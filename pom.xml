@@ -19,6 +19,7 @@
         <module>user-manage-service-demo</module>
         <module>order-manage-service</module>
         <module>invoice-manage-service</module>
+        <module>purchaseorder-manage-service</module>
     </modules>
 
     <properties>
