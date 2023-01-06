@@ -12,7 +12,7 @@ public interface InvoiceService extends IService<Invoice>{
 
     Invoice selectInvoiceById(Integer id);
 
-    boolean delete(Integer id);
+    int delete(Integer id);
 
     int updateInvoice(Invoice invoice);
 

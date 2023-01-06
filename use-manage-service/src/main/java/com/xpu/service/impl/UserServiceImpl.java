@@ -15,10 +15,12 @@ public class UserServiceImpl extends ServiceImpl<UserDao, User> implements UserS
 
     @Resource
     UserDao userDao;
+
     @Override
     public int insertUser(User record) {
         return userDao.insert(record);
     }
+
     // 删除方法
     @Override
     public boolean delete(Integer id) {

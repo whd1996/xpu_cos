@@ -12,7 +12,7 @@ import java.io.Serializable;
  */
 @Data
 @NoArgsConstructor
-@ApiModel(value="通用响应",description="通用响应对象")
+@ApiModel(value = "通用响应", description = "通用响应对象")
 public class R implements Serializable {
     @ApiModelProperty(value = "返回操作状态", example = "true")
     private Boolean flag;
@@ -25,6 +25,7 @@ public class R implements Serializable {
         this.flag = flag;
         this.data = data;
     }
+
     public R(Boolean flag, Object data, String msg) {
         this.flag = flag;
         this.data = data;

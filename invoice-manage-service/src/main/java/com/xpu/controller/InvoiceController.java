@@ -4,16 +4,16 @@ import com.alibaba.fastjson.JSON;
 import com.xpu.entity.Invoice;
 import com.xpu.entity.R;
 import com.xpu.service.InvoiceService;
+import io.swagger.annotations.Api;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import java.util.ArrayList;
 
 @Controller
+@RequestMapping("/invoice")
+@Api(tags = "发票管理接口")
 public class InvoiceController {
     @Resource
     InvoiceService invoiceService;
@@ -30,7 +30,7 @@ public class InvoiceController {
     @GetMapping("/deleteInvoiceById")
     public R deleteInvoiceById(Integer id) {
         System.out.println("前台：InvoiceId是" + id);
-        boolean flag = invoiceService.delete(id);
+        boolean flag = invoiceService.delete(id)>0;
         return new R(flag, flag ? "删除成功" : "删除失败");
     }
 

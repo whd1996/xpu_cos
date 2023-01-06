@@ -8,7 +8,48 @@ spring:
       discovery:
         server-addr: localhost:8848
     gateway:
-      discovery:
-        locator:
-          enabled: true
-
+      routes:
+        - id: commodity-manage-service
+          uri: lb://commodity-manage-service
+          order: 0
+          predicates:
+            - Path=/commodity/**
+        - id: invoice-manage-service
+          uri: lb://invoice-manage-service
+          order: 0
+          predicates:
+            - Path=/invoice/**
+        - id: login-service            # 路由的唯一标识
+          uri: lb://login-service   # 如果断言成功，将要转发去的地址
+          order: 0                    # 优先级，越小优先级越高
+          predicates: # 断言，满足所有断言，才会进行转发
+            - Path=/user/**        # 注意：这是使用= 不是：
+        - id: order-manage-service
+          uri: lb://order-manage-service
+          order: 0
+          predicates:
+            - Path=/order/**
+        - id: purchaseorder-manage-service
+          uri: lb://purchaseorder-manage-service
+          order: 0
+          predicates:
+            - Path=/purchaseorder/**
+        - id: user-manage-service
+          uri: lb://user-manage-service
+          order: 0
+          predicates:
+            - Path=/userinfo/**
+      globalcors:
+        corsConfigurations:
+          '[/**]':
+            allowedHeaders: "*"
+            allowedOrigins: "*"
+            allowCredentials: true
+            allowedMethods:
+              - GET
+              - POST
+              - DELETE
+              - PUT
+              - OPTION
+              -
+      # 开启服务发现
