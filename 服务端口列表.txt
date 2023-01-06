@@ -14,3 +14,29 @@ name: user-manage-service    		port: 8089
 
 
 garway  统一端口   port: 7000
+
+
+请求方式 ：
+
+传id的全是get请求
+传对象的全是post请求
+
+
+ 如：
+ localhost:7000/user/login                              如login   regist 等
+
+ localhost:7000/commodity/selectAllCommodity            如selectAllCommodity 以下类似
+
+ localhost:7000/userinfo/selectUserById                  如 selectUserById， 如selectAllUser 以下类似
+
+ localhost:7000/invoice/
+
+ localhost:7000/order/
+
+ localhost:7000/purchaseorder/
+
+
+
+
+
+

@@ -13,13 +13,15 @@
     </parent>
     <!--父工程-->
     <modules>
+        <!--whd-->
         <module>login-service-demo</module>
+        <module>user-manage-service-demo</module>
+        <module>buy-service</module>
         <module>gateway-api</module>
         <!--张嘉奇-->
         <module>login-service</module>
         <module>commodity-manage-service</module>
-
-        <module>user-manage-service-demo</module>
+        <!--凌寒-->
         <module>order-manage-service</module>
         <module>purchaseorder-manage-service</module>
         <!--史绪豪-->
