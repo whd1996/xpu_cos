@@ -15,7 +15,9 @@
     <modules>
         <module>login-service-demo</module>
         <module>gateway-api</module>
+        <!--张嘉奇-->
         <module>login-service</module>
+        <module>commodity-manage-service</module>
         <module>user-manage-service-demo</module>
         <module>order-manage-service</module>
         <module>invoice-manage-service</module>
