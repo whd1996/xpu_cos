@@ -6,36 +6,33 @@ import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import java.io.Serializable;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@ApiModel(value = "orderform")
+import java.io.Serializable;
+
 @Data
 @NoArgsConstructor
 @TableName(value = "orderform")
+@ApiModel(value="订单表单对象",description="订单表单对象")
 public class Orderform implements Serializable {
     @TableId(value = "id", type = IdType.AUTO)
-    @ApiModelProperty(value = "")
+    // 使用ApiModelProperty来标注字段属性。
+    @ApiModelProperty(value = "主键id",example = "1")
     private Integer id;
-
+    @ApiModelProperty(value = "用户id",required = true,example = "1001")
     @TableField(value = "user_id")
-    @ApiModelProperty(value = "")
     private Integer userId;
 
+    @ApiModelProperty(value = "商品id",required = true,example = "100001")
     @TableField(value = "commodity_ID")
-    @ApiModelProperty(value = "")
     private Integer commodityId;
-
+    @ApiModelProperty(value = "购买数量",required = true,example = "20")
     @TableField(value = "commodity_Amount")
-    @ApiModelProperty(value = "")
     private Integer commodityAmount;
-
+    @ApiModelProperty(value = "消费金额",required = true,example = "99.9")
     @TableField(value = "orderForm_Price")
-    @ApiModelProperty(value = "")
     private Double orderformPrice;
-
-    private static final long serialVersionUID = 1L;
 
     public static final String COL_ID = "id";
 

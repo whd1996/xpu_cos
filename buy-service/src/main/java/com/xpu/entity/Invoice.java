@@ -6,38 +6,39 @@ import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import java.io.Serializable;
-import java.util.Date;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@ApiModel(value = "invoice")
+import java.io.Serializable;
+import java.util.Date;
+
+@ApiModel(value="invoice")
 @Data
 @NoArgsConstructor
 @TableName(value = "invoice")
 public class Invoice implements Serializable {
     @TableId(value = "id", type = IdType.AUTO)
-    @ApiModelProperty(value = "")
+    @ApiModelProperty(value="")
     private Integer id;
 
     @TableField(value = "user_ID")
-    @ApiModelProperty(value = "")
+    @ApiModelProperty(value="")
     private Integer userId;
 
     @TableField(value = "commodity_ID")
-    @ApiModelProperty(value = "")
+    @ApiModelProperty(value="")
     private Integer commodityId;
 
     @TableField(value = "invoice_Date")
-    @ApiModelProperty(value = "")
+    @ApiModelProperty(value="")
     private Date invoiceDate;
 
     @TableField(value = "orderForm_ID")
-    @ApiModelProperty(value = "")
+    @ApiModelProperty(value="")
     private Integer orderformId;
 
     @TableField(value = "invoice_Drawer")
-    @ApiModelProperty(value = "")
+    @ApiModelProperty(value="")
     private String invoiceDrawer;
 
     private static final long serialVersionUID = 1L;

@@ -53,27 +53,28 @@ public class LoginController {
         if (flag == 1) {
             user.setUserPassward(MD5Utils.getMD5(user.getUserPassward()));
             User loginuser = us.userLogin(user);
-            System.out.println("dao查到的： " + loginuser);
-            HttpSession session = req.getSession();
-            session.setAttribute("user", loginuser);
-            req.getSession().setAttribute("isLogin", true);
-            boolean loginFlag = (loginuser != null);
-            if (loginFlag)
+            if (loginuser != null) {
+                System.out.println("dao查到的： " + loginuser);
+                HttpSession session = req.getSession();
+                session.setAttribute("user", loginuser);
+                session.setAttribute("isLogin", true);
                 if (loginuser.getRoleId() == 0)
-                    return new R(loginFlag, loginuser, loginFlag ? "采购员登录成功" : "采购员登录失败");
+                    return new R(true, loginuser, "采购员登录成功");
                 else
-                    return new R(loginFlag, loginuser, loginFlag ? "客户登录成功" : "客户登录失败");
+                    return new R(true, loginuser, "客户登录成功");
+            }
         } else if (flag==0) {
             //管理登录业务
-           Admin admin= new Admin();
-           admin.setAdminName((String) userMap.get("username"));
-           admin.setAdminPassword((String) userMap.get("password"));
+            Admin admin = new Admin();
+            admin.setAdminName((String) userMap.get("username"));
+            admin.setAdminPassword((String) userMap.get("password"));
             HttpSession session = req.getSession();
-             Admin loginAdmin =adminService.adminLogin(admin);
-            session.setAttribute("user", loginAdmin);
-            req.getSession().setAttribute("isLogin", true);
-            boolean loginFlag = (loginAdmin != null);
-            return new R(loginFlag, loginAdmin, loginFlag ? "管理员登录成功" : "管理员登录失败");
+            Admin loginAdmin = adminService.adminLogin(admin);
+            if (loginAdmin != null) {
+                session.setAttribute("user", loginAdmin);
+                req.getSession().setAttribute("isLogin", true);
+                return new R(true, loginAdmin, "管理员登录成功");
+            }
         }
         return  new R("登录失败");
     }

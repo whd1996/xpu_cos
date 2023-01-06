@@ -6,33 +6,34 @@ import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import java.io.Serializable;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@ApiModel(value = "commodity")
+import java.io.Serializable;
+
+@ApiModel(value="commodity")
 @Data
 @NoArgsConstructor
 @TableName(value = "commodity")
 public class Commodity implements Serializable {
     @TableId(value = "id", type = IdType.AUTO)
-    @ApiModelProperty(value = "")
+    @ApiModelProperty(value="商品主键id",example = "01")
     private Integer id;
 
     @TableField(value = "commodity_Name")
-    @ApiModelProperty(value = "")
+    @ApiModelProperty(value="商品名称",example = "苹果")
     private String commodityName;
 
     @TableField(value = "commodity_repertory")
-    @ApiModelProperty(value = "")
+    @ApiModelProperty(value="库存",example = "100")
     private Integer commodityRepertory;
 
     @TableField(value = "upOrDown")
-    @ApiModelProperty(value = "")
+    @ApiModelProperty(value="上架/下架",example = "1")
     private Integer upordown;
 
     @TableField(value = "commodity_price")
-    @ApiModelProperty(value = "")
+    @ApiModelProperty(value="商品价格",example = "15.5")
     private Double commodityPrice;
 
     private static final long serialVersionUID = 1L;

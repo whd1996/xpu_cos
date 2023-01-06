@@ -6,45 +6,37 @@ import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import java.io.Serializable;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@ApiModel(value = "`user`")
+import java.io.Serializable;
+
+@ApiModel(value="`user`")
 @Data
 @NoArgsConstructor
 @TableName(value = "`user`")
 public class User implements Serializable {
-    @TableId(value = "id", type = IdType.AUTO)
-    @ApiModelProperty(value = "")
+    @TableId(value = "user表主键id，业务无关", type = IdType.AUTO)
     private Integer id;
 
     @TableField(value = "user_Name")
-    @ApiModelProperty(value = "")
+    @ApiModelProperty(value="用户名",example = "zhangsan")
     private String userName;
 
     @TableField(value = "user_Passward")
-    @ApiModelProperty(value = "")
+    @ApiModelProperty(value="用户密码",example = "1234")
     private String userPassward;
 
-    @TableField(value = "nickName")
-    @ApiModelProperty(value = "")
     private String nickname;
 
-    @TableField(value = "user_phone")
-    @ApiModelProperty(value = "")
+
     private String userPhone;
 
-    @TableField(value = "address")
-    @ApiModelProperty(value = "")
+
     private String address;
 
-    @TableField(value = "role_ID")
-    @ApiModelProperty(value = "")
+
     private Integer roleId;
-
-    private static final long serialVersionUID = 1L;
-
     public static final String COL_ID = "id";
 
     public static final String COL_USER_NAME = "user_Name";
