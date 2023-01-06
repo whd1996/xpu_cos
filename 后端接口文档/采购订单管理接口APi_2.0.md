@@ -22,7 +22,7 @@
 **接口说明**:采购订单新增接口的说明
 
 
-**接口地址**:`/addPurchaseorder`
+**接口地址**:`/purchaseorder/addPurchaseorder`
 
 
 **请求方式**：`POST`
@@ -99,7 +99,7 @@
 **接口说明**:采购订单删除接口的说明
 
 
-**接口地址**:`/deletePurchaseorderById`
+**接口地址**:`/purchaseorder/deletePurchaseorderById`
 
 
 **请求方式**：`GET`
@@ -154,7 +154,7 @@
 **接口说明**:所有采购订单查询接口
 
 
-**接口地址**:`/selectAllPurchaseorder`
+**接口地址**:`/purchaseorder/selectAllPurchaseorder`
 
 
 **请求方式**：`GET`
@@ -199,7 +199,7 @@
 **接口说明**:根据id查询采购订单
 
 
-**接口地址**:`/selectPurchaseorderById`
+**接口地址**:`/purchaseorder/selectPurchaseorderById`
 
 
 **请求方式**：`GET`
@@ -254,7 +254,7 @@
 **接口说明**:采购订单修改接口的说明
 
 
-**接口地址**:`/updatePurchaseorderById`
+**接口地址**:`/purchaseorder/updatePurchaseorderById`
 
 
 **请求方式**：`GET`
@@ -279,9 +279,9 @@
 
 ```json
 {
-	"data": "Object",
-	"flag": true,
-	"msg": "消息"
+  "data": "Object",
+  "flag": true,
+  "msg": "消息"
 }
 ```
 
