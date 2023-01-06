@@ -4,9 +4,11 @@ import com.alibaba.fastjson.JSON;
 import com.xpu.entity.Purchaseorder;
 import com.xpu.entity.R;
 import com.xpu.service.PurchaseorderService;
+import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -14,14 +16,15 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
 import java.util.ArrayList;
-
+@Controller
+@Api(tags = "采购订单管理")
 public class PurchaseorderController {
     @Resource
     PurchaseorderService purchaseorderService;
 
     @ResponseBody
     @PostMapping("/addPurchaseorder")
-    @ApiOperation(value = "订单新增接口", notes = "订单新增接口的说明")
+    @ApiOperation(value = "采购订单新增接口", notes = "采购订单新增接口的说明")
     @ApiResponses({
             @ApiResponse(code = 200, message = "调用成功"),
             @ApiResponse(code = 401, message = "无权限")
@@ -50,13 +53,13 @@ public class PurchaseorderController {
     }
 
     @GetMapping("/updatePurchaseorderById")
+    @ResponseBody
     @ApiOperation(value = "采购订单修改接口", notes = "采购订单修改接口的说明")
     @ApiResponses({
             @ApiResponse(code = 200, message = "调用成功"),
             @ApiResponse(code = 401, message = "无权限")
     }
     )
-
     public R updatePurchaseorderById(Purchaseorder purchaseorder) {
         int count = purchaseorderService.updatePurchaseorderById(purchaseorder);
         boolean flag = (count > 0);
