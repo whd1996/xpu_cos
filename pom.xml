@@ -15,9 +15,11 @@
     <modules>
         <module>login-service-demo</module>
         <module>gateway-api</module>
+        <module>login-service</module>
         <module>user-manage-service-demo</module>
         <module>order-manage-service</module>
-        <module>login-service</module>
+        <module>invoice-manage-service</module>
+        <module>purchaseorder-manage-service</module>
     </modules>
 
     <properties>

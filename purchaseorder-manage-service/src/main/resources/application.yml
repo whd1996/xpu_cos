@@ -1,0 +1,62 @@
+server:
+  port: 9002
+  servlet:
+    encoding:
+      force: true
+      enabled: true
+      charset: utf-8
+    context-path: /
+spring:
+  mvc:
+    view:
+      prefix: /static/
+      suffix: .html
+
+  application:
+    name: purchaseorder-manage-service
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848
+  # Redis服务地址
+  redis:
+    host: 127.0.0.1
+    # Redis服务器连接端口
+    port: 6379
+    # Redis服务器连接密码（默认为空）
+    password:
+    # session配置
+  session:
+    timeout: 86400 # 设置session失效时间
+    store-type: redis # 修改spring-session存储配置，默认存储到服务器内存中，现在设置存到redis中（关键）
+
+  # 数据源配置
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    url: jdbc:mysql://localhost:3306/xpu-cos?serverTimezone=Asia/Shanghai&useSSL=false
+    username: root
+    password: 123456
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    #druid连接池配置
+    druid:
+      #初始化连接大小
+      initial-size: 5
+      #最大连接池数量
+      max-active: 20
+      #最小连接池数量
+      min-idle: 3
+      #配置获取连接等待超时时间，单位毫秒
+      max-wait: 60000
+      #配置间隔多久才进行一次检查看，检查需要关闭的空闲连接，单位毫秒
+      time-between-eviction-runs-millis: 60000
+      #配置一个连接在池中最小的生存时间，单位毫秒
+      min-evictable-idle-time-millis: 300000
+      validation-query: select 'x'
+      #建议配置为true,不影响性能，并且保证安全性，申请连接的时候检测
+      test-while-idle: true
+      #获取连接时执行检测，建议关闭，影响性能
+      test-on-borrow: false
+      #归还连接时执行检测，建议关闭，影响性能
+      test-on-return: false
+      #检测连接是否有效的超时时间
+      validation-query-timeout: 10

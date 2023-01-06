@@ -10,4 +10,23 @@ import com.xpu.service.InvoiceService;
 @Service
 public class InvoiceServiceImpl extends ServiceImpl<InvoiceMapper, Invoice> implements InvoiceService{
 
+    @Override
+    public int addInvoice(Invoice invoice) {
+        return 0;
+    }
+
+    @Override
+    public Invoice selectInvoiceById(Integer id) {
+        return null;
+    }
+
+    @Override
+    public boolean delete(Integer id) {
+        return false;
+    }
+
+    @Override
+    public int updateInvoice(Invoice invoice) {
+        return 0;
+    }
 }
