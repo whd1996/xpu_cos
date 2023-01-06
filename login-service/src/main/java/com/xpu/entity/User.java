@@ -21,27 +21,27 @@ public class User implements Serializable {
     private Integer id;
 
     @TableField(value = "user_Name")
-    @ApiModelProperty(value="")
+    @ApiModelProperty(value="用户")
     private String userName;
 
     @TableField(value = "user_Passward")
-    @ApiModelProperty(value="")
+    @ApiModelProperty(value="用户密码",example = "1234")
     private String userPassward;
 
     @TableField(value = "nickName")
-    @ApiModelProperty(value="")
+    @ApiModelProperty(value="昵称",example = "张三")
     private String nickname;
 
     @TableField(value = "user_phone")
-    @ApiModelProperty(value="")
+    @ApiModelProperty(value="用户电话",example = "12345678910")
     private String userPhone;
 
     @TableField(value = "address")
-    @ApiModelProperty(value="")
+    @ApiModelProperty(value="地址",example = "陕西")
     private String address;
 
     @TableField(value = "role_ID")
-    @ApiModelProperty(value="")
+    @ApiModelProperty(value="角色标志",example = "001")
     private Integer roleId;
 
     public static final String COL_ID = "id";
