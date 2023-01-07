@@ -1,0 +1,171 @@
+添加功能：
+接口地址:/invoice/addInvoice
+请求方式：POST
+commodityId  表示商品编号
+id   	        表示商品id
+invoiceDate     表示发票日期
+invoiceDrawer  表示开票人
+orderformId    表示订单标识
+userId              表示用户id
+请求格式例如：
+{
+	"commodityId": 1,
+	"invoiceDate": "1673078066",
+	"invoiceDrawer": "五四",
+	"orderformId": 5,
+	"userId": 1
+}
+
+成功后返回
+msg:"1"表示添加成功
+返回的data 是   
+{
+  "flag": true,
+  "data": null,
+  "msg": "1"
+}
+
+
+
+删除功能：
+接口地址:/invoice/deleteInvoiceById
+请求方式：GET
+id     表示商品id
+
+如果成功  则返回
+msg表示删除成功后的反馈信息
+{
+  "flag": true,
+  "data": null,
+  "msg": "删除成功"
+}
+
+如果失败 则返回
+msg表示删除失败后的反馈信息
+{
+  "flag": false,
+  "data": null,
+  "msg": "删除失败"
+}
+
+
+
+查询所有功能：
+接口地址:/invoice/selectALLInvoice
+请求方式：GET
+如果成功 则返回
+{
+  "flag": true,
+  "data": [
+    {
+      "id": 1,
+      "userId": 1,
+      "commodityId": 1,
+      "invoiceDate": "2022-12-31T16:00:00.000+0000",
+      "orderformId": 1,
+      "invoiceDrawer": "张三"
+    },
+    {
+      "id": 2,
+      "userId": 2,
+      "commodityId": 2,
+      "invoiceDate": "2023-01-01T16:00:00.000+0000",
+      "orderformId": 2,
+      "invoiceDrawer": "李四"
+    },
+    {
+      "id": 3,
+      "userId": 3,
+      "commodityId": 3,
+      "invoiceDate": "2023-01-02T16:00:00.000+0000",
+      "orderformId": 3,
+      "invoiceDrawer": "王五"
+    }
+  ],
+  "msg": "查询成功"
+}
+
+如果失败 则返回
+{
+  "flag": true,
+  "data": [],
+  "msg": "查询失败"
+}
+
+
+
+查询（单个）功能：
+接口地址 /invoice/selectInvoiceById
+请求方式 GET
+id     表示商品id
+
+如果成功 则返回
+msg表示查询成功后的反馈信息
+{
+  "flag": true,
+  "data": {
+    "id": 1,
+    "userId": 2,
+    "commodityId": 2,
+    "invoiceDate": "1970-01-19T16:00:00.000+0000",
+    "orderformId": 1,
+    "invoiceDrawer": "张三"
+  },
+  "msg": "查询成功！"
+}
+
+如果失败 则返回
+msg表示查询失败后的反馈信息
+{
+  "flag": false,
+  "data": null,
+  "msg": "查询失败！"
+}
+
+
+
+更新功能：
+接口地址:/invoice/updateInvoice
+请求方式：POST
+commodityId   表示商品编号
+id   	         表示商品id
+invoiceDate      表示发票日期
+invoiceDrawer  表示开票人
+orderformId     表示订单标识
+userId               表示用户id
+请求格式例如：
+{
+	"commodityId": 2,
+	"id": 1,
+	"invoiceDate": "1673078531",
+	"invoiceDrawer": "李四",
+	"orderformId": 0,
+	"userId": 0
+}
+
+如果成功 则返回
+msg表示更新成功后的反馈信息
+{
+  "flag": true,
+  "data": null,
+  "msg": "更新成功！"
+}
+
+如果失败 则返回
+msg表示更新失败后的反馈信息
+{
+  "flag": flase,
+  "data": null,
+  "msg": "更新失败！"
+}
+
+
+
+
+
+
+
+
+
+
+

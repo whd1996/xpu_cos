@@ -8,7 +8,7 @@ name: order-manage-service			 port: 9001
 
 name: purchaseorder-manage-service		port: 9002
 
-name: user-manage-service    		port: 8089
+name: user-manage-service    		port: 8099
 
 
 

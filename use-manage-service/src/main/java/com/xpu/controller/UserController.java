@@ -34,6 +34,9 @@ public class UserController {
     @GetMapping("/deleteUserById")
     public R deleteUserById(Integer id) {
         System.out.println("前台：userId是" + id);
+        User user = userService.selectUserById(id);
+        if(user==null)
+            return new R(false,"无该用户");
         boolean flag = userService.delete(id);
         return new R(flag, flag ? "删除成功" : "删除失败");
     }
@@ -48,10 +51,10 @@ public class UserController {
 
     @ResponseBody
     @GetMapping("/selectALLUser")
-    public String selectALLUser() {
+    public R selectALLUser() {
         ArrayList<User> userList = userService.selectALLUser();
-
-        return JSON.toJSONString(userList);
+        boolean flag =!userList.isEmpty();
+        return new R(flag,userList,flag?"查询成功":"无内容");
     }
 
     @ResponseBody

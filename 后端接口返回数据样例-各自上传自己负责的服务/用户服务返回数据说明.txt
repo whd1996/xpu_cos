@@ -1,0 +1,166 @@
+添加功能：
+接口地址:/userinfo/addUser
+请求方式：POST
+address            表示地址
+id                     表示主键id
+nickname         表示昵称
+roleId               表示角色id
+userName        表示用户名
+userPassward   表示用户密码
+userPhone        表示用户电话
+请求格式例如：
+{
+    "address": "陕西省西安市",
+    "nickname": "莎莎",
+    "roleId": 0,
+    "userName": "张三",
+    "userPassward": 12345,
+    "userPhone": "10053"
+}
+
+成功后返回
+msg:"1"表示添加成功  
+{
+  "flag": true,
+  "data": null,
+  "msg": "1"
+}
+
+
+
+删除功能：
+接口地址:/userinfo/deleteUserById
+请求方式：GET
+id     表示商品id
+
+如果成功  则返回
+msg表示删除成功后的反馈信息
+{
+  "flag": true,
+  "data": null,
+  "msg": "删除成功"
+}
+
+如果失败 则返回
+msg表示删除失败后的反馈信息
+{
+  "flag": false,
+  "data": null,
+  "msg": "无该用户"
+}
+
+
+查询所有功能：
+接口地址:/userinfo/selectALLUser
+请求方式：GET
+如果成功 则返回
+{
+  "flag": true,
+  "data": [
+    {
+      "id": 1,
+      "userName": "张三",
+      "userPassward": "6d8986f89380ec7ded94ab8fdfa8f968",
+      "nickname": "1",
+      "userPhone": "10053",
+      "address": "陕西省咸阳市",
+      "roleId": 1
+    },
+    {
+      "id": 2,
+      "userName": "李四",
+      "userPassward": "41d31476c1423313b7c4ce395795c4f0",
+      "nickname": "2",
+      "userPhone": "41186",
+      "address": "陕西省汉中市",
+      "roleId": 2
+    },
+    {
+      "id": 3,
+      "userName": "王五",
+      "userPassward": "41d31476c1423313b7c4ce395795c4f0",
+      "nickname": "3",
+      "userPhone": "85596",
+      "address": "陕西省西安市",
+      "roleId": 2
+    }
+  ],
+  "msg": "查询成功"
+}
+
+如果失败 则返回
+{
+  "flag": true,
+  "data": [],
+  "msg": "查询失败"
+}
+
+
+
+查询（单个）功能：
+接口地址 /userinfo/selectUserById
+请求方式 GET
+id     表示商品id
+
+如果成功 则返回
+msg表示查询成功后的反馈信息
+{
+  "flag": true,
+  "data": {
+    "id": 1,
+    "userName": "张三",
+    "userPassward": "6d8986f89380ec7ded94ab8fdfa8f968",
+    "nickname": "1",
+    "userPhone": "10053",
+    "address": "陕西省咸阳市",
+    "roleId": 1
+  },
+  "msg": "查询成功！"
+}
+
+如果失败 则返回
+msg表示查询失败后的反馈信息
+{
+  "flag": false,
+  "data": null,
+  "msg": "无该用户！"
+}
+
+
+
+更新功能：
+接口地址:/userinfo/updateUserById
+请求方式：POST
+address            表示地址
+id                     表示主键id
+nickname         表示昵称
+roleId               表示角色id
+userName        表示用户名
+userPassward   表示用户密码
+userPhone        表示用户电话
+请求格式例如：
+{
+	"address": "陕西省榆林市",
+	"id": 1,
+	"nickname": "纱纱",
+	"roleId": 4,
+	"userName": "紫米",
+	"userPassward": 12345,
+	"userPhone": "98658"
+}
+
+如果成功 则返回
+msg表示更新成功后的反馈信息
+{
+  "flag": true,
+  "data": null,
+  "msg": "更新成功！"
+}
+
+如果失败 则返回
+msg表示更新失败后的反馈信息
+{
+  "flag": flase,
+  "data": null,
+  "msg": "更新失败！"
+}
