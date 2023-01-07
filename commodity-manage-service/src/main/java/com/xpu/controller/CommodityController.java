@@ -100,15 +100,6 @@ public class CommodityController {
         return new R(flag,flag?"修改成功" : "修改失败");
     }
 
-
-
-
-
-
-
-
-
-
 }
 
 

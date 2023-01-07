@@ -1,6 +1,5 @@
 package com.xpu.controller;
 
-import com.alibaba.fastjson.JSON;
 import com.xpu.entity.Invoice;
 import com.xpu.entity.R;
 import com.xpu.service.InvoiceService;
@@ -49,11 +48,12 @@ public class InvoiceController {
         boolean flag = (count > 0);
         return new R(flag, flag ? "更新成功！" : "更新失败！");
     }
+
     @ResponseBody
     @GetMapping("/selectALLInvoice")
-    public String selectALLInvoice() {
+    public R selectALLInvoice() {
         ArrayList<Invoice> invoiceList = invoiceService.selectALLInvoice();
-
-        return JSON.toJSONString(invoiceList);
+        boolean flag = (!invoiceList.isEmpty());
+        return new R(true, invoiceList, flag ? "查询成功" : "无商品信息");
     }
 }
