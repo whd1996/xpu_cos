@@ -51,9 +51,9 @@ public class InvoiceController {
     }
     @ResponseBody
     @GetMapping("/selectALLInvoice")
-    public String selectALLInvoice() {
+    public R selectALLInvoice() {
         ArrayList<Invoice> invoiceList = invoiceService.selectALLInvoice();
-
-        return JSON.toJSONString(invoiceList);
+        boolean flag = (!invoiceList.isEmpty());
+        return new R(true, invoiceList , flag ? "查询成功":"查询失败");
     }
 }
