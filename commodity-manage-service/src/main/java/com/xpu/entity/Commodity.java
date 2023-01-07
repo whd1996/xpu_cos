@@ -17,7 +17,7 @@ import java.io.Serializable;
 @TableName(value = "commodity")
 public class Commodity implements Serializable {
     @TableId(value = "id", type = IdType.AUTO)
-    @ApiModelProperty(value="商品主键id",example = "01")
+    @ApiModelProperty(value="商品主键id",example = "1")
     private Integer id;
 
     @TableField(value = "commodity_Name")
