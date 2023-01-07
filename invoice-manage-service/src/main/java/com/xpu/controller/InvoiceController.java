@@ -11,7 +11,6 @@ import javax.annotation.Resource;
 import java.util.ArrayList;
 
 @Controller
-@RequestMapping("/invoice")
 @Api(tags = "发票管理接口")
 public class InvoiceController {
     @Resource
