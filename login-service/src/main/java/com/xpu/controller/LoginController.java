@@ -70,7 +70,7 @@ public class LoginController {
             HttpSession session = req.getSession();
             Admin loginAdmin = adminService.adminLogin(admin);
             if (loginAdmin != null) {
-                session.setAttribute("admin", loginAdmin);
+                //session.setAttribute("admin", loginAdmin);
                 req.getSession().setAttribute("isLogin", true);
                 return new R(true, loginAdmin, "管理员登录成功");
             }
