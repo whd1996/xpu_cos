@@ -31,6 +31,7 @@ public class SessionConfiguration implements WebMvcConfigurer {
 		// 设置例外的路径
 		excludePathList = new ArrayList<>();
 		excludePathList.add("/user/login");
+		excludePathList.add("/user/register");
 		excludePathList.add("/login");
 		excludePathList.add("/index");
 		excludePathList.add("/toLogin");

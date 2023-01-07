@@ -87,15 +87,17 @@ public class LoginController {
     }
     )
     public R register(@RequestBody User user) {
+        user.setUserPassward(MD5Utils.getMD5(user.getUserPassward()));
         boolean flag = userService.userRegister(user);
-        return new R(flag, flag ? "注册成功" : "注册失败");
+        return new R(flag,user,flag ? "注册成功" : "注册失败");
     }
 
     @GetMapping("logout")
+    @ResponseBody
     @ApiOperation(value = "退出登录接口", notes = "清空session后退出")
-    public String logout(HttpServletRequest req) {
+    public R logout(HttpServletRequest req) {
         req.getSession().invalidate();//清空session 返回登录页
-        return "login";
+        return new R(true,"退出登录成功");
     }
 
 
