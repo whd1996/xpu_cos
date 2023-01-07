@@ -1,0 +1,28 @@
+
+接口地址:/buy/buyCommodity
+请求方式：GET
+
+id   	表示商品id
+num   	表示购买数量。
+
+如果成功     则返回
+返回的data 是   
+invoice           	 发票信息    
+order               	订单信息      
+good		商品信息
+
+invoiceCost 	发票显示的消费金额
+
+{
+  "flag": true,
+  "data": "{\"invoice\":{\"commodityId\":1,\"id\":8,\"invoiceDate\":\"2023-01-07 13:41:30\",\"invoiceDrawer\":\"XPU\",\"orderformId\":18,\"userId\":6},\"good\":{\"commodityName\":\"苹果\",\"commodityPrice\":10.0,\"commodityRepertory\":86,\"id\":1,\"upordown\":1},\"invoiceCost\":10.0,\"order\":{\"commodityAmount\":1,\"commodityId\":1,\"id\":18,\"orderformPrice\":10.0,\"userId\":6}}",
+  "msg": "购买成功"
+}
+
+如果失败  则返回   msg表示失败后的反馈信息
+{
+  "flag": false,
+  "data": null,
+  "msg": "库存不足,无法购买"
+}
+
