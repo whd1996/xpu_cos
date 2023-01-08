@@ -111,5 +111,52 @@ id
 返回的data    	是 
 
 查询所有商品
-
+{
+  "flag": true,
+  "data": [
+    {
+      "id": 5,
+      "commodityName": "苹果",
+      "commodityRepertory": 100,
+      "upordown": 1,
+      "commodityPrice": 15.5
+    },
+    {
+      "id": 6,
+      "commodityName": "苹果",
+      "commodityRepertory": 100,
+      "upordown": 1,
+      "commodityPrice": 15.5
+    },
+    {
+      "id": 7,
+      "commodityName": "苹果",
+      "commodityRepertory": 100,
+      "upordown": 1,
+      "commodityPrice": 15.5
+    },
+    {
+      "id": 8,
+      "commodityName": "苹果",
+      "commodityRepertory": 100,
+      "upordown": 1,
+      "commodityPrice": 15.5
+    },
+    {
+      "id": 22,
+      "commodityName": "香蕉",
+      "commodityRepertory": 88,
+      "upordown": 1,
+      "commodityPrice": 10.9
+    },
+    {
+      "id": 23,
+      "commodityName": "番茄",
+      "commodityRepertory": 100,
+      "upordown": 1,
+      "commodityPrice": 9.5
+    }
+  ],
+  "msg": "查询成功"
+}
 

@@ -72,16 +72,11 @@ public class CommodityController {
 
     @ResponseBody
     @GetMapping("/selectALLCommodity")
-    @ApiOperation(value = "商品查询接口", notes = "")
-    @ApiResponses({
-            @ApiResponse(code = 200, message = "调用成功"),
-            @ApiResponse(code = 401, message = "无权限")
-    }
-    )
-    public String selectALLCommodity() {
+    public R selectALLCommodity() {
         ArrayList<Commodity> commodityList = CommodityService.selectALLCommodity();
+        boolean flag = (!commodityList.isEmpty());
+        return new R(true,commodityList,flag?"查询成功":"无商品信息");
 
-        return JSON.toJSONString(commodityList);
     }
 
 
