@@ -1,0 +1,115 @@
+接口地址 /api/commodity/addCommodity
+
+请求方式 POST
+
+commodityName	商品名称
+commodityPrice		商品价格
+commodityRepertory	库存
+id			商品主键id
+upordown		上架/下架
+
+如果成功   	则返回
+返回的data    	是 
+
+商品新增
+{
+  "flag": true,
+  "data": null,
+  "msg": "插入成功"
+}
+
+
+
+
+接口地址 /api/commodity/selectCommodityById
+
+请求方式 GET
+
+id
+
+如果成功   	则返回
+返回的data    	是 
+
+
+根据id商品查询
+{
+  "flag": true,
+  "data": {
+    "id": 9,
+    "commodityName": "香蕉",
+    "commodityRepertory": 100,
+    "upordown": 1,
+    "commodityPrice": 6.9
+  },
+  "msg": "查询成功"
+}
+
+
+如果失败  则返回  msg表示失败后的反馈信息
+
+{
+  "flag": false,
+  "data": null,
+  "msg": "查询失败"
+}
+
+
+接口地址 /api/commodity/updateCommodityById
+
+请求方式 GET
+
+如果成功   	则返回
+返回的data    	是 
+
+
+商品修改
+
+{
+  "flag": true,
+  "data": null,
+  "msg": "修改成功"
+}
+
+
+如果失败  则返回  msg表示失败后的反馈信息
+
+{
+  "flag": false,
+  "data": null,
+  "msg": "修改失败"
+}
+
+
+接口地址 /api/commodity/deleteCommodityById
+
+请求方式 GET
+
+如果成功   	则返回
+返回的data    	是 
+
+
+商品删除
+{
+  "flag": true,
+  "data": null,
+  "msg": "删除成功"
+}
+
+
+如果失败  则返回  msg表示失败后的反馈信息
+{
+  "flag": false,
+  "data": null,
+  "msg": "删除失败"
+}
+
+接口地址 /api/commodity/selectALLCommodity
+
+请求方式 GET
+
+如果成功   	则返回
+返回的data    	是 
+
+查询所有商品
+
+
