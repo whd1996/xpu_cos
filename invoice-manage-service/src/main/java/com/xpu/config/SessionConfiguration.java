@@ -13,6 +13,7 @@ import org.springframework.web.servlet.view.JstlView;
 import javax.annotation.Resource;
 import java.util.ArrayList;
 import java.util.List;
+
 //登录拦截器配置
 @Configuration
 public class SessionConfiguration implements WebMvcConfigurer {
@@ -31,7 +32,6 @@ public class SessionConfiguration implements WebMvcConfigurer {
 		// 设置例外的路径
 		excludePathList = new ArrayList<>();
 		excludePathList.add("/user/login");
-		excludePathList.add("/api/user/login");
 		excludePathList.add("/user/register");
 		excludePathList.add("/login");
 		excludePathList.add("/index");
