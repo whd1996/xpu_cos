@@ -23,7 +23,7 @@
 参数类型为 购买商品的id,购买数量num
 
 
-**接口地址**:`/buy/buyCommodity`
+**接口地址**:`/api/buy/buyCommodity`
 
 
 **请求方式**：`GET`
