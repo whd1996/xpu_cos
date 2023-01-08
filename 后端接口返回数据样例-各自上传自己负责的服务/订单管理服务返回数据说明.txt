@@ -1,0 +1,111 @@
+采购订单新增接口
+接口地址 /purchaseorder/addPurchaseorder
+请求方式 POST
+
+{
+Purchaseorder  采购订单对象
+addAmount   采购该商品的数量
+commodityld   商品id
+}
+如果成功     则返回
+返回的data 是
+{
+  "flag": true,
+  "data": null,
+  "msg": "插入成功"
+}
+
+如果失败  则返回   msg表示失败后的反馈信息
+{
+	"addAmount": ,——未输入数量
+	"commodityId": 1001,
+	"id": 2
+}{
+  "timestamp": "2023-01-07T08:06:29.577+0000",
+  "status": 400,
+  "error": "Bad Request",
+  "message": "JSON parse error: Unexpected character (',' (code 44)): expected a value; nested exception is com.fasterxml.jackson.core.JsonParseException: Unexpected character (',' (code 44)): expected a value\n at [Source: (PushbackInputStream); line: 2, column: 16]",
+  "path": "/purchaseorder/addPurchaseorder"
+}
+
+
+ 
+采购订单删除接口
+接口地址 /purchaseorder/deletePurchaseorderById
+请求方式 GET
+
+Id		采购订单主键id
+
+如果成功     则返回
+返回的data 是
+{
+  "flag": true,
+  "data": null,
+  "msg": "删除成功"
+}
+
+如果失败  则返回   msg表示失败后的反馈信息
+
+{
+  "flag": false,
+  "data": null,
+  "msg": "删除失败"
+}
+ 
+全部采购订单查询接口
+接口地址 /purchaseorder/selectAllPurchaseorder
+请求方式 GET
+
+如果成功     则返回
+返回的data 是
+
+"[{\"addAmount\":20,\"commodityId\":1001,\"id\":4},{\"addAmount\":20,\"commodityId\":1001,\"id\":5},{\"addAmount\":20,\"commodityId\":1001,\"id\":6},{\"addAmount\":0,\"commodityId\":1001,\"id\":7},{\"addAmount\":0,\"commodityId\":1001,\"id\":8},{\"addAmount\":20,\"commodityId\":1001,\"id\":9},{\"addAmount\":20,\"commodityId\":1001,\"id\":10},{\"addAmount\":20,\"commodityId\":1001,\"id\":11},{\"addAmount\":20,\"commodityId\":1001,\"id\":12},{\"addAmount\":20,\"commodityId\":1001,\"id\":13},{\"addAmount\":20,\"commodityId\":1001,\"id\":14},{\"addAmount\":20,\"commodityId\":1001,\"id\":15},{\"addAmount\":-1,\"commodityId\":1001,\"id\":16}]"
+ 
+根据id查询采购订单
+接口地址 /purchaseorder/selectPurchaseorderById
+请求方式 GET
+
+Id		采购订单主键id
+
+如果成功     则返回
+返回的data 是
+
+{
+  "flag": true,
+  "data": {
+    "id": 5,
+    "commodityId": 1001,
+    "addAmount": 20
+  },
+  "msg": "查询成功"
+}
+
+如果失败  则返回   msg表示失败后的反馈信息
+{
+  "flag": false,
+  "data": null,
+  "msg": "查询失败"
+}
+ 
+
+采购订单修改接口
+接口地址 /purchaseorder/updatePurchaseorderById
+请求方式 GET
+addAmount 采购该商品的数量
+commodityld 商品id
+id			采购订单主键id
+
+如果成功     则返回
+返回的data 是
+{
+  "flag": true,
+  "data": null,
+  "msg": "修改成功"
+}
+
+如果失败  则返回   msg表示失败后的反馈信息
+{
+  "flag": false,
+  "data": null,
+  "msg": "修改失败"
+}
