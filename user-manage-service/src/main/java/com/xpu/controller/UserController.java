@@ -1,7 +1,6 @@
 package com.xpu.controller;
 
 
-import com.alibaba.fastjson.JSON;
 import com.xpu.entity.R;
 import com.xpu.entity.User;
 import com.xpu.service.UserService;
@@ -15,10 +14,10 @@ import java.util.ArrayList;
 
 @Api(tags = "用户管理")
 @Controller
+@RequestMapping("/userinfo")
 public class UserController {
     @Resource
     UserService userService;
-
     @ResponseBody
     @PostMapping("/addUser")
     public R addUser(@RequestBody User user) {

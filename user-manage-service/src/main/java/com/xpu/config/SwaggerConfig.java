@@ -29,12 +29,11 @@ public class SwaggerConfig {
 
     /**
      * 用于定义API主界面的信息，比如可以声明所有的API的总标题、描述、版本
-     *
      * @return
      */
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder()
-                .title("XPU-COS项目API") //  可以用来自定义API的主标题
+                .title("XPU-COS项目购买服务管理API") //  可以用来自定义API的主标题
                 .description("XPU-COS项目SwaggerAPI管理") // 可以用来描述整体的API
                 .termsOfServiceUrl("") // 用于定义服务的域名
                 .version("1.0") // 可以用来定义版本。

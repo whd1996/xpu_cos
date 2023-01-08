@@ -12,6 +12,7 @@ import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
@@ -21,6 +22,7 @@ import java.util.HashMap;
 
 @Api(tags = "购买服务接口")
 @Controller
+@RequestMapping("/buy")
 public class BuyController{
     @Resource
     CommodityService commodityService;

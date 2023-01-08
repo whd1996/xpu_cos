@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
@@ -7,18 +7,17 @@
         <groupId>com.xpu</groupId>
         <version>1.0-SNAPSHOT</version>
     </parent>
-    <artifactId>invoice-manage-service</artifactId>
+    <artifactId>user-manage-service</artifactId>
     <properties>
         <maven.compiler.source>8</maven.compiler.source>
         <maven.compiler.target>8</maven.compiler.target>
     </properties>
     <dependencies>
 
-
     </dependencies>
     <build>
         <!-- 打出来的jar包名 -->
-        <finalName>invoice-manage-service</finalName>
+        <finalName>user-manage-service</finalName>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
@@ -27,7 +26,7 @@
                 <configuration>
                     <!-- 主启动类全类名 -->
                     <mainClass>
-                        com.xpu.InvoiceManageApplication
+                        com.xpu.UserManageApplication
                     </mainClass>
                 </configuration>
                 <executions>

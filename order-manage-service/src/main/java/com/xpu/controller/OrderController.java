@@ -12,10 +12,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
 
 @Controller
 @Api(tags = "订单管理")
+@RequestMapping("/order")
 public class OrderController {
     @Resource
     OrderformService orderformService;
@@ -84,8 +86,9 @@ public class OrderController {
             @ApiResponse(code = 401, message = "无权限")
     }
     )
-    public String selectAllOrder( ) {
+    public String selectAllOrder(HttpServletRequest req) {
 
+        System.out.println(req.getSession().getId());
         ArrayList<Orderform> orderList = orderformService.selectAllOrder();
 
         return JSON.toJSONString(orderList);

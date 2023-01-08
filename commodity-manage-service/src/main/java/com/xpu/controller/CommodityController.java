@@ -16,6 +16,7 @@ import java.util.ArrayList;
 
 @Controller
 @Api(tags = "商品管理")
+@RequestMapping("/commodity")
 public class CommodityController {
     @Resource
     CommodityService CommodityService;

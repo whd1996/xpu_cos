@@ -12,6 +12,7 @@ import java.util.ArrayList;
 
 @Controller
 @Api(tags = "发票管理接口")
+@RequestMapping("/invoice")
 public class InvoiceController {
     @Resource
     InvoiceService invoiceService;

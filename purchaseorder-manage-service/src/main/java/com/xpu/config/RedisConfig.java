@@ -31,7 +31,6 @@ public class RedisConfig extends CachingConfigurerSupport {
      * @param factory
      * @return
      */
-
     @Bean
     @Primary
     @SuppressWarnings("all")

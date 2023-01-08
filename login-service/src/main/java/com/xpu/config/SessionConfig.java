@@ -1,19 +1,21 @@
 package com.xpu.config;
 
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.session.data.redis.config.ConfigureRedisAction;
 import org.springframework.session.data.redis.config.annotation.web.http.EnableRedisHttpSession;
-//config配置，设置跨域子域session共享，redis格式设置为json
-@Configuration
-@EnableRedisHttpSession
-public class SessionConfig {
-   /* @Bean
-    public CookieSerializer cookieSerializer() {
-        DefaultCookieSerializer serializer = new DefaultCookieSerializer();
-        serializer.setCookieName("SESSION");
-        serializer.setDomainName(".");
-        return serializer;
-    }
-    }*/
-// 这个springSessionDefaultRedisSerializer很重要，没有这个bean就是使用sdk默认的序列化，必须要实现Seralizeble接口
 
+/**
+ * @author whd
+ * @Description: 开启自动化配置 Spring Session 使用 Redis 作为数据源
+ * maxInactiveIntervalInSeconds=30 30秒后过期
+ */
+@EnableRedisHttpSession(maxInactiveIntervalInSeconds = 86400)
+@Configuration
+public class SessionConfig {
+
+    @Bean
+    public static ConfigureRedisAction configureRedisAction(){
+        return ConfigureRedisAction.NO_OP;
+    }
 }

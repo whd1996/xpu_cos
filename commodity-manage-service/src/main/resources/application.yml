@@ -5,7 +5,7 @@ server:
       force: true
       enabled: true
       charset: utf-8
-    context-path: /commodity
+    context-path: /api
 spring:
   mvc:
     view:

@@ -11,6 +11,7 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
 @Controller
+@RequestMapping("/userinfo")
 public class UserController {
     @Resource
     UserService userService;
