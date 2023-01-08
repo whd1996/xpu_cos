@@ -1,5 +1,5 @@
 添加功能：
-接口地址:/invoice/addInvoice
+接口地址:/api/invoice/addInvoice
 请求方式：POST
 commodityId  表示商品编号
 id   	        表示商品id
@@ -28,7 +28,7 @@ msg:"1"表示添加成功
 
 
 删除功能：
-接口地址:/invoice/deleteInvoiceById
+接口地址:/api/invoice/deleteInvoiceById
 请求方式：GET
 id     表示商品id
 
@@ -51,7 +51,7 @@ msg表示删除失败后的反馈信息
 
 
 查询所有功能：
-接口地址:/invoice/selectALLInvoice
+接口地址:/api/invoice/selectALLInvoice
 请求方式：GET
 如果成功 则返回
 {
@@ -95,7 +95,7 @@ msg表示删除失败后的反馈信息
 
 
 查询（单个）功能：
-接口地址 /invoice/selectInvoiceById
+接口地址:/api/invoice/selectInvoiceById
 请求方式 GET
 id     表示商品id
 
@@ -125,7 +125,7 @@ msg表示查询失败后的反馈信息
 
 
 更新功能：
-接口地址:/invoice/updateInvoice
+接口地址:/api/invoice/updateInvoice
 请求方式：POST
 commodityId   表示商品编号
 id   	         表示商品id

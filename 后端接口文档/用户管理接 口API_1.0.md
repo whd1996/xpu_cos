@@ -1,10 +1,10 @@
 
-**XPU-COS项目API**
+**XPU-COS项目购买服务管理API**
 
 
 **简介**：XPU-COS项目SwaggerAPI管理
 
-**HOST**:localhost:8089
+**HOST**:localhost:8099
 
 
 **联系人**:
@@ -24,7 +24,7 @@
 
 
 
-**接口地址**:`/addUser`
+**接口地址**:`/api/userinfo/addUser`
 
 
 **请求方式**：`POST`
@@ -111,7 +111,7 @@
 
 
 
-**接口地址**:`/deleteUserById`
+**接口地址**:`/api/userinfo/deleteUserById`
 
 
 **请求方式**：`GET`
@@ -168,7 +168,7 @@
 
 
 
-**接口地址**:`/selectALLUser`
+**接口地址**:`/api/userinfo/selectALLUser`
 
 
 **请求方式**：`GET`
@@ -188,13 +188,21 @@
 **响应数据**:
 
 ```json
-
+{
+	"data": "Object",
+	"flag": true,
+	"msg": "消息"
+}
 ```
 
 **响应参数说明**:
 
 
-暂无
+| 参数名称         | 说明                             |    类型 |  schema |
+| ------------ | -------------------|-------|----------- |
+|data| 返回对象  |object  |    |
+|flag| 返回操作状态  |boolean  |    |
+|msg| 返回消息  |string  |    |
 
 
 
@@ -204,7 +212,7 @@
 
 | 状态码         | 说明                             |    schema                         |
 | ------------ | -------------------------------- |---------------------- |
-| 200 | OK  ||
+| 200 | OK  |通用响应|
 | 401 | Unauthorized  ||
 | 403 | Forbidden  ||
 | 404 | Not Found  ||
@@ -215,7 +223,7 @@
 
 
 
-**接口地址**:`/selectUserById`
+**接口地址**:`/api/userinfo/selectUserById`
 
 
 **请求方式**：`GET`
@@ -272,7 +280,7 @@
 
 
 
-**接口地址**:`/updateUserById`
+**接口地址**:`/api/userinfo/updateUserById`
 
 
 **请求方式**：`POST`
