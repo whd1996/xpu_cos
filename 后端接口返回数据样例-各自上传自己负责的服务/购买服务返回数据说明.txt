@@ -1,5 +1,5 @@
 
-接口地址:/buy/buyCommodity
+接口地址:/api/buy/buyCommodity
 请求方式：GET
 
 id   	表示商品id
