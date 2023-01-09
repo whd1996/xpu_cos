@@ -37,11 +37,11 @@ public class SwaggerProvider implements SwaggerResourcesProvider {
                          routeDefinition.getPredicates().stream()
                         .filter(predicateDefinition -> ("Path").equalsIgnoreCase(predicateDefinition.getName()))
                         .forEach(predicateDefinition -> resources
-                                .add(swaggerResource(routeDefinition.getId(), predicateDefinition.getArgs()
+                                .add(swaggerResource(routeDefinition.getId(),predicateDefinition.getArgs()
                                         .get(NameUtils.GENERATED_NAME_PREFIX + "0").replace("/**", API_URI)))));
         return resources;
     }
- 
+
     private SwaggerResource swaggerResource(String name, String location) {
         SwaggerResource swaggerResource = new SwaggerResource();
         swaggerResource.setName(name);
@@ -49,8 +49,7 @@ public class SwaggerProvider implements SwaggerResourcesProvider {
         swaggerResource.setSwaggerVersion("2.0");
         return swaggerResource;
     }
- 
- 
- 
- 
+
+
+
 }
