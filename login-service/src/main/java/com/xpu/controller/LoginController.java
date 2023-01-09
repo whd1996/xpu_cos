@@ -20,7 +20,6 @@ import java.util.HashMap;
 
 @Api(tags = "用户登录管理")
 @Controller
-@RequestMapping("/user")
 public class LoginController {
     @Autowired
     UserService userService;
@@ -43,7 +42,6 @@ public class LoginController {
     }
     )
     public R login(@RequestBody HashMap<String, Object> map,HttpServletRequest req) {
-        System.out.println(map);
         int flag = (int) map.get("flag");
         HashMap userMap = (HashMap) map.get("user");
         User user = new User();
@@ -55,7 +53,6 @@ public class LoginController {
             if (loginuser != null) {
                 System.out.println("dao查到的： " + loginuser);
                 HttpSession session = req.getSession();
-                System.out.println(session.getId());
                 session.setAttribute("user", loginuser);
                 session.setAttribute("isLogin", true);
                 if (loginuser.getRoleId() == 1)

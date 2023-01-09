@@ -1,8 +1,7 @@
 server:
   port: 7000
   servlet:
-    encoding:
-    context-path: /api
+    context-path: /
 spring:
   application:
     name: gateway-api
@@ -43,7 +42,7 @@ spring:
           uri: lb://login-service   # 如果断言成功，将要转发去的地址
           order: 0                    # 优先级，越小优先级越高
           predicates: # 断言，满足所有断言，才会进行转发
-            - Path=/user/**        # 注意：这是使用= 不是：
+            - Path=/api/user/**        # 注意：这是使用= 不是：
         - id: order-manage-service
           uri: lb://order-manage-service
           order: 0

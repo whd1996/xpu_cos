@@ -14,7 +14,6 @@ import java.util.ArrayList;
 
 @Api(tags = "用户管理")
 @Controller
-@RequestMapping("/userinfo")
 public class UserController {
     @Resource
     UserService userService;
