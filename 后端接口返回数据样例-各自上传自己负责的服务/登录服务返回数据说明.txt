@@ -1,0 +1,101 @@
+接口地址 /api/user/register
+
+请求方式 POST
+
+
+username      	用户名
+
+password 	密码
+
+如果成功   	则返回
+返回的data    	是
+
+注册  采购员
+
+
+nickname		昵称
+userPhone	用户电话
+address		地址
+roleId		用户身份（用户：0，采购员：1）
+
+{
+  "flag": true,
+  "data": {
+    "userName": "a",
+    "userPassward": "6d8986f89380ec7ded94ab8fdfa8f968",
+    "nickname": "111",
+    "userPhone": "1111",
+    "address": "1111",
+    "roleId": 0
+  },
+  "msg": "注册成功"
+}
+
+注册   客户
+
+
+{
+  "flag": true,
+  "data": {
+    "userName": "ab",
+    "userPassward": "6d8986f89380ec7ded94ab8fdfa8f968",
+    "nickname": "111",
+    "userPhone": "1111",
+    "address": "1111",
+    "roleId": 0
+  },
+  "msg": "注册成功"
+}
+
+
+
+
+接口地址 /api/user/login
+
+请求方式 POST
+
+
+登录   采购员
+
+
+{
+  "flag": true,
+  "data": {
+    "userName": "a",
+    "userPassward": "6d8986f89380ec7ded94ab8fdfa8f968",
+    "nickname": "111",
+    "userPhone": "1111",
+    "address": "1111",
+    "roleId": 1
+  },
+  "msg": "采购员登录成功"
+}
+
+
+登录  客户
+
+{
+  "flag": true,
+  "data": {
+    "id": 7,
+    "userName": "ab",
+    "userPassward": "6d8986f89380ec7ded94ab8fdfa8f968",
+    "nickname": "111",
+    "userPhone": "1111",
+    "address": "1111",
+    "roleId": 0
+  },
+  "msg": "客户登录成功"
+}
+
+
+如果失败  则返回  msg表示失败后的反馈信息
+{
+  "flag": false,
+  "data": null,
+  "msg": "登录失败"
+}
+
+
+
+
