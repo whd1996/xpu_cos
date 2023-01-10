@@ -1,6 +1,5 @@
 package com.xpu.controller;
 
-import com.alibaba.fastjson.JSON;
 import com.xpu.entity.Commodity;
 import com.xpu.entity.R;
 import com.xpu.sevice.CommodityService;
@@ -16,6 +15,7 @@ import java.util.ArrayList;
 
 @Controller
 @Api(tags = "商品管理")
+@RequestMapping("/commodity")
 public class CommodityController {
     @Resource
     CommodityService CommodityService;

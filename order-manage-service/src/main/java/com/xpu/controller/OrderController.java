@@ -17,6 +17,7 @@ import java.util.ArrayList;
 
 @Controller
 @Api(tags = "订单管理")
+@RequestMapping("/order")
 public class OrderController {
     @Resource
     OrderformService orderformService;

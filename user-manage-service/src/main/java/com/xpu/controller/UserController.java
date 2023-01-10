@@ -1,6 +1,5 @@
 package com.xpu.controller;
 
-
 import com.xpu.entity.R;
 import com.xpu.entity.User;
 import com.xpu.service.UserService;
@@ -14,6 +13,7 @@ import java.util.ArrayList;
 
 @Api(tags = "用户管理")
 @Controller
+@RequestMapping("/userinfo")
 public class UserController {
     @Resource
     UserService userService;
