@@ -1,18 +1,22 @@
 
-**XPU-COS项目购买服务管理API**
+**XPU-COS项目发票管理服务API**
 
 
-**简介**：XPU-COS项目SwaggerAPI管理
-
-**HOST**:localhost:8088
+**简介**：<p>XPU-COS项目SwaggerAPI管理</p>
 
 
-**联系人**:
+**HOST**:localhost:7000
+
+
+**说明**: 服务名可缺省，配置了动态路由<br/>
+如接口地址  /invoice-manage-service/invoice/addInvoice
+</br>
+可简写为    /invoice/addInvoice
 
 
 **Version**:1.0
 
-**接口路径**：/v2/api-docs
+**接口路径**：/invoice-manage-service/v2/api-docs
 
 
 # 发票管理接口
@@ -20,11 +24,10 @@
 ## addInvoice
 
 
-**接口说明**:
+**接口描述**:
 
 
-
-**接口地址**:`/api/invoice/addInvoice`
+**接口地址**:`/invoice-manage-service/invoice/addInvoice`
 
 
 **请求方式**：`POST`
@@ -51,7 +54,7 @@
 
 **请求参数**：
 
-| 参数名称         | 说明     |     in |  是否必须      |  类型   |  schema  |
+| 参数名称         | 参数说明     |     in |  是否必须      |  数据类型  |  schema  |
 | ------------ | -------------------------------- |-----------|--------|----|--- |
 |invoice| invoice  | body | true |invoice  | invoice   |
 
@@ -61,16 +64,16 @@
 
 **invoice**
 
-| 参数名称         | 说明    |     in |  是否必须   |  类型  |  schema |
+| 参数名称         | 参数说明     |     in |  是否必须      |  数据类型  |  schema  |
 | ------------ | -------------------------------- |-----------|--------|----|--- |
-|commodityId|   | body | false |int32  |    |
-|id|   | body | false |int32  |    |
-|invoiceDate|   | body | false |date-time  |    |
+|commodityId|   | body | false |integer(int32)  |    |
+|id|   | body | false |integer(int32)  |    |
+|invoiceDate|   | body | false |string(date-time)  |    |
 |invoiceDrawer|   | body | false |string  |    |
-|orderformId|   | body | false |int32  |    |
-|userId|   | body | false |int32  |    |
+|orderformId|   | body | false |integer(int32)  |    |
+|userId|   | body | false |integer(int32)  |    |
 
-**响应数据**:
+**响应示例**:
 
 ```json
 {
@@ -80,10 +83,10 @@
 }
 ```
 
-**响应参数说明**:
+**响应参数**:
 
 
-| 参数名称         | 说明                             |    类型 |  schema |
+| 参数名称         | 参数说明                             |    类型 |  schema |
 | ------------ | -------------------|-------|----------- |
 |data| 返回对象  |object  |    |
 |flag| 返回操作状态  |boolean  |    |
@@ -92,10 +95,11 @@
 
 
 
-**响应状态码说明**:
+
+**响应状态**:
 
 
-| 状态码         | 说明                             |    schema                         |
+| 状态码         | 说明                            |    schema                         |
 | ------------ | -------------------------------- |---------------------- |
 | 200 | OK  |通用响应|
 | 201 | Created  ||
@@ -105,11 +109,10 @@
 ## deleteInvoiceById
 
 
-**接口说明**:
+**接口描述**:
 
 
-
-**接口地址**:`/api/invoice/deleteInvoiceById`
+**接口地址**:`/invoice-manage-service/invoice/deleteInvoiceById`
 
 
 **请求方式**：`GET`
@@ -124,11 +127,11 @@
 
 **请求参数**：
 
-| 参数名称         | 说明     |     in |  是否必须      |  类型   |  schema  |
+| 参数名称         | 参数说明     |     in |  是否必须      |  数据类型  |  schema  |
 | ------------ | -------------------------------- |-----------|--------|----|--- |
 |id| id  | query | false |integer  |    |
 
-**响应数据**:
+**响应示例**:
 
 ```json
 {
@@ -138,10 +141,10 @@
 }
 ```
 
-**响应参数说明**:
+**响应参数**:
 
 
-| 参数名称         | 说明                             |    类型 |  schema |
+| 参数名称         | 参数说明                             |    类型 |  schema |
 | ------------ | -------------------|-------|----------- |
 |data| 返回对象  |object  |    |
 |flag| 返回操作状态  |boolean  |    |
@@ -150,10 +153,11 @@
 
 
 
-**响应状态码说明**:
+
+**响应状态**:
 
 
-| 状态码         | 说明                             |    schema                         |
+| 状态码         | 说明                            |    schema                         |
 | ------------ | -------------------------------- |---------------------- |
 | 200 | OK  |通用响应|
 | 401 | Unauthorized  ||
@@ -162,11 +166,10 @@
 ## selectALLInvoice
 
 
-**接口说明**:
+**接口描述**:
 
 
-
-**接口地址**:`/api/invoice/selectALLInvoice`
+**接口地址**:`/invoice-manage-service/invoice/selectALLInvoice`
 
 
 **请求方式**：`GET`
@@ -183,7 +186,8 @@
 暂无
 
 
-**响应数据**:
+
+**响应示例**:
 
 ```json
 {
@@ -193,10 +197,10 @@
 }
 ```
 
-**响应参数说明**:
+**响应参数**:
 
 
-| 参数名称         | 说明                             |    类型 |  schema |
+| 参数名称         | 参数说明                             |    类型 |  schema |
 | ------------ | -------------------|-------|----------- |
 |data| 返回对象  |object  |    |
 |flag| 返回操作状态  |boolean  |    |
@@ -205,10 +209,11 @@
 
 
 
-**响应状态码说明**:
+
+**响应状态**:
 
 
-| 状态码         | 说明                             |    schema                         |
+| 状态码         | 说明                            |    schema                         |
 | ------------ | -------------------------------- |---------------------- |
 | 200 | OK  |通用响应|
 | 401 | Unauthorized  ||
@@ -217,11 +222,10 @@
 ## selectInvoiceById
 
 
-**接口说明**:
+**接口描述**:
 
 
-
-**接口地址**:`/api/invoice/selectInvoiceById`
+**接口地址**:`/invoice-manage-service/invoice/selectInvoiceById`
 
 
 **请求方式**：`GET`
@@ -236,11 +240,11 @@
 
 **请求参数**：
 
-| 参数名称         | 说明     |     in |  是否必须      |  类型   |  schema  |
+| 参数名称         | 参数说明     |     in |  是否必须      |  数据类型  |  schema  |
 | ------------ | -------------------------------- |-----------|--------|----|--- |
 |id| id  | query | false |integer  |    |
 
-**响应数据**:
+**响应示例**:
 
 ```json
 {
@@ -250,10 +254,10 @@
 }
 ```
 
-**响应参数说明**:
+**响应参数**:
 
 
-| 参数名称         | 说明                             |    类型 |  schema |
+| 参数名称         | 参数说明                             |    类型 |  schema |
 | ------------ | -------------------|-------|----------- |
 |data| 返回对象  |object  |    |
 |flag| 返回操作状态  |boolean  |    |
@@ -262,10 +266,11 @@
 
 
 
-**响应状态码说明**:
+
+**响应状态**:
 
 
-| 状态码         | 说明                             |    schema                         |
+| 状态码         | 说明                            |    schema                         |
 | ------------ | -------------------------------- |---------------------- |
 | 200 | OK  |通用响应|
 | 401 | Unauthorized  ||
@@ -274,11 +279,10 @@
 ## updateInvoiceById
 
 
-**接口说明**:
+**接口描述**:
 
 
-
-**接口地址**:`/api/invoice/updateInvoice`
+**接口地址**:`/invoice-manage-service/invoice/updateInvoice`
 
 
 **请求方式**：`POST`
@@ -305,7 +309,7 @@
 
 **请求参数**：
 
-| 参数名称         | 说明     |     in |  是否必须      |  类型   |  schema  |
+| 参数名称         | 参数说明     |     in |  是否必须      |  数据类型  |  schema  |
 | ------------ | -------------------------------- |-----------|--------|----|--- |
 |invoice| invoice  | body | true |invoice  | invoice   |
 
@@ -315,16 +319,16 @@
 
 **invoice**
 
-| 参数名称         | 说明    |     in |  是否必须   |  类型  |  schema |
+| 参数名称         | 参数说明     |     in |  是否必须      |  数据类型  |  schema  |
 | ------------ | -------------------------------- |-----------|--------|----|--- |
-|commodityId|   | body | false |int32  |    |
-|id|   | body | false |int32  |    |
-|invoiceDate|   | body | false |date-time  |    |
+|commodityId|   | body | false |integer(int32)  |    |
+|id|   | body | false |integer(int32)  |    |
+|invoiceDate|   | body | false |string(date-time)  |    |
 |invoiceDrawer|   | body | false |string  |    |
-|orderformId|   | body | false |int32  |    |
-|userId|   | body | false |int32  |    |
+|orderformId|   | body | false |integer(int32)  |    |
+|userId|   | body | false |integer(int32)  |    |
 
-**响应数据**:
+**响应示例**:
 
 ```json
 {
@@ -334,22 +338,23 @@
 }
 ```
 
-**响应参数说明**:
+**响应参数**:
 
 
-| 参数名称         | 说明                             |    类型 |  schema |
+| 参数名称         | 参数说明                             |    类型 |  schema |
 | ------------ | -------------------|-------|----------- |
 |data| 返回对象  |object  |    |
 |flag| 返回操作状态  |boolean  |    |
 |msg| 返回消息  |string  |    |
- 
 
 
 
-**响应状态码说明**:
 
 
-| 状态码         | 说明                             |    schema                         |
+**响应状态**:
+
+
+| 状态码         | 说明                            |    schema                         |
 | ------------ | -------------------------------- |---------------------- |
 | 200 | OK  |通用响应|
 | 201 | Created  ||

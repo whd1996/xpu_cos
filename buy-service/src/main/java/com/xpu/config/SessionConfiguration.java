@@ -33,6 +33,7 @@ public class SessionConfiguration implements WebMvcConfigurer {
 		excludePathList = new ArrayList<>();
 		excludePathList.add("/user/login");
 		excludePathList.add("/user/register");
+		excludePathList.add("/api/doc.html");
 		excludePathList.add("/login");
 		excludePathList.add("/index");
 		excludePathList.add("/toLogin");

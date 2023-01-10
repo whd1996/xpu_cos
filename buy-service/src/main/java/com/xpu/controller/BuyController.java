@@ -81,8 +81,10 @@ public class BuyController{
                     map.put("good", good);//商品信息
                     map.put("invoice", invoice);//发票信息
                     map.put("order", order);//订单信息
+                    //格式化时间
+                    String invoiceStr = JSON.toJSONStringWithDateFormat(map, "yyyy-MM-dd HH:mm:ss", SerializerFeature.WriteDateUseDateFormat);
                     map.put("invoiceCost", num * good.getCommodityPrice());//发票金额
-                    return new R(true, JSON.toJSONStringWithDateFormat(map, "yyyy-MM-dd HH:mm:ss", SerializerFeature.WriteDateUseDateFormat), "购买成功");
+                    return new R(true,JSON.parse(invoiceStr), "购买成功");
                 }
 
             } else

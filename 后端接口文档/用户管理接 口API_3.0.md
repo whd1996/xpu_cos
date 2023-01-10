@@ -1,18 +1,22 @@
 
-**XPU-COS项目购买服务管理API**
+**XPU-COS项目用户管理服务API**
 
 
-**简介**：XPU-COS项目SwaggerAPI管理
-
-**HOST**:localhost:8099
+**简介**：<p>XPU-COS项目SwaggerAPI管理</p>
 
 
-**联系人**:
+**HOST**:localhost:7000
 
 
-**Version**:1.0
+**说明**: 服务名可缺省，配置了动态路由<br/>
+如接口地址 /user-manage-service/userinfo/addUser
+</br>
+可简写为   /userinfo/addUser
 
-**接口路径**：/v2/api-docs
+
+**Version**:3.0
+
+**接口路径**：/user-manage-service/v2/api-docs
 
 
 # 用户管理
@@ -20,11 +24,10 @@
 ## addUser
 
 
-**接口说明**:
+**接口描述**:
 
 
-
-**接口地址**:`/api/userinfo/addUser`
+**接口地址**:`/user-manage-service/userinfo/addUser`
 
 
 **请求方式**：`POST`
@@ -44,7 +47,7 @@
 	"nickname": "",
 	"roleId": 0,
 	"userName": "zhangsan",
-	"userPassward": 1234,
+	"userPassward": "1234",
 	"userPhone": ""
 }
 ```
@@ -52,7 +55,7 @@
 
 **请求参数**：
 
-| 参数名称         | 说明     |     in |  是否必须      |  类型   |  schema  |
+| 参数名称         | 参数说明     |     in |  是否必须      |  数据类型  |  schema  |
 | ------------ | -------------------------------- |-----------|--------|----|--- |
 |user| user  | body | true |`user`  | `user`   |
 
@@ -62,17 +65,17 @@
 
 **`user`**
 
-| 参数名称         | 说明    |     in |  是否必须   |  类型  |  schema |
+| 参数名称         | 参数说明     |     in |  是否必须      |  数据类型  |  schema  |
 | ------------ | -------------------------------- |-----------|--------|----|--- |
 |address|   | body | false |string  |    |
-|id| 主键id  | body | false |int32  |    |
+|id| 主键id  | body | false |integer(int32)  |    |
 |nickname|   | body | false |string  |    |
-|roleId|   | body | false |int32  |    |
+|roleId|   | body | false |integer(int32)  |    |
 |userName| 用户名  | body | false |string  |    |
 |userPassward| 用户密码  | body | false |string  |    |
 |userPhone|   | body | false |string  |    |
 
-**响应数据**:
+**响应示例**:
 
 ```json
 {
@@ -82,10 +85,10 @@
 }
 ```
 
-**响应参数说明**:
+**响应参数**:
 
 
-| 参数名称         | 说明                             |    类型 |  schema |
+| 参数名称         | 参数说明                             |    类型 |  schema |
 | ------------ | -------------------|-------|----------- |
 |data| 返回对象  |object  |    |
 |flag| 返回操作状态  |boolean  |    |
@@ -94,10 +97,11 @@
 
 
 
-**响应状态码说明**:
+
+**响应状态**:
 
 
-| 状态码         | 说明                             |    schema                         |
+| 状态码         | 说明                            |    schema                         |
 | ------------ | -------------------------------- |---------------------- |
 | 200 | OK  |通用响应|
 | 201 | Created  ||
@@ -107,11 +111,10 @@
 ## deleteUserById
 
 
-**接口说明**:
+**接口描述**:
 
 
-
-**接口地址**:`/api/userinfo/deleteUserById`
+**接口地址**:`/user-manage-service/userinfo/deleteUserById`
 
 
 **请求方式**：`GET`
@@ -126,11 +129,11 @@
 
 **请求参数**：
 
-| 参数名称         | 说明     |     in |  是否必须      |  类型   |  schema  |
+| 参数名称         | 参数说明     |     in |  是否必须      |  数据类型  |  schema  |
 | ------------ | -------------------------------- |-----------|--------|----|--- |
 |id| id  | query | false |integer  |    |
 
-**响应数据**:
+**响应示例**:
 
 ```json
 {
@@ -140,10 +143,10 @@
 }
 ```
 
-**响应参数说明**:
+**响应参数**:
 
 
-| 参数名称         | 说明                             |    类型 |  schema |
+| 参数名称         | 参数说明                             |    类型 |  schema |
 | ------------ | -------------------|-------|----------- |
 |data| 返回对象  |object  |    |
 |flag| 返回操作状态  |boolean  |    |
@@ -152,10 +155,11 @@
 
 
 
-**响应状态码说明**:
+
+**响应状态**:
 
 
-| 状态码         | 说明                             |    schema                         |
+| 状态码         | 说明                            |    schema                         |
 | ------------ | -------------------------------- |---------------------- |
 | 200 | OK  |通用响应|
 | 401 | Unauthorized  ||
@@ -164,11 +168,10 @@
 ## selectALLUser
 
 
-**接口说明**:
+**接口描述**:
 
 
-
-**接口地址**:`/api/userinfo/selectALLUser`
+**接口地址**:`/user-manage-service/userinfo/selectALLUser`
 
 
 **请求方式**：`GET`
@@ -185,7 +188,8 @@
 暂无
 
 
-**响应数据**:
+
+**响应示例**:
 
 ```json
 {
@@ -195,10 +199,10 @@
 }
 ```
 
-**响应参数说明**:
+**响应参数**:
 
 
-| 参数名称         | 说明                             |    类型 |  schema |
+| 参数名称         | 参数说明                             |    类型 |  schema |
 | ------------ | -------------------|-------|----------- |
 |data| 返回对象  |object  |    |
 |flag| 返回操作状态  |boolean  |    |
@@ -207,10 +211,11 @@
 
 
 
-**响应状态码说明**:
+
+**响应状态**:
 
 
-| 状态码         | 说明                             |    schema                         |
+| 状态码         | 说明                            |    schema                         |
 | ------------ | -------------------------------- |---------------------- |
 | 200 | OK  |通用响应|
 | 401 | Unauthorized  ||
@@ -219,11 +224,10 @@
 ## selectUserById
 
 
-**接口说明**:
+**接口描述**:
 
 
-
-**接口地址**:`/api/userinfo/selectUserById`
+**接口地址**:`/user-manage-service/userinfo/selectUserById`
 
 
 **请求方式**：`GET`
@@ -238,11 +242,11 @@
 
 **请求参数**：
 
-| 参数名称         | 说明     |     in |  是否必须      |  类型   |  schema  |
+| 参数名称         | 参数说明     |     in |  是否必须      |  数据类型  |  schema  |
 | ------------ | -------------------------------- |-----------|--------|----|--- |
 |id| id  | query | false |integer  |    |
 
-**响应数据**:
+**响应示例**:
 
 ```json
 {
@@ -252,10 +256,10 @@
 }
 ```
 
-**响应参数说明**:
+**响应参数**:
 
 
-| 参数名称         | 说明                             |    类型 |  schema |
+| 参数名称         | 参数说明                             |    类型 |  schema |
 | ------------ | -------------------|-------|----------- |
 |data| 返回对象  |object  |    |
 |flag| 返回操作状态  |boolean  |    |
@@ -264,10 +268,11 @@
 
 
 
-**响应状态码说明**:
+
+**响应状态**:
 
 
-| 状态码         | 说明                             |    schema                         |
+| 状态码         | 说明                            |    schema                         |
 | ------------ | -------------------------------- |---------------------- |
 | 200 | OK  |通用响应|
 | 401 | Unauthorized  ||
@@ -276,11 +281,10 @@
 ## updateUserById
 
 
-**接口说明**:
+**接口描述**:
 
 
-
-**接口地址**:`/api/userinfo/updateUserById`
+**接口地址**:`/user-manage-service/userinfo/updateUserById`
 
 
 **请求方式**：`POST`
@@ -300,7 +304,7 @@
 	"nickname": "",
 	"roleId": 0,
 	"userName": "zhangsan",
-	"userPassward": 1234,
+	"userPassward": "1234",
 	"userPhone": ""
 }
 ```
@@ -308,7 +312,7 @@
 
 **请求参数**：
 
-| 参数名称         | 说明     |     in |  是否必须      |  类型   |  schema  |
+| 参数名称         | 参数说明     |     in |  是否必须      |  数据类型  |  schema  |
 | ------------ | -------------------------------- |-----------|--------|----|--- |
 |user| user  | body | true |`user`  | `user`   |
 
@@ -318,17 +322,17 @@
 
 **`user`**
 
-| 参数名称         | 说明    |     in |  是否必须   |  类型  |  schema |
+| 参数名称         | 参数说明     |     in |  是否必须      |  数据类型  |  schema  |
 | ------------ | -------------------------------- |-----------|--------|----|--- |
 |address|   | body | false |string  |    |
-|id| 主键id  | body | false |int32  |    |
+|id| 主键id  | body | false |integer(int32)  |    |
 |nickname|   | body | false |string  |    |
-|roleId|   | body | false |int32  |    |
+|roleId|   | body | false |integer(int32)  |    |
 |userName| 用户名  | body | false |string  |    |
 |userPassward| 用户密码  | body | false |string  |    |
 |userPhone|   | body | false |string  |    |
 
-**响应数据**:
+**响应示例**:
 
 ```json
 {
@@ -338,22 +342,23 @@
 }
 ```
 
-**响应参数说明**:
+**响应参数**:
 
 
-| 参数名称         | 说明                             |    类型 |  schema |
+| 参数名称         | 参数说明                             |    类型 |  schema |
 | ------------ | -------------------|-------|----------- |
 |data| 返回对象  |object  |    |
 |flag| 返回操作状态  |boolean  |    |
 |msg| 返回消息  |string  |    |
- 
 
 
 
-**响应状态码说明**:
 
 
-| 状态码         | 说明                             |    schema                         |
+**响应状态**:
+
+
+| 状态码         | 说明                            |    schema                         |
 | ------------ | -------------------------------- |---------------------- |
 | 200 | OK  |通用响应|
 | 201 | Created  ||

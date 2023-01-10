@@ -1,8 +1,5 @@
 server:
   port: 7000
-  servlet:
-    encoding:
-    context-path: /api
 spring:
   application:
     name: gateway-api
@@ -28,37 +25,37 @@ spring:
           uri: lb://buy-service
           order: 0
           predicates:
-            - Path=/api/buy/**
+            - Path=/buy/**
         - id: commodity-manage-service
           uri: lb://commodity-manage-service
           order: 0
           predicates:
-            - Path=/api/commodity/**
+            - Path=/commodity/**
         - id: invoice-manage-service
           uri: lb://invoice-manage-service
           order: 0
           predicates:
-            - Path=/api/invoice/**
+            - Path=/invoice/**
         - id: login-service            # 路由的唯一标识
           uri: lb://login-service   # 如果断言成功，将要转发去的地址
           order: 0                    # 优先级，越小优先级越高
           predicates: # 断言，满足所有断言，才会进行转发
-            - Path=/user/**        # 注意：这是使用= 不是：
+            - Path=/user/**       # 注意：这是使用= 不是：
         - id: order-manage-service
           uri: lb://order-manage-service
           order: 0
           predicates:
-            - Path=/api/order/**
+            - Path=/order/**
         - id: purchaseorder-manage-service
           uri: lb://purchaseorder-manage-service
           order: 0
           predicates:
-            - Path=/api/purchaseorder/**
+            - Path=/purchaseorder/**
         - id: user-manage-service
           uri: lb://user-manage-service
           order: 0
           predicates:
-            - Path=/api/userinfo/**
+            - Path=/userinfo/**
       globalcors:
         corsConfigurations:
           '[/**]':
@@ -71,6 +68,11 @@ spring:
               - DELETE
               - PUT
               - OPTION
-              -
       # 开启服务发现
-
+      discovery:
+          locator:
+            #是否与服务发现组件进行结合，通过serviceId转发到具体实例
+            #是否开启基于服务发现的路由规则
+           enabled: true
+        ##表示将请求路径的服务名配置改成小写 ,因为服务注册的时候，向注册中心注册时将服务名转成大写的了
+           lowerCaseServiceId: true
