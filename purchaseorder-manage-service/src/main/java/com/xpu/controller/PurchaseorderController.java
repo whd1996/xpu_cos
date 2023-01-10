@@ -15,7 +15,6 @@ import javax.annotation.Resource;
 import java.util.ArrayList;
 @Controller
 @Api(tags = "采购订单管理")
-@RequestMapping("/purchaseorder")
 public class PurchaseorderController {
     @Resource
     PurchaseorderService purchaseorderService;

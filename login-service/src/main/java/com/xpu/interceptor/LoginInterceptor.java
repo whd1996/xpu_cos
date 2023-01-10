@@ -1,5 +1,7 @@
 package com.xpu.interceptor;
 
+import com.alibaba.fastjson.JSON;
+import com.xpu.entity.R;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
@@ -52,7 +54,8 @@ public class LoginInterceptor implements HandlerInterceptor {
 		if (isLogin == null || !isLogin) {
 			response.setContentType("text/html");
 			response.setCharacterEncoding("UTF-8");
-			response.sendRedirect("/toLogin.html");
+			response.getWriter().println(JSON.toJSON(new R(false,"尚未登录")));
+			//response.sendRedirect("/toLogin.html");
 			return  false;
 		}
 		return true;
