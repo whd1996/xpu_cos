@@ -16,7 +16,7 @@ import java.util.List;
 
 //登录拦截器配置
 @Configuration
-public class SessionConfiguration implements WebMvcConfigurer {
+public class InterceptorConfiguration implements WebMvcConfigurer {
 	@Resource
 	private LoginInterceptor loginInterceptor;
 
@@ -33,10 +33,6 @@ public class SessionConfiguration implements WebMvcConfigurer {
 		excludePathList = new ArrayList<>();
 		excludePathList.add("/user/login");
 		excludePathList.add("/user/register");
-		excludePathList.add("/api/doc.html");
-		excludePathList.add("/login");
-		excludePathList.add("/index");
-		excludePathList.add("/toLogin");
 		excludePathList.add("/user/loginByAnnotation");
 		excludePathList.add("/v2/api-docs-ext");
 		excludePathList.add("/user/foundPwd");
