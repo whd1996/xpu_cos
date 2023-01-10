@@ -23,17 +23,17 @@ garway  统一端口   port: 7000
 
 
  如：
- localhost:7000/api/user/login                              如login   regist 等
+ localhost:7000/user/login                              如login   regist 等
 
- localhost:7000/api/commodity/selectAllCommodity            如selectAllCommodity 以下类似
+ localhost:7000/commodity/selectAllCommodity            如selectAllCommodity 以下类似
 
- localhost:7000/api/userinfo/selectUserById                  如 selectUserById， 如selectAllUser 以下类似
+ localhost:7000/userinfo/selectUserById                  如 selectUserById， 如selectAllUser 以下类似
 
- localhost:7000/api/invoice/
+ localhost:7000/invoice/
 
- localhost:7000/api/order/
+ localhost:7000/order/
 
- localhost:7000/api/purchaseorder/
+ localhost:7000/purchaseorder/
 
 
 
