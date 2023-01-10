@@ -13,17 +13,18 @@ xpu 软件工程2002班第一组 客户订购系统 在线仓库
 SpringCloud+SpringBoot+MybatisPlus+Redis
 #### 安装教程
 基本环境搭建
-1.  安装nacos2.2
-2.  安装mysql8.0+,jdk1.8
-3.  安装redis3.2.100
-4.  安装Node.js 18.12.1
-5.  安装IDEA编辑器,集成maven3.6.1 +tomcat9;
+1.  安装nacos 2.2
+2.  安装mysql 8.0+, jdk 1.8
+3.  安装redis 3.2.100
+4.  安装Node.js v16.18.1
+5.  安装IDEA编辑器,集成maven3.6.1
 #### 使用说明
 
-1.  xxxx
-2.  xxxx
-3.  xxxx
-
+1.  修改各服务中redis配置，在各自yml配置文件中
+2.  修改各服务中Druid  mysql数据库连接池配置，在各自yml配置文件中
+3.  启动 mysql  redis nacos服务
+4.  maven将源码打包成jar包后  在命令行执行<br/> java -jar  jar包名    <br/>运行后端
+5.  进入前端项目目录xpu-cos-ui中命令行执行<br/>npm install <br/> npm run dev <br/>运行前端
 #### 参与贡献
 
 1.  Fork 本仓库
