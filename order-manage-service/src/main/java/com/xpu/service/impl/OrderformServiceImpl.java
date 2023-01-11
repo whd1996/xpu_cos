@@ -17,30 +17,30 @@ public class OrderformServiceImpl extends ServiceImpl<OrderformDao, Orderform> i
 
     @Resource
     OrderformDao orderformDao;
-
     @Override
     public int addOrder(Orderform orderform) {
         return orderformDao.insert(orderform);
     }
 
-    @Cacheable(cacheNames = "order",unless ="#result==null")
+    @Cacheable(cacheNames = "order",key = "#p0",unless ="#result==null")
     @Override
     public Orderform selectOrderById(Integer id) {
         return orderformDao.selectById(id);
     }
-    @CachePut(value = "order", key = "#order.id")
+    @CachePut(value = "order", key = "#p0.id",unless ="#result==0")
     @Override
     public int updateOrderById(Orderform orderform) {
         return orderformDao.updateById(orderform);
     }
-    @CacheEvict(cacheNames = "order")
+    @CacheEvict(cacheNames = "order",key ="#p0")
     @Override
     public int deleteOrderById(Integer id) {
 
         return orderformDao.deleteById(id);
     }
     @Override
+    @CachePut(cacheNames = "orderList",unless ="#result.isEmpty()")
     public ArrayList<Orderform> selectAllOrder() {
-        return orderformDao.selectAllOrder();
+        return (ArrayList<Orderform>) orderformDao.selectList(null);
     }
 }

@@ -1,6 +1,5 @@
 package com.xpu.controller;
 
-import com.alibaba.fastjson.JSON;
 import com.xpu.entity.Orderform;
 import com.xpu.entity.R;
 import com.xpu.service.OrderformService;
@@ -31,8 +30,6 @@ public class OrderController {
     }
     )
     public R addOrder(@RequestBody Orderform orderform) {
-
-        System.out.println(orderform);
         int count = orderformService.addOrder(orderform);
         boolean flag = count > 0;
         return new R(flag, flag ? "插入成功" : "插入失败");
@@ -52,14 +49,14 @@ public class OrderController {
         return new R(flag,orderform,flag ? "查询成功" : "查询失败");
     }
     @ResponseBody
-    @GetMapping("/updateOrderById")
+    @PostMapping("/updateOrderById")
     @ApiOperation(value = "订单修改接口", notes = "订单修改接口的说明")
     @ApiResponses({
             @ApiResponse(code = 200, message = "调用成功"),
             @ApiResponse(code = 401, message = "无权限")
     }
     )
-    public R updateOrderById(Orderform orderform) {
+    public R updateOrderById(@RequestBody Orderform orderform) {
         int count = orderformService.updateOrderById(orderform);
         boolean flag = (count > 0);
         return new R(flag,flag?"修改成功" : "修改失败");
@@ -86,12 +83,10 @@ public class OrderController {
             @ApiResponse(code = 401, message = "无权限")
     }
     )
-    public String selectAllOrder(HttpServletRequest req) {
-
-        System.out.println(req.getSession().getId());
+    public R selectAllOrder(HttpServletRequest req) {
         ArrayList<Orderform> orderList = orderformService.selectAllOrder();
-
-        return JSON.toJSONString(orderList);
+        boolean flag = orderList.isEmpty();
+        return new R(true, orderList, flag ? "无内容" : "查询成功");
     }
 
 }

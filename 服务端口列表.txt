@@ -1,10 +1,10 @@
 name: 	commodity-manage-service	 	port: 8091
 
-name: 	invoice-manage-service	  	 port: 8088
+name: 	invoice-manage-service	  	    port: 8088
 
-name:	login-service			 port: 8080
+name:	login-service			        port: 8080
  
-name: order-manage-service			 port: 9001
+name: order-manage-service			     port: 9001
 
 name: purchaseorder-manage-service		port: 9002
 
