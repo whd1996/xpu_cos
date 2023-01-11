@@ -20,4 +20,6 @@ public interface InvoiceService extends IService<Invoice>{
     ArrayList<Invoice> selectALLInvoice();
 
     ArrayList<HashMap<String, Object>> selectALLInvoiceInfo();
+
+    ArrayList<HashMap<String, Object>> selectUserAllInvoiceInfoByUserId(Integer id);
 }

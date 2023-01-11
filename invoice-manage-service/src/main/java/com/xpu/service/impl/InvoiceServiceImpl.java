@@ -44,4 +44,9 @@ public class InvoiceServiceImpl extends ServiceImpl<InvoiceMapper, Invoice> impl
     public ArrayList<HashMap<String, Object>> selectALLInvoiceInfo() {
         return invoiceDao.selectALLInvoiceInfo();
     }
+
+    @Override
+    public ArrayList<HashMap<String, Object>> selectUserAllInvoiceInfoByUserId(Integer id) {
+        return invoiceDao.selectUserAllInvoiceInfoByUserId(id);
+    }
 }

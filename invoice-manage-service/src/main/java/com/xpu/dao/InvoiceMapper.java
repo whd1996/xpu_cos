@@ -32,4 +32,23 @@ public interface InvoiceMapper extends BaseMapper<Invoice> {
             "\tAND i.orderForm_ID = o.id \n" +
             "\tAND i.user_ID = u.id;")
     ArrayList<HashMap<String, Object>> selectALLInvoiceInfo();
+    @Select("SELECT\n" +
+            "\ti.id 发票编号,\n" +
+            "\tu.nickName 客户,\n" +
+            "\tc.commodity_Name 商品名称,\n" +
+            "\tc.commodity_price 单价,\n" +
+            "\to.commodity_Amount 商品数量,\n" +
+            "\tc.commodity_price * o.commodity_Amount 花费,\n" +
+            "\ti.invoice_Date 日期,\n" +
+            "\ti.invoice_Drawer 开票单位 \n" +
+            "FROM\n" +
+            "\tinvoice i,\n" +
+            "\tUSER u,\n" +
+            "\tcommodity c,\n" +
+            "\torderform o \n" +
+            "WHERE\n" +
+            "\t( i.commodity_ID = c.id AND i.orderForm_ID = o.id ) \n" +
+            "\tAND i.user_ID = u.id \n" +
+            "\tAND u.id = #{id};")
+    ArrayList<HashMap<String, Object>> selectUserAllInvoiceInfoByUserId(Integer id);
 }

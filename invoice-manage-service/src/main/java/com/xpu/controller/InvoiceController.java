@@ -64,4 +64,11 @@ public class InvoiceController {
         boolean flag = (!invoiceInfoList.isEmpty());
         return new R(true, invoiceInfoList, flag ? "查询成功" : "无发票详细信息");
     }
+    @ResponseBody
+    @GetMapping("/selectUserAllInvoiceInfoByUserId")
+    public R selectUserAllInvoiceInfoByUserId(Integer id) {
+        ArrayList<HashMap<String,Object>> invoiceInfoList = invoiceService.selectUserAllInvoiceInfoByUserId(id);
+        boolean flag = (!invoiceInfoList.isEmpty());
+        return new R(true, invoiceInfoList, flag ? "查询成功" : "无发票详细信息");
+    }
 }
