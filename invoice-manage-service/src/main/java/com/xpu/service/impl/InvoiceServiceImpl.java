@@ -8,6 +8,8 @@ import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.util.ArrayList;
+import java.util.HashMap;
+
 @Service
 public class InvoiceServiceImpl extends ServiceImpl<InvoiceMapper, Invoice> implements InvoiceService{
 
@@ -36,5 +38,10 @@ public class InvoiceServiceImpl extends ServiceImpl<InvoiceMapper, Invoice> impl
     @Override
     public ArrayList<Invoice> selectALLInvoice() {
         return invoiceDao.selectALLInvoice();
+    }
+
+    @Override
+    public ArrayList<HashMap<String, Object>> selectALLInvoiceInfo() {
+        return invoiceDao.selectALLInvoiceInfo();
     }
 }

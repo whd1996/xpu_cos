@@ -18,13 +18,13 @@
              <module>user-manage-service-demo</module>-->
         <module>buy-service</module>
         <module>gateway-api</module>
-        <!--张嘉奇-->
+        <!--zjq-->
         <module>login-service</module>
         <module>commodity-manage-service</module>
-        <!--凌寒-->
+        <!--lh-->
         <module>order-manage-service</module>
         <module>purchaseorder-manage-service</module>
-        <!--史绪豪-->
+        <!--sxh-->
         <module>invoice-manage-service</module>
         <module>user-manage-service</module>
     </modules>
@@ -81,12 +81,13 @@
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
+            <version>1.18.24</version>
         </dependency>
         <!-- JOSN -->
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>fastjson</artifactId>
-            <version>2.0.21</version>
+            <version>2.0.22</version>
         </dependency>
         <!--引入swagger-->
         <dependency>
@@ -97,13 +98,13 @@
         <dependency>
             <groupId>io.springfox</groupId>
             <artifactId>springfox-swagger-ui</artifactId>
-            <version>2.9.2</version>
+            <version>3.0.0</version>
         </dependency>
         <!-- 引入swagger-bootstrap-ui依赖包-->
         <dependency>
             <groupId>com.github.xiaoymin</groupId>
             <artifactId>swagger-bootstrap-ui</artifactId>
-            <version>1.8.7</version>
+            <version>1.9.6</version>
         </dependency>
         <!-- Redis 依赖 -->
         <dependency>
