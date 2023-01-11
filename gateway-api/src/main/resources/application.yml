@@ -46,6 +46,11 @@ spring:
           order: 0
           predicates:
             - Path=/order/**
+        - id: purchase-service
+          uri: lb://purchase-service
+          order: 0
+          predicates:
+            - Path=/purchase/**
         - id: purchaseorder-manage-service
           uri: lb://purchaseorder-manage-service
           order: 0

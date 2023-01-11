@@ -66,7 +66,6 @@ public class LoginController {
             Admin admin = new Admin();
             admin.setAdminName((String) userMap.get("username"));
             admin.setAdminPassword((String) userMap.get("password"));
-            HttpSession session = req.getSession();
             Admin loginAdmin = adminService.adminLogin(admin);
             if (loginAdmin != null) {
                 //session.setAttribute("admin", loginAdmin);

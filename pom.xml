@@ -17,6 +17,7 @@
         <!-- <module>login-service-demo</module>
              <module>user-manage-service-demo</module>-->
         <module>buy-service</module>
+        <module>purchase-service</module>
         <module>gateway-api</module>
         <!--zjq-->
         <module>login-service</module>
@@ -87,7 +88,7 @@
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>fastjson</artifactId>
-            <version>2.0.22</version>
+            <version>2.0.21</version>
         </dependency>
         <!--引入swagger-->
         <dependency>
@@ -98,13 +99,13 @@
         <dependency>
             <groupId>io.springfox</groupId>
             <artifactId>springfox-swagger-ui</artifactId>
-            <version>3.0.0</version>
+            <version>2.9.2</version>
         </dependency>
         <!-- 引入swagger-bootstrap-ui依赖包-->
         <dependency>
             <groupId>com.github.xiaoymin</groupId>
             <artifactId>swagger-bootstrap-ui</artifactId>
-            <version>1.9.6</version>
+            <version>1.8.7</version>
         </dependency>
         <!-- Redis 依赖 -->
         <dependency>
