@@ -1,6 +1,7 @@
 package com.xpu.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.xpu.dao.OrderformDao;
 import com.xpu.entity.Orderform;
@@ -46,11 +47,24 @@ public class OrderformServiceImpl extends ServiceImpl<OrderformDao, Orderform> i
     }
 
     @Override
-    @CachePut(cacheNames = "userOrderList",key= "'userOrderList'+#p0",unless ="#result.isEmpty()")
+    @CachePut(cacheNames = "userOrderList", key = "'userOrderList'+#p0", unless = "#result.isEmpty()")
     public ArrayList<Orderform> selectUserAllOrderByUserId(Integer uid) {
         QueryWrapper<Orderform> qw = new QueryWrapper<>();
-        qw.eq("user_id",uid);
+        qw.eq("user_id", uid);
         return (ArrayList<Orderform>) orderformDao.selectList(qw);
     }
 
+
+    /**
+     * 分页查询  需要配置PaginationInnerInterceptor分页查询插件
+     *
+     * @return
+     */
+    @CachePut(cacheNames = "OrderPage", key = "'OrderPage'+#result.pages+'_'+#p0+'_'+#p1", unless = "#result.getSize()==0")
+    @Override
+    public Page<Orderform> selectAllOrderUsePage(int currentPage,int pageSize) {
+        Page<Orderform> page = new Page<>(currentPage, pageSize);
+        Page<Orderform> orderPage = orderformDao.selectPage(page, null);
+        return orderPage;
+    }
 }

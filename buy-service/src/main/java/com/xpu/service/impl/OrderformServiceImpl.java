@@ -12,7 +12,6 @@ import javax.annotation.Resource;
 public class OrderformServiceImpl extends ServiceImpl<OrderformDao, Orderform> implements OrderformService {
     @Resource
     OrderformDao orderformDao;
-
     @Override
     public int addOrder(Orderform order) {
         return orderformDao.insert(order);

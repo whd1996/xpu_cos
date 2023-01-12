@@ -30,7 +30,7 @@ public class RemoveOrderController {
     InvoiceService invoiceService;
 
     @ResponseBody
-    @GetMapping("/removeOrderByUserIdAndOrderId")
+    @GetMapping("/deleteOrderById")
     @ApiOperation(value = "用户退单接口", notes = "用户退单接口的说明")
     @ApiResponses({
             @ApiResponse(code = 200, message = "调用成功"),
@@ -59,7 +59,7 @@ public class RemoveOrderController {
             //修改退单的商品库存
             commodity.setCommodityRepertory(commodity.getCommodityRepertory() + order.getCommodityAmount());
             boolean updateCommoditySuccess = commodityService.updateById(commodity);
-            //删除相关的订单信息
+            //删除相关的订单信息 用删除缓存，故方法需要自己实现
             boolean removeOrderSuccess = orderformService.deleteOrderById(oid) > 0;
             //删除相关的发票信息
             boolean removeInvoiceSuccess = invoiceService.removeById(invoice.getId());
