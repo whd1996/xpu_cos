@@ -10,7 +10,6 @@ num   	表示购买数量。
 invoice           	 发票     实体对象
 order                订单     实体对象
 good		         商品     实体对象
-invoiceCost 	发票显示的消费金额  double
 响应如下：
 
 {
