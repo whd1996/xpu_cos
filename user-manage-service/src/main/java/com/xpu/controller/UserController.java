@@ -35,6 +35,10 @@ public class UserController {
         User user = userService.selectUserById(id);
         if(user==null)
             return new R(false,"无该用户");
+        //查询与该用户相关的所有发票信息并删除
+
+        //查询与该用户相关的所有订单信息并删除
+
         boolean flag = userService.delete(id);
         return new R(flag, flag ? "删除成功" : "删除失败");
     }

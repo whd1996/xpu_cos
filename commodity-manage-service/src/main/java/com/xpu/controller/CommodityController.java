@@ -2,7 +2,7 @@ package com.xpu.controller;
 
 import com.xpu.entity.Commodity;
 import com.xpu.entity.R;
-import com.xpu.sevice.CommodityService;
+import com.xpu.service.CommodityService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;

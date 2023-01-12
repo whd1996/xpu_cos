@@ -1,5 +1,6 @@
 package com.xpu.service.impl;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.xpu.dao.OrderformDao;
 import com.xpu.entity.Orderform;
@@ -39,8 +40,17 @@ public class OrderformServiceImpl extends ServiceImpl<OrderformDao, Orderform> i
         return orderformDao.deleteById(id);
     }
     @Override
-    @CachePut(cacheNames = "orderList",unless ="#result.isEmpty()")
+    @CachePut(cacheNames = "allOrderList",key ="'allOrderList'", unless ="#result.isEmpty()")
     public ArrayList<Orderform> selectAllOrder() {
         return (ArrayList<Orderform>) orderformDao.selectList(null);
     }
+
+    @Override
+    @CachePut(cacheNames = "userOrderList",key= "'userOrderList'+#p0",unless ="#result.isEmpty()")
+    public ArrayList<Orderform> selectUserAllOrderByUserId(Integer uid) {
+        QueryWrapper<Orderform> qw = new QueryWrapper<>();
+        qw.eq("user_id",uid);
+        return (ArrayList<Orderform>) orderformDao.selectList(qw);
+    }
+
 }

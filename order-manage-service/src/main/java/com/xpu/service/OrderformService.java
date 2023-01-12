@@ -17,4 +17,5 @@ public interface OrderformService extends IService<Orderform>{
     int deleteOrderById(Integer id);
 
     ArrayList<Orderform> selectAllOrder();
+    ArrayList<Orderform> selectUserAllOrderByUserId(Integer id);
 }

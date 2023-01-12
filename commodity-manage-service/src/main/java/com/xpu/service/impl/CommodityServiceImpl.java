@@ -1,9 +1,9 @@
-package com.xpu.sevice.impl;
+package com.xpu.service.impl;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.xpu.dao.CommodityMapper;
 import com.xpu.entity.Commodity;
-import com.xpu.sevice.CommodityService;
+import com.xpu.service.CommodityService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
