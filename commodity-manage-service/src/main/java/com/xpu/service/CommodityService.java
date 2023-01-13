@@ -17,4 +17,6 @@ public interface CommodityService extends IService<Commodity>{
     int updateCommodityById(Commodity commodity);
 
     ArrayList<Commodity> selectALLCommodity();
+
+    ArrayList<Commodity> selectPurchaseCommodity();
 }

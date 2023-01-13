@@ -5,6 +5,7 @@ import com.xpu.entity.Purchaseorder;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 @Service
 public interface PurchaseorderService extends IService<Purchaseorder>{
@@ -21,4 +22,6 @@ public interface PurchaseorderService extends IService<Purchaseorder>{
 
 
     ArrayList<Purchaseorder> selectAllPurchaseorder();
+
+    ArrayList<HashMap<String, Object>> selectPurchaseRecords();
 }

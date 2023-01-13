@@ -1,5 +1,6 @@
 package com.xpu.service.impl;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.xpu.dao.CommodityMapper;
 import com.xpu.entity.Commodity;
@@ -39,6 +40,13 @@ public class CommodityServiceImpl extends ServiceImpl<CommodityMapper, Commodity
     @Override
     public ArrayList<Commodity> selectALLCommodity() {
         return commodityMapper.selectALLCommodity();
+    }
+
+    @Override
+    public ArrayList<Commodity> selectPurchaseCommodity() {
+        QueryWrapper<Commodity> qw = new QueryWrapper<>();
+        qw.le("commodity_repertory",10);
+        return (ArrayList<Commodity>) commodityMapper.selectList(qw);
     }
 
 
