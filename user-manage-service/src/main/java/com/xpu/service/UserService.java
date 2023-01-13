@@ -17,8 +17,6 @@ public interface UserService {
 
     ArrayList<User> selectALLUser();
 
-
-
 }
 
 

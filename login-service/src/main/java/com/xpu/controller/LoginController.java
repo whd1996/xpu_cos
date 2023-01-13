@@ -68,7 +68,7 @@ public class LoginController {
             admin.setAdminPassword((String) userMap.get("password"));
             Admin loginAdmin = adminService.adminLogin(admin);
             if (loginAdmin != null) {
-                //session.setAttribute("admin", loginAdmin);
+                req.getSession().setAttribute("admin", loginAdmin);
                 req.getSession().setAttribute("isLogin", true);
                 return new R(true, loginAdmin, "管理员登录成功");
             }

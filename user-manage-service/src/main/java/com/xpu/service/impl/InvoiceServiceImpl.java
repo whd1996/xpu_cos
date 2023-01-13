@@ -8,6 +8,7 @@ import com.xpu.service.InvoiceService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.ArrayList;
 
 @Service
 public class InvoiceServiceImpl extends ServiceImpl<InvoiceDao, Invoice> implements InvoiceService {
@@ -16,14 +17,14 @@ public class InvoiceServiceImpl extends ServiceImpl<InvoiceDao, Invoice> impleme
 
 
     /**
-     * @param id 发票表中的订单id
+     * @param uid 发票表中的用户id 数据库字段为user_ID
      * @return Invoice实体
      */
     @Override
-    public Invoice selectInvoiceByUserId(Integer id) {
+    public ArrayList<Invoice> selectUserAllInvoiceByUserID(Integer uid) {
         QueryWrapper<Invoice> qw = new QueryWrapper<>();
-        qw.eq("userForm_ID", id );
-        return invoiceDao.selectOne(qw);
+        qw.eq("user_ID", uid );
+        return (ArrayList<Invoice>) invoiceDao.selectList(qw);
     }
 }
 

@@ -1,9 +1,7 @@
 package com.xpu.controller;
 
-import com.xpu.entity.Invoice;
-import com.xpu.entity.Orderform;
-import com.xpu.entity.R;
-import com.xpu.entity.User;
+
+import com.xpu.entity.*;
 import com.xpu.service.InvoiceService;
 import com.xpu.service.OrderformService;
 import com.xpu.service.UserService;
@@ -13,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
 
 @Api(tags = "用户管理")
@@ -38,29 +37,30 @@ public class UserController {
 
     @ResponseBody
     @GetMapping("/deleteUserById")
-    public R deleteUserById(Integer id) {
-        System.out.println("前台：userId是" + id);
-        User user = userService.selectUserById(id);
+    public R deleteUserById(Integer uid, HttpServletRequest req) {
+        Admin admin = (Admin) req.getSession().getAttribute("admin");
+        if(admin==null)
+            return new R(false, "管理未登录！");
+        User user = userService.selectUserById(uid);
         if (user == null)
             return new R(false, "无该用户");
-
-        Orderform order = orderformService.selectOrderById(id);
-        if (order == null)
-            return new R(false, "用户无该编号的订单！");
-        //查询与该用户相关的所有发票信息并删除
-        Invoice invoice = invoiceService.selectInvoiceByUserId(id);
-        if (invoice == null)
-            return new R(false, "查询不到该用户发票信息！");
-        //查询与该用户相关的所有订单信息并删除
-
-        boolean deleteSuccess = userService.delete(id);
-        //删除相关订单信息
-        boolean removeOrderSuccess = orderformService.deleteOrderById(id) > 0;
-        //删除相关的发票信息
-        boolean removeInvoiceSuccess = invoiceService.removeById(invoice.getId());
-        boolean flag = (removeOrderSuccess && removeInvoiceSuccess && deleteSuccess);
-
-        return new R(flag, flag ? "删除成功" : "删除失败");
+        ArrayList<Orderform> orderList = orderformService.selectUserAllOrderByUserId(uid);
+        if (orderList.isEmpty())
+            System.out.println("该用户无订单！");
+        //查询与该用户相关的所有发票信息
+        ArrayList<Invoice> invoiceList = invoiceService.selectUserAllInvoiceByUserID(uid);
+        if (invoiceList.isEmpty())
+            System.out.println("该用户无发票！");
+        //删除这些发票信息与订单信息
+        //删除该用户所有发票信息
+        for (Invoice inv : invoiceList)
+            invoiceService.removeById(inv.getId());
+        //删除该用户所有相关订单信息
+        for (Orderform ord : orderList)
+            orderformService.deleteOrderById(ord.getId());
+        //删除用户信息
+        boolean deleteSuccess = userService.delete(uid);
+        return new R(deleteSuccess, deleteSuccess ? "删除成功" : "删除失败");
     }
 
     @ResponseBody

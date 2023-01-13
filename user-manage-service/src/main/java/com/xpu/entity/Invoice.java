@@ -33,9 +33,9 @@ public class Invoice implements Serializable {
     @ApiModelProperty(value="")
     private Date invoiceDate;
 
-    @TableField(value = "userForm_ID")
+    @TableField(value = "orderForm_ID")
     @ApiModelProperty(value="")
-    private Integer userformId;
+    private Integer orderformId;
 
     @TableField(value = "invoice_Drawer")
     @ApiModelProperty(value="")
