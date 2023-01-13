@@ -80,15 +80,15 @@ public class CommodityController {
 
 
 
-        @GetMapping("/updateCommodityById")
+        @PostMapping("/updateCommodityById")
         @ResponseBody
-        @ApiOperation(value = "商品修改接口", notes = "商品修改接口的说明")
+        @ApiOperation(value = "商品修改接口", notes = "商品修改接口的说明\nid不传参")
         @ApiResponses({
             @ApiResponse(code = 200, message = "调用成功"),
             @ApiResponse(code = 401, message = "无权限")
     }
     )
-    public R updateCommodityById(Commodity commodity) {
+    public R updateCommodityById(@RequestBody Commodity commodity) {
         int count = CommodityService.updateCommodityById(commodity);
         boolean flag = (count > 0);
         return new R(flag,flag?"修改成功" : "修改失败");
