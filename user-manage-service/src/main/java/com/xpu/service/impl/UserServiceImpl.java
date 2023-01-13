@@ -43,4 +43,5 @@ public class UserServiceImpl extends ServiceImpl<UserDao, User> implements UserS
     public ArrayList<User> selectALLUser() {
         return userDao.selectALLUser();
     }
+
 }
