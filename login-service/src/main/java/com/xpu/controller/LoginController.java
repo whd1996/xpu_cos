@@ -52,7 +52,7 @@ public class LoginController {
             user.setUserPassward(MD5Utils.getMD5(user.getUserPassward()));
             User loginuser = userService.userLogin(user);
             if (loginuser != null) {
-                System.out.println("dao查到的： " + loginuser);
+                //System.out.println("dao查到的： " + loginuser);
                 HttpSession session = req.getSession();
                 session.setAttribute("user", loginuser);
                 session.setAttribute("isLogin", true);
