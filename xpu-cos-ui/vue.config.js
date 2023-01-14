@@ -46,13 +46,13 @@ module.exports = {
           // secure: false,  // 如果是https接口，需要配置这个参数
           changeOrigin: true,  //是否跨域
       }
-  
+
 }
 
   },
   configureWebpack: {
     // provide the app's title in webpack's name field, so that
-    // it can be accessed in index.html to inject the correct title.
+    // it can be accessed in admin-index.html to inject the correct title.
     name: name,
     resolve: {
       alias: {

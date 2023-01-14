@@ -14,8 +14,8 @@
     <!--父工程-->
     <modules>
         <!--whd-->
-        <!-- <module>login-service-demo</module>
-             <module>user-manage-service-demo</module>-->
+        <module>login-service-demo</module>
+        <!--<module>user-manage-service-demo</module>-->
         <module>buy-service</module>
         <module>purchase-service</module>
         <module>gateway-api</module>

@@ -1,28 +1,12 @@
 package com.xpu.service;
 
+import com.baomidou.mybatisplus.extension.service.IService;
 import com.xpu.entity.User;
 
-public interface UserService {
+public interface UserService extends IService<User>{
 
-
-    int deleteByPrimaryKey(Integer id);
-
-    int insert(User record);
-
-    int insertSelective(User record);
-
-    User selectByPrimaryKey(Integer id);
-
-    int updateByPrimaryKeySelective(User record);
-
-    int updateByPrimaryKey(User record);
 
     User userLogin(User user);
 
-    Integer loginByAnnotation(User user);
+    boolean userRegister(User user);
 }
-
-
-
-
-

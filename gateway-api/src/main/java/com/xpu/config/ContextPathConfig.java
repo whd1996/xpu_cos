@@ -11,6 +11,9 @@ import org.springframework.http.server.reactive.ServerHttpRequest;
 import org.springframework.web.server.ResponseStatusException;
 import org.springframework.web.server.WebFilter;
 
+/**
+ * 配置修改网关服务的 context-path 需要时使用 在yml中配置即可
+ */
 @Configuration
 public class ContextPathConfig {
  

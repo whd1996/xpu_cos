@@ -15,12 +15,12 @@ import java.util.ArrayList;
 import java.util.List;
 //登录拦截器配置
 @Configuration
-public class SessionConfiguration implements WebMvcConfigurer {
+public class InterceptorConfiguration implements WebMvcConfigurer {
 	@Resource
 	private LoginInterceptor loginInterceptor;
 
 	@Override
-    public void addInterceptors(InterceptorRegistry registry) {
+	public void addInterceptors(InterceptorRegistry registry) {
 		//List<String> addPathList = null;
 		List<String> excludePathList = null;
 		// 登录拦截器
@@ -33,13 +33,14 @@ public class SessionConfiguration implements WebMvcConfigurer {
 		excludePathList.add("/user/login");
 		excludePathList.add("/login");
 		excludePathList.add("/index");
+		excludePathList.add("/");
 		excludePathList.add("/toLogin");
 		excludePathList.add("/user/loginByAnnotation");
 		excludePathList.add("/v2/api-docs-ext");
 		excludePathList.add("/user/foundPwd");
 		excludePathList.add("/user/logout");
+		excludePathList.add("/user/register");
 		//excludePathList.add("/user/listUserRole");//测试用
-		excludePathList.add("/user/addUser");
 		excludePathList.add("/css/**");
 		excludePathList.add("/images/**");
 		excludePathList.add("/plugins/**");

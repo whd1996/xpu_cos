@@ -52,7 +52,7 @@ public class LoginInterceptor implements HandlerInterceptor {
 		if (isLogin == null || !isLogin) {
 			response.setContentType("text/html");
 			response.setCharacterEncoding("UTF-8");
-			response.sendRedirect("/toLogin.html");
+			response.sendRedirect("/toLogin");
 			return  false;
 		}
 		return true;

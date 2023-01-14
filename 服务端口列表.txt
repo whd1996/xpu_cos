@@ -13,7 +13,7 @@ name: user-manage-service    		port: 8099
 
 
 
-garway  统一端口   port: 7000
+gateway  统一端口   port: 7000
 
 
 请求方式 ：
