@@ -49,6 +49,11 @@ spring:
           order: 0
           predicates:
             - Path=/userinfo/**
+        - id: login-service-demo
+          uri: lb://login-service-demo
+          order: 0
+          predicates:
+            - Path=/user/**,/admin/**
       globalcors:
         corsConfigurations:
           '[/**]':

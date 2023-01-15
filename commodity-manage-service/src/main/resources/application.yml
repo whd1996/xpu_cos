@@ -1,17 +1,15 @@
 server:
   port: 8091
   servlet:
-    encoding:
-      force: true
-      enabled: true
-      charset: utf-8
     context-path: /
 spring:
-  mvc:
-    view:
-      prefix: /static/
-      suffix: .html
-
+  devtools:
+    livereload:
+      #多个项目启动时 热部署端口需不同 默认35729
+      port: 35730
+    restart:
+      enabled: true
+      additional-paths: src/main/java
   application:
     name: commodity-manage-service
   cloud:

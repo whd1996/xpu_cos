@@ -1,5 +1,6 @@
 package com.xpu.controller;
 
+import com.xpu.entity.Admin;
 import com.xpu.entity.Commodity;
 import com.xpu.entity.R;
 import com.xpu.service.CommodityService;
@@ -11,6 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
 
 @Controller
@@ -68,13 +70,15 @@ public class CommodityController {
     }
 
 
-
     @ResponseBody
     @GetMapping("/selectALLCommodity")
-    public R selectALLCommodity() {
+    public R selectALLCommodity(HttpServletRequest req) {
+        Admin admin = (Admin) req.getSession().getAttribute("admin");
+        if (admin == null)
+            return new R(false, "管理未登录");
         ArrayList<Commodity> commodityList = CommodityService.selectALLCommodity();
         boolean flag = (!commodityList.isEmpty());
-        return new R(true,commodityList,flag?"查询成功":"无商品信息");
+        return new R(true, commodityList, flag ? "查询成功" : "无商品信息");
 
     }
 

@@ -97,7 +97,7 @@ public class LoginController {
         return new R(flag, user, flag ? "注册成功" : "注册失败");
     }
 
-    @GetMapping("logout")
+    @GetMapping("/logout")
 
     @ApiOperation(value = "退出登录接口", notes = "清空session后退出")
     public String logout(HttpServletRequest req) {
