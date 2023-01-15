@@ -52,7 +52,6 @@ public class LoginController {
             user.setUserPassward(MD5Utils.getMD5(user.getUserPassward()));
             User loginuser = userService.userLogin(user);
             if (loginuser != null) {
-                //System.out.println("dao查到的： " + loginuser);
                 HttpSession session = req.getSession();
                 session.setAttribute("user", loginuser);
                 session.setAttribute("isLogin", true);
@@ -85,6 +84,10 @@ public class LoginController {
     }
     )
     public R register(@RequestBody User user) {
+        //查询一下 用户名有没有被注册
+        User  webUser=userService.selectUserByUserName(user.getUserName());
+        if(webUser!=null)
+            return new R(false,"用户名已被注册");
         user.setUserPassward(MD5Utils.getMD5(user.getUserPassward()));
         boolean flag = userService.userRegister(user);
         return new R(flag,user,flag ? "注册成功" : "注册失败");

@@ -98,11 +98,11 @@ public class LoginController {
     }
 
     @GetMapping("logout")
-    @ResponseBody
+
     @ApiOperation(value = "退出登录接口", notes = "清空session后退出")
-    public R logout(HttpServletRequest req) {
+    public String logout(HttpServletRequest req) {
         req.getSession().invalidate();//清空session 返回登录页
-        return new R(true, "退出登录成功");
+        return "/login";
     }
 
 

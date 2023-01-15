@@ -31,7 +31,7 @@ public class UserController {
         user.setUserPassward(MD5Utils.getMD5(user.getUserPassward()));
         int count = userService.insertUser(user);
         System.out.println(count);
-        boolean flag = (count > 0) ? true : false;
+        boolean flag = count > 0;
         return new R(flag, String.valueOf(count));
     }
 

@@ -25,4 +25,16 @@ public class IndexController {
     public String toLogin(){
         return "toLogin";
     }
+    @GetMapping("/admin")
+    public String adminLogin(){
+        return "admin/index";
+    }
+    @GetMapping("/purchaser")
+    public String customerLogin(){
+        return "purchaser-index";
+    }
+    @GetMapping("/customer")
+    public String purchaserLogin(){
+        return "customer-index";
+    }
 }
