@@ -68,4 +68,5 @@ public interface OrderformDao extends BaseMapper<Orderform> {
             "\tAND o.user_id = u.id \n" +
             "\tAND u.id = #{uid}")
     ArrayList<HashMap<String, Object>> selectUserAllOrderInfoByUserId(int uid);
+
 }
