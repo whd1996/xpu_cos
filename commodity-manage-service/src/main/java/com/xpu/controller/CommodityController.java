@@ -72,16 +72,13 @@ public class CommodityController {
     @ResponseBody
     @GetMapping("/selectALLCommodity")
     public R selectALLCommodity(HttpServletRequest req) {
-        /*Admin admin = (Admin) req.getSession().getAttribute("admin");
-        if (admin == null)
-            return new R(false, "管理未登录");*/
+        if (req.getSession().getAttribute("admin") == null)
+            return new R(false, "管理未登录");
         ArrayList<Commodity> commodityList = CommodityService.selectALLCommodity();
         boolean flag = (!commodityList.isEmpty());
         return new R(true, commodityList, flag ? "查询成功" : "无商品信息");
 
     }
-
-
 
         @PostMapping("/updateCommodityById")
         @ResponseBody

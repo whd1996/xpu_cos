@@ -24,19 +24,6 @@ public class OrderController {
     @Resource
     OrderformService orderformService;
 
-  /*  @ResponseBody
-    @GetMapping("/selectOrderById")
-    @ApiOperation(value = "根据id查询订单", notes = "根据id查询订单")
-    @ApiResponses({
-            @ApiResponse(code = 200, message = "调用成功"),
-            @ApiResponse(code = 401, message = "无权限")
-    }
-    )
-    public R selectOrderById(Integer id) {
-        Orderform orderform = orderformService.selectOrderById(id);
-        boolean flag = (orderform != null);
-        return new R(flag,orderform,flag ? "查询成功" : "查询失败");
-    }*/
     @ResponseBody
     @GetMapping("/selectOrderInfoById")
     @ApiOperation(value = "根据id查询订单详情", notes = "根据id查询订单详情")
@@ -59,23 +46,13 @@ public class OrderController {
     }
     )
     public R selectAllOrder() {
+
         ArrayList<HashMap<String,Object>> orderList = orderformService.selectAllOrder();
         boolean flag = orderList.isEmpty();
         return new R(true, orderList, flag ? "无内容" : "查询成功");
     }
-/*    @ResponseBody
-    @GetMapping("/selectUserAllOrderByUserId")
-    @ApiOperation(value = "用户个人全部订单简单查询接口", notes = "用户个人所有订单查询接口,传入参数用户id")
-    @ApiResponses({
-            @ApiResponse(code = 200, message = "调用成功"),
-            @ApiResponse(code = 401, message = "无权限")
-    }
-    )
-    public R selectUserAllOrderByUserId(Integer uid) {
-        ArrayList<Orderform> orderList = orderformService.selectUserAllOrderByUserId(uid);
-        boolean flag = orderList.isEmpty();
-        return new R(true, orderList, flag ? "无内容" : "查询成功");
-    }*/
+
+
     @ResponseBody
     @GetMapping("/selectUserAllOrderInfoByUserId")
     @ApiOperation(value = "用户个人全部订单详情查询接口", notes = "用户个人所有订单信息详情查询接口,传入参数用户id")
@@ -111,7 +88,32 @@ public class OrderController {
         }
         return new R(true, orderUsePage, flag ? "查询成功":"无内容");
     }
-
+   /*  @ResponseBody
+      @GetMapping("/selectOrderById")
+      @ApiOperation(value = "根据id查询订单", notes = "根据id查询订单")
+      @ApiResponses({
+              @ApiResponse(code = 200, message = "调用成功"),
+              @ApiResponse(code = 401, message = "无权限")
+      }
+      )
+      public R selectOrderById(Integer id) {
+          Orderform orderform = orderformService.selectOrderById(id);
+          boolean flag = (orderform != null);
+          return new R(flag,orderform,flag ? "查询成功" : "查询失败");
+      }*/
+/*    @ResponseBody
+    @GetMapping("/selectUserAllOrderByUserId")
+    @ApiOperation(value = "用户个人全部订单简单查询接口", notes = "用户个人所有订单查询接口,传入参数用户id")
+    @ApiResponses({
+            @ApiResponse(code = 200, message = "调用成功"),
+            @ApiResponse(code = 401, message = "无权限")
+    }
+    )
+    public R selectUserAllOrderByUserId(Integer uid) {
+        ArrayList<Orderform> orderList = orderformService.selectUserAllOrderByUserId(uid);
+        boolean flag = orderList.isEmpty();
+        return new R(true, orderList, flag ? "无内容" : "查询成功");
+    }*/
     /*
     @ResponseBody
     @PostMapping("/addOrder")
