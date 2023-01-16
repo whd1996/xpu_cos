@@ -30,7 +30,7 @@ public class OrderformServiceImpl extends ServiceImpl<OrderformDao, Orderform> i
     public Orderform selectOrderById(Integer id) {
         return orderformDao.selectById(id);
     }
-    @Cacheable(cacheNames = "orderInfo",key = "'orderInfo'+#p0",unless ="#result.isEmpty()")
+    @Cacheable(cacheNames = "orderInfo",key = "'orderInfo'+#p0",unless ="#result==null")
     @Override
     public HashMap<String, Object> selectOrderInfoById(Integer oid) {
         return orderformDao.selectOrderInfoById(oid);
