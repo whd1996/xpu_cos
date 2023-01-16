@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 @Service
 public class OrderformServiceImpl extends ServiceImpl<OrderformDao, Orderform> implements OrderformService{
@@ -29,6 +30,12 @@ public class OrderformServiceImpl extends ServiceImpl<OrderformDao, Orderform> i
     public Orderform selectOrderById(Integer id) {
         return orderformDao.selectById(id);
     }
+    @Cacheable(cacheNames = "orderInfo",key = "'orderInfo'+#p0",unless ="#result.isEmpty()")
+    @Override
+    public HashMap<String, Object> selectOrderInfoById(Integer oid) {
+        return orderformDao.selectOrderInfoById(oid);
+    }
+
     @CachePut(value = "order", key = "#p0.id",unless ="#result==0")
     @Override
     public int updateOrderById(Orderform orderform) {
@@ -42,8 +49,14 @@ public class OrderformServiceImpl extends ServiceImpl<OrderformDao, Orderform> i
     }
     @Override
     @CachePut(cacheNames = "allOrderList",key ="'allOrderList'", unless ="#result.isEmpty()")
-    public ArrayList<Orderform> selectAllOrder() {
-        return (ArrayList<Orderform>) orderformDao.selectList(null);
+    public ArrayList<HashMap<String,Object>> selectAllOrder() {
+        return  orderformDao.selectAllOrder();
+    }
+
+    @CachePut(cacheNames = "allOrderInfoList",key ="'allOrderInfoList'+#p0", unless ="#result.isEmpty()")
+    @Override
+    public ArrayList<HashMap<String, Object>> selectUserAllOrderInfoByUserId(Integer uid) {
+        return orderformDao.selectUserAllOrderInfoByUserId(uid);
     }
 
     @Override

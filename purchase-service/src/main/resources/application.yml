@@ -3,6 +3,13 @@ server:
   servlet:
     context-path: /
 spring:
+  devtools:
+    livereload:
+      #多个项目启动时 热部署端口需不同 默认35729
+      port: 35781
+    restart:
+      enabled: true
+      additional-paths: src/main/java
   application:
     name: purchase-service
   cloud:

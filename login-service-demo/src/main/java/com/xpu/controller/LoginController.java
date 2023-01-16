@@ -23,7 +23,7 @@ import java.util.HashMap;
 
 @Api(tags = "用户登录管理")
 @Controller
-@RequestMapping("/user")
+@RequestMapping("/userDemo")
 public class LoginController {
     @Autowired
     UserService userService;

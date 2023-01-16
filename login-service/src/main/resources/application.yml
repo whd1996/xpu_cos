@@ -4,9 +4,12 @@ server:
     context-path: /
 spring:
   devtools:
+    livereload:
+      #多个项目启动时 热部署端口需不同 默认35729
+      port: 35888
     restart:
-     enabled: true
-     additional-paths: src/main/java
+      enabled: true
+      additional-paths: src/main/java
   application:
     name: login-service
   cloud:

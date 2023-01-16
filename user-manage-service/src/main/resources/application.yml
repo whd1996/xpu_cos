@@ -1,10 +1,6 @@
 server:
   port: 8099
   servlet:
-    encoding:
-      force: true
-      enabled: true
-      charset: utf-8
     context-path: /
 spring:
   mvc:
