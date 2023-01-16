@@ -1,12 +1,15 @@
 server:
   port: 9001
   servlet:
-    encoding:
-        force: true
-        enabled: true
-        charset: utf-8
     context-path: /
 spring:
+  devtools:
+    livereload:
+      #多个项目启动时 热部署端口需不同 默认35729
+      port: 35739
+    restart:
+      enabled: true
+      additional-paths: src/main/java
   application:
     name: order-manage-service
   cloud:

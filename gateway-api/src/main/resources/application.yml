@@ -53,11 +53,13 @@ spring:
           uri: lb://login-service-demo
           order: 0
           predicates:
-            - Path=/user/**,/admin/**
+            - Path=/userDemo/**,/admin/**
       globalcors:
+
         corsConfigurations:
           '[/**]':
             allowedHeaders: "*"
+            #allowed-origin-patterns: "*" # spring boot2.4配置
             allowedOrigins: "*"
             allowCredentials: true
             allowedMethods:
