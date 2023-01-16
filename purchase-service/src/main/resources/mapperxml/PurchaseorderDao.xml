@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xpu.dao.PurchaseorderDao">
+  <resultMap id="BaseResultMap" type="com.xpu.entity.Purchaseorder">
+    <!--@mbg.generated-->
+    <!--@Table purchaseorder-->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="commodity_ID" jdbcType="INTEGER" property="commodityId" />
+    <result column="add_Amount" jdbcType="INTEGER" property="addAmount" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, commodity_ID, add_Amount
+  </sql>
+</mapper>

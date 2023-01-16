@@ -12,6 +12,7 @@ import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
@@ -21,6 +22,7 @@ import java.util.HashMap;
 
 @Api(tags = "购买服务接口")
 @Controller
+@RequestMapping("/buy")
 public class BuyController{
     @Resource
     CommodityService commodityService;
@@ -59,7 +61,6 @@ public class BuyController{
                 order.setUserId(loginuser.getId());
                 order.setCommodityAmount(num);
                 order.setOrderformPrice(good.getCommodityPrice() * num);
-                System.out.println(order);
                 int count = orderformService.addOrder(order);
                 boolean orderAddSuccess = count > 0;
                 good.setCommodityRepertory(good.getCommodityRepertory() - num);
@@ -79,8 +80,9 @@ public class BuyController{
                     map.put("good", good);//商品信息
                     map.put("invoice", invoice);//发票信息
                     map.put("order", order);//订单信息
-                    map.put("invoiceCost", num * good.getCommodityPrice());//发票金额
-                    return new R(true, JSON.toJSONStringWithDateFormat(map, "yyyy-MM-dd HH:mm:ss", SerializerFeature.WriteDateUseDateFormat), "购买成功");
+                    //格式化时间
+                    String invoiceStr = JSON.toJSONStringWithDateFormat(map, "yyyy-MM-dd HH:mm:ss", SerializerFeature.WriteDateUseDateFormat);
+                    return new R(true,JSON.parse(invoiceStr), "购买成功");
                 }
 
             } else

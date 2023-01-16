@@ -7,5 +7,6 @@ public interface InvoiceService extends IService<Invoice> {
 
 
     int addInvoice(Invoice invoice);
+
 }
 

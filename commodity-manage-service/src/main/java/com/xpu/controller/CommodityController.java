@@ -1,9 +1,9 @@
 package com.xpu.controller;
 
-import com.alibaba.fastjson.JSON;
+import com.xpu.entity.Admin;
 import com.xpu.entity.Commodity;
 import com.xpu.entity.R;
-import com.xpu.sevice.CommodityService;
+import com.xpu.service.CommodityService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
@@ -12,10 +12,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
 
 @Controller
 @Api(tags = "商品管理")
+@RequestMapping("/commodity")
 public class CommodityController {
     @Resource
     CommodityService CommodityService;
@@ -68,27 +70,29 @@ public class CommodityController {
     }
 
 
-
     @ResponseBody
     @GetMapping("/selectALLCommodity")
-    public R selectALLCommodity() {
+    public R selectALLCommodity(HttpServletRequest req) {
+        Admin admin = (Admin) req.getSession().getAttribute("admin");
+        if (admin == null)
+            return new R(false, "管理未登录");
         ArrayList<Commodity> commodityList = CommodityService.selectALLCommodity();
         boolean flag = (!commodityList.isEmpty());
-        return new R(true,commodityList,flag?"查询成功":"无商品信息");
+        return new R(true, commodityList, flag ? "查询成功" : "无商品信息");
 
     }
 
 
 
-        @GetMapping("/updateCommodityById")
+        @PostMapping("/updateCommodityById")
         @ResponseBody
-        @ApiOperation(value = "商品修改接口", notes = "商品修改接口的说明")
+        @ApiOperation(value = "商品修改接口", notes = "商品修改接口的说明\nid不传参")
         @ApiResponses({
             @ApiResponse(code = 200, message = "调用成功"),
             @ApiResponse(code = 401, message = "无权限")
     }
     )
-    public R updateCommodityById(Commodity commodity) {
+    public R updateCommodityById(@RequestBody Commodity commodity) {
         int count = CommodityService.updateCommodityById(commodity);
         boolean flag = (count > 0);
         return new R(flag,flag?"修改成功" : "修改失败");

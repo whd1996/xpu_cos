@@ -1,5 +1,6 @@
 package com.xpu.service;
 
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.xpu.entity.Orderform;
 import com.baomidou.mybatisplus.extension.service.IService;
 
@@ -17,4 +18,7 @@ public interface OrderformService extends IService<Orderform>{
     int deleteOrderById(Integer id);
 
     ArrayList<Orderform> selectAllOrder();
+    ArrayList<Orderform> selectUserAllOrderByUserId(Integer id);
+
+    Page<Orderform> selectAllOrderUsePage(int currentPage,int pageSize);
 }

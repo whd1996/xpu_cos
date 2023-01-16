@@ -8,4 +8,6 @@ public interface UserService extends IService<User>{
     User userLogin(User user);
 
     boolean userRegister(User user);
+
+    User selectUserByUserName(String userName);
 }

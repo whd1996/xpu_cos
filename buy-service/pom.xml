@@ -28,7 +28,7 @@
 				<configuration>
 					<!-- 主启动类全类名 -->
 					<mainClass>
-						com.xpu.BuyServiceApplication
+						com.xpu.PurchaseServiceApplication
 					</mainClass>
 				</configuration>
 				<executions>

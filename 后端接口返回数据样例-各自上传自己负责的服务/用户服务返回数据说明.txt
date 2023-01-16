@@ -1,5 +1,5 @@
 添加功能：
-接口地址:/api/userinfo/addUser
+接口地址:/userinfo/addUser
 请求方式：POST
 address            表示地址
 id                     表示主键id
@@ -19,7 +19,7 @@ userPhone        表示用户电话
 }
 
 成功后返回
-msg:"1"表示添加成功  
+msg:"1"表示添加成功  1条记录
 {
   "flag": true,
   "data": null,
@@ -29,7 +29,7 @@ msg:"1"表示添加成功
 
 
 删除功能：
-接口地址:/api/userinfo/deleteUserById
+接口地址:/userinfo/deleteUserById
 请求方式：GET
 id     表示商品id
 
@@ -51,7 +51,7 @@ msg表示删除失败后的反馈信息
 
 
 查询所有功能：
-接口地址:/api/userinfo/selectALLUser
+接口地址:/userinfo/selectALLUser
 请求方式：GET
 如果成功 则返回
 {
@@ -98,7 +98,7 @@ msg表示删除失败后的反馈信息
 
 
 查询（单个）功能：
-接口地址 /api/userinfo/selectUserById
+接口地址 /userinfo/selectUserById
 请求方式 GET
 id     表示商品id
 
@@ -129,7 +129,7 @@ msg表示查询失败后的反馈信息
 
 
 更新功能：
-接口地址:/api/userinfo/updateUserById
+接口地址:/userinfo/updateUserById
 请求方式：POST
 address            表示地址
 id                     表示主键id

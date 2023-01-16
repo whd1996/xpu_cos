@@ -1,4 +1,4 @@
-接口地址 /api/commodity/addCommodity
+接口地址 /commodity/addCommodity
 
 请求方式 POST
 
@@ -21,11 +21,10 @@ upordown		上架/下架
 
 
 
-接口地址 /api/commodity/selectCommodityById
+接口地址 /commodity/selectCommodityById
 
 请求方式 GET
 
-id
 
 如果成功   	则返回
 返回的data    	是 
@@ -45,7 +44,7 @@ id
 }
 
 
-如果失败  则返回  msg表示失败后的反馈信息
+如果没查到 则返回  msg表示没查到的反馈信息
 
 {
   "flag": false,
@@ -54,7 +53,7 @@ id
 }
 
 
-接口地址 /api/commodity/updateCommodityById
+接口地址 /commodity/updateCommodityById
 
 请求方式 GET
 
@@ -80,7 +79,7 @@ id
 }
 
 
-接口地址 /api/commodity/deleteCommodityById
+接口地址 /commodity/deleteCommodityById
 
 请求方式 GET
 
@@ -103,7 +102,7 @@ id
   "msg": "删除失败"
 }
 
-接口地址 /api/commodity/selectALLCommodity
+接口地址 /commodity/selectALLCommodity
 
 请求方式 GET
 
@@ -160,3 +159,10 @@ id
   "msg": "查询成功"
 }
 
+如果没查到 则返回  msg表示没查到的反馈信息
+
+{
+  "flag": false,
+  "data": null,
+  "msg": "查询失败"
+}

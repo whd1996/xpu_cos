@@ -4,6 +4,7 @@ import com.xpu.entity.Invoice;
 import com.baomidou.mybatisplus.extension.service.IService;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public interface InvoiceService extends IService<Invoice>{
 
@@ -17,4 +18,8 @@ public interface InvoiceService extends IService<Invoice>{
     int updateInvoice(Invoice invoice);
 
     ArrayList<Invoice> selectALLInvoice();
+
+    ArrayList<HashMap<String, Object>> selectALLInvoiceInfo();
+
+    ArrayList<HashMap<String, Object>> selectUserAllInvoiceInfoByUserId(Integer id);
 }

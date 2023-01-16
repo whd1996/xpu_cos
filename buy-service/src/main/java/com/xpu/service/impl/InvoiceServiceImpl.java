@@ -17,5 +17,6 @@ public class InvoiceServiceImpl extends ServiceImpl<InvoiceDao, Invoice> impleme
     public int addInvoice(Invoice invoice) {
         return invoiceDao.insert(invoice);
     }
+
 }
 

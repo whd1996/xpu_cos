@@ -16,7 +16,7 @@ public class IndexController {
             @ApiResponse(code = 401, message = "无权限")
     })
     @ApiOperation(value = "跳转接口", notes = "页面跳转的说明")
-    @GetMapping("/index")
+    @GetMapping("/")
     public String toIndex(){
 
         return "login";
@@ -24,5 +24,17 @@ public class IndexController {
     @GetMapping("/toLogin")
     public String toLogin(){
         return "toLogin";
+    }
+    @GetMapping("/admin")
+    public String adminLogin(){
+        return "admin/index";
+    }
+    @GetMapping("/purchaser")
+    public String customerLogin(){
+        return "purchaser-index";
+    }
+    @GetMapping("/customer")
+    public String purchaserLogin(){
+        return "customer-index";
     }
 }

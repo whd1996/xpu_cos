@@ -3,7 +3,6 @@ package com.xpu.config;
 import lombok.AllArgsConstructor;
 import org.springframework.cloud.gateway.config.GatewayProperties;
 import org.springframework.cloud.gateway.route.RouteLocator;
-import org.springframework.cloud.gateway.support.NameUtils;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Component;
 import springfox.documentation.swagger.web.SwaggerResource;
@@ -16,9 +15,9 @@ import java.util.List;
 @Primary
 @AllArgsConstructor
 public class SwaggerProvider implements SwaggerResourcesProvider {
- 
+
+    public static final String MyContextPath = "";
     public static final String API_URI = "/v2/api-docs";
- 
     private final RouteLocator routeLocator;
  
     private final GatewayProperties gatewayProperties;
@@ -37,11 +36,11 @@ public class SwaggerProvider implements SwaggerResourcesProvider {
                          routeDefinition.getPredicates().stream()
                         .filter(predicateDefinition -> ("Path").equalsIgnoreCase(predicateDefinition.getName()))
                         .forEach(predicateDefinition -> resources
-                                .add(swaggerResource(routeDefinition.getId(),predicateDefinition.getArgs()
-                                        .get(NameUtils.GENERATED_NAME_PREFIX + "0").replace("/**", API_URI)))));
+                                .add(swaggerResource(routeDefinition.getId(), "/"+routeDefinition.getId()+MyContextPath+API_URI))));
+                                        /*   .get(NameUtils.GENERATED_NAME_PREFIX + "0").replace("/**", API_URI)))));*/
         return resources;
     }
-
+ 
     private SwaggerResource swaggerResource(String name, String location) {
         SwaggerResource swaggerResource = new SwaggerResource();
         swaggerResource.setName(name);
@@ -50,6 +49,5 @@ public class SwaggerProvider implements SwaggerResourcesProvider {
         return swaggerResource;
     }
 
-
-
+ 
 }

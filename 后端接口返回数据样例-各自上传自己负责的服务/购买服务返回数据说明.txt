@@ -1,21 +1,43 @@
 
-接口地址:/api/buy/buyCommodity
+接口地址:/buy/buyCommodity
 请求方式：GET
 
 id   	表示商品id
 num   	表示购买数量。
 
 如果成功     则返回
-返回的data 是   
-invoice           	 发票信息    
-order               	订单信息      
-good		商品信息
-
-invoiceCost 	发票显示的消费金额
+返回的data说明
+invoice           	 发票     实体对象
+order                订单     实体对象
+good		         商品     实体对象
+响应如下：
 
 {
   "flag": true,
-  "data": "{\"invoice\":{\"commodityId\":1,\"id\":8,\"invoiceDate\":\"2023-01-07 13:41:30\",\"invoiceDrawer\":\"XPU\",\"orderformId\":18,\"userId\":6},\"good\":{\"commodityName\":\"苹果\",\"commodityPrice\":10.0,\"commodityRepertory\":86,\"id\":1,\"upordown\":1},\"invoiceCost\":10.0,\"order\":{\"commodityAmount\":1,\"commodityId\":1,\"id\":18,\"orderformPrice\":10.0,\"userId\":6}}",
+  "data": {
+    "invoice": {
+      "invoiceDrawer": "XPU",
+      "commodityId": 1,
+      "id": 44,
+      "orderformId": 51,
+      "invoiceDate": "2023-01-10 11:34:54",
+      "userId": 2
+    },
+    "good": {
+      "upordown": 1,
+      "commodityRepertory": 54,
+      "id": 1,
+      "commodityPrice": 10,
+      "commodityName": "苹果"
+    },
+    "order": {
+      "commodityAmount": 1,
+      "orderformPrice": 10,
+      "commodityId": 1,
+      "id": 51,
+      "userId": 2
+    }
+  },
   "msg": "购买成功"
 }
 

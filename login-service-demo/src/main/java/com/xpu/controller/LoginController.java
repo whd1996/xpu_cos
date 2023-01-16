@@ -1,8 +1,12 @@
 package com.xpu.controller;
 
+
+import com.xpu.entity.Admin;
 import com.xpu.entity.R;
 import com.xpu.entity.User;
+import com.xpu.service.AdminService;
 import com.xpu.service.UserService;
+import com.xpu.utils.CookieUtils;
 import com.xpu.utils.MD5Utils;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -10,12 +14,10 @@ import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.util.HashMap;
 
@@ -24,50 +26,84 @@ import java.util.HashMap;
 @RequestMapping("/user")
 public class LoginController {
     @Autowired
-    UserService us;
+    UserService userService;
+    @Autowired
+    AdminService adminService;
 
     @PostMapping("/login")
     @ResponseBody
-    @ApiOperation(value = "登录接口", notes = "登录接口的说明")
+    @ApiOperation(value = "登录接口", notes = "登录接口的说明,参数类型如\n" +
+            "{\n" +
+            "    \"flag\" :1,\n" +
+            "    \"user\":{   \n" +
+            "    \"username\": \"abc\",\n" +
+            "    \"password\": \"123456\"\n" +
+            "    }\n" +
+            "}")
     @ApiResponses({
             @ApiResponse(code = 200, message = "调用成功"),
             @ApiResponse(code = 401, message = "无权限")
     }
     )
-    public R login(@RequestBody HashMap<String, Object> map,User user,HttpServletRequest req) {
+    public R login(@RequestBody HashMap<String, Object> map, HttpServletRequest req, HttpServletResponse resp) {
+        System.out.println(map);
         int flag = (int) map.get("flag");
         HashMap userMap = (HashMap) map.get("user");
-        user.setUsername((String) userMap.get("username"));
-        user.setPassword((String) userMap.get("password"));
-        //System.out.println((flag == 0 ? "管理员" : "客户"));
+        User user = new User();
+        user.setUserName((String) userMap.get("username"));
+        user.setUserPassward((String) userMap.get("password"));
         if (flag == 1) {
-            user.setPassword(MD5Utils.getMD5(user.getPassword()));
-            User loginuser = us.userLogin(user);
-            System.out.println("dao查到的： " + loginuser);
-            HttpSession session = req.getSession();
-            session.setAttribute("user", loginuser);
-            req.getSession().setAttribute("isLogin", true);
-            boolean loginFlag = (loginuser != null);
-            return new R(loginFlag, loginuser, loginFlag ? "用户登录成功" : "用户登录失败");
+            user.setUserPassward(MD5Utils.getMD5(user.getUserPassward()));
+            User loginuser = userService.userLogin(user);
+            if (loginuser != null) {
+                System.out.println("dao查到的： " + loginuser);
+                HttpSession session = req.getSession();
+                session.setAttribute("user", loginuser);
+                session.setAttribute("isLogin", true);
+                CookieUtils.setCookie(req, resp,
+                        "loginUserInfo", String.format("%s:%s", user.getUserName(), userMap.get("password")),
+                        7 * 24 * 60 * 60);
+                if (loginuser.getRoleId() == 1)
+                    return new R(true, loginuser, "采购员登录成功");
+                else
+                    return new R(true, loginuser, "客户登录成功");
+            }
         } else if (flag==0) {
             //管理登录业务
-            return new R("管理登录业务");
+            Admin admin = new Admin();
+            admin.setAdminName((String) userMap.get("username"));
+            admin.setAdminPassword((String) userMap.get("password"));
+            Admin loginAdmin = adminService.adminLogin(admin);
+            if (loginAdmin != null) {
+                req.getSession().setAttribute("admin", loginAdmin);
+                req.getSession().setAttribute("isLogin", true);
+                return new R(true, loginAdmin, "管理员登录成功");
+            }
         }
-        return  new R("登录失败");
+        return new R("登录失败");
     }
 
-    @ApiOperation(value = "注解形式开发的登录接口", notes = "注解形式开发的登录接口的说明")
-    @PostMapping("/loginByAnnotation")
+    @PostMapping("/register")
     @ResponseBody
+    @ApiOperation(value = "注册接口", notes = "注册需要除id外的字段必填")
     @ApiResponses({
             @ApiResponse(code = 200, message = "调用成功"),
             @ApiResponse(code = 401, message = "无权限")
     }
     )
-    public R loginByAnnotation(@RequestBody User user, HttpServletRequest req) {
-        System.out.println("前台："+user);
-        Integer id = us.loginByAnnotation(user);
-        boolean flag = (id!=null)?true:false;
-       return new R(flag,id,"当前登录者id："+id);
+    public R register(@RequestBody User user) {
+        user.setUserPassward(MD5Utils.getMD5(user.getUserPassward()));
+        boolean flag = userService.userRegister(user);
+        return new R(flag, user, flag ? "注册成功" : "注册失败");
     }
+
+    @GetMapping("/logout")
+
+    @ApiOperation(value = "退出登录接口", notes = "清空session后退出")
+    public String logout(HttpServletRequest req) {
+        req.getSession().invalidate();//清空session 返回登录页
+        return "/login";
+    }
+
+
 }

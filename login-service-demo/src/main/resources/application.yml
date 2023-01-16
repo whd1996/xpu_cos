@@ -1,12 +1,12 @@
 server:
   port: 8090
   servlet:
-    encoding:
-        force: true
-        enabled: true
-        charset: utf-8
-    context-path: /api
+    context-path: /
 spring:
+  devtools:
+   restart:
+        enabled: true
+        additional-paths: src/main/java
   mvc:
     view:
       prefix: /static/
@@ -44,7 +44,7 @@ spring:
   # 数据源配置
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource
-    url: jdbc:mysql://localhost:3306/xpu-cos-demo?serverTimezone=Asia/Shanghai&useSSL=false
+    url: jdbc:mysql://localhost:3306/xpu-cos?serverTimezone=Asia/Shanghai&useSSL=false
     username: root
     password: 123456
     driver-class-name: com.mysql.cj.jdbc.Driver

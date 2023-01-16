@@ -14,17 +14,18 @@
     <!--父工程-->
     <modules>
         <!--whd-->
-        <!-- <module>login-service-demo</module>
-             <module>user-manage-service-demo</module>-->
+        <module>login-service-demo</module>
+        <!--<module>user-manage-service-demo</module>-->
         <module>buy-service</module>
+        <module>purchase-service</module>
         <module>gateway-api</module>
-        <!--张嘉奇-->
+        <!--zjq-->
         <module>login-service</module>
         <module>commodity-manage-service</module>
-        <!--凌寒-->
+        <!--lh-->
         <module>order-manage-service</module>
         <module>purchaseorder-manage-service</module>
-        <!--史绪豪-->
+        <!--sxh-->
         <module>invoice-manage-service</module>
         <module>user-manage-service</module>
     </modules>
@@ -81,6 +82,7 @@
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
+            <version>1.18.24</version>
         </dependency>
         <!-- JOSN -->
         <dependency>
@@ -131,7 +133,12 @@
             <artifactId>spring-boot-test</artifactId>
             <scope>test</scope>
         </dependency>
-
+        <!--自动热部署-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-devtools</artifactId>
+            <optional>true</optional>
+        </dependency>
     </dependencies>
 
 </project>

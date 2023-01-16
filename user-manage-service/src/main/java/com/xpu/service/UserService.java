@@ -16,6 +16,7 @@ public interface UserService {
     int updateUser(User user);
 
     ArrayList<User> selectALLUser();
+
 }
 
 
