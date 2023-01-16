@@ -30,17 +30,16 @@ public class InterceptorConfiguration implements WebMvcConfigurer {
 		login.addPathPatterns("/*/*");
 		// 设置例外的路径
 		excludePathList = new ArrayList<>();
-		excludePathList.add("/user/login");
+		excludePathList.add("/userDemo/login");
 		excludePathList.add("/login");
 		excludePathList.add("/index");
 		excludePathList.add("/");
 		excludePathList.add("/toLogin");
 		excludePathList.add("/user/loginByAnnotation");
 		excludePathList.add("/v2/api-docs-ext");
-		excludePathList.add("/user/foundPwd");
-		excludePathList.add("/user/logout");
-		excludePathList.add("/user/register");
-		excludePathList.add("/newsType.html");
+		excludePathList.add("/userDemo/foundPwd");
+		excludePathList.add("/userDemo/logout");
+		excludePathList.add("/userDemo/register");
 		//excludePathList.add("/user/listUserRole");//测试用
 		excludePathList.add("/css/**");
 		excludePathList.add("/images/**");

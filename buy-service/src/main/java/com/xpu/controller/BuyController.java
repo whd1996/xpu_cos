@@ -42,6 +42,9 @@ public class BuyController{
     )
     @GetMapping("buyCommodity")
     public R buyCommodity(int id, int num, HttpServletRequest req) {
+        if(num<=0){
+            return new R(false, "输入数量有误");
+        }
         User loginuser = (User) req.getSession().getAttribute("user");
         if (loginuser != null) {
             System.out.println("当前客户:" + loginuser.getNickname());
