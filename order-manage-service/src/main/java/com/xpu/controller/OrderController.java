@@ -47,7 +47,7 @@ public class OrderController {
     )
     public R selectOrderInfoById(Integer oid) {
         HashMap<String,Object>  orderMap= orderformService.selectOrderInfoById(oid);
-        boolean flag = (orderMap!=null);
+        boolean flag = (!orderMap.isEmpty());
         return new R(flag,orderMap,flag ? "查询成功" : "查询失败");
     }
     @ResponseBody
