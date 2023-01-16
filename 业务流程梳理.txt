@@ -23,7 +23,7 @@
               id,commodity_Name,commodity_repertory,upOrDown,commodity_price
 注： 主键自增不传参
 
-3.可以      查    订单----即订单管理服务（CRUD）
+3.可以    查    订单----即订单管理服务（CRUD）
 	id,user_id,commodity_ID,commodity_Amount,orderForm_Price
 
 五:客户登录后打开后 ：   
