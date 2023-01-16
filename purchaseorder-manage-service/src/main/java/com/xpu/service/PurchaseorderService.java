@@ -5,9 +5,15 @@ import com.baomidou.mybatisplus.extension.service.IService;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+
 @Service
 public interface PurchaseorderService extends IService<Purchaseorder>{
 
+
+    static ArrayList<Purchaseorder> selectALLPurchaseorder() {
+        return null;
+    }
 
     int addPurchaseorder(Purchaseorder purchaseorder);
 
@@ -20,4 +26,8 @@ public interface PurchaseorderService extends IService<Purchaseorder>{
 
 
     ArrayList<Purchaseorder> selectAllPurchaseorder();
+
+    HashMap<String, Object> selectPurchaseorderInfoById(Integer pid);
+
+    ArrayList<HashMap<String, Object>> selectAllPurchaseorderInfo();
 }

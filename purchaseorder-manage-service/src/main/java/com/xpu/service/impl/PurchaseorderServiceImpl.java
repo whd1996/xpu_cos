@@ -8,6 +8,8 @@ import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.util.ArrayList;
+import java.util.HashMap;
+
 @Service
 public class PurchaseorderServiceImpl extends ServiceImpl<PurchaseorderDao, Purchaseorder> implements PurchaseorderService{
     @Resource
@@ -35,6 +37,16 @@ public class PurchaseorderServiceImpl extends ServiceImpl<PurchaseorderDao, Purc
     @Override
     public ArrayList<Purchaseorder> selectAllPurchaseorder() {
         return purchaseorderDao.selectAllPurchaseorder();
+    }
+
+    @Override
+    public HashMap<String, Object> selectPurchaseorderInfoById(Integer pid) {
+        return purchaseorderDao.selectPurchaseorderInfoById(pid);
+    }
+
+    @Override
+    public ArrayList<HashMap<String, Object>> selectAllPurchaseorderInfo() {
+        return purchaseorderDao.selectAllPurchaseorderInfo();
     }
 
 }
