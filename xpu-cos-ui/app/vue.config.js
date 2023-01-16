@@ -9,8 +9,9 @@ module.exports = {
   devServer:{
     proxy:{
       "/api": {
-        target: 'http://whd.gs.cn',
-        // pathRewrite: {"^/api" : ""}
+        target: 'http://localhost:7000',
+        pathRewrite: {"^/api" : ""},
+        changeOrigin: true, // 是否跨域
       }
     }
   }
