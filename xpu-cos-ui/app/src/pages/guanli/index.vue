@@ -30,9 +30,13 @@
       </el-menu-item>
       <el-menu-item class="els"  @click="dd" index="3">
         <i class="el-icon-menu"></i>
-        <span slot="title">订单处理</span>
+        <span slot="title">订单查询</span>
       </el-menu-item>
-      <el-menu-item class="els">
+      <el-menu-item class="els"  @click="cg" index="4">
+        <i class="el-icon-menu"></i>
+        <span slot="title">采购信息查询</span>
+      </el-menu-item>
+      <el-menu-item class="els" @click="tc">
         <i class="el-icon-menu"></i>
         <span slot="title">退出登录</span>
       </el-menu-item>
@@ -68,6 +72,12 @@ export default {
       },
       yh(){
         this.$router.push('/guanli/yhguanli');
+      },
+      cg(){
+        this.$router.push('/guanli/cgguanli');
+      },
+      tc(){
+        this.$router.push('/login');
       }
     }
 }

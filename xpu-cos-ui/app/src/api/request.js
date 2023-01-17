@@ -9,12 +9,11 @@ const requests=axios.create({
     baseURL:'/api',
     timeout:5000,
     headers:{},
-    withCredentials: true,
-    crossDomain: true
+    withCredentials:true,
+    crossDomain:true,
 });
 //请求拦截器
 requests.interceptors.request.use((config)=>{
-    
     return config;
 });
 

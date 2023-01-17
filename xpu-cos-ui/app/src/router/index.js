@@ -12,6 +12,7 @@ import Zhuce from '@/pages/zhuce'
 import SpGl from '@/pages/guanli/spGL'
 import DdGl from '@/pages/guanli/ddGL'
 import YhGl from '@/pages/guanli/yhGL'
+import CgGl from '@/pages/guanli/cgGL'
 let router= new VueRouter({
     routes:[
         {
@@ -41,6 +42,10 @@ let router= new VueRouter({
                 {
                     path:'yhguanli',
                     component:YhGl,
+                },
+                {
+                    path:'cgguanli',
+                    component:CgGl,
                 }
             ]
         },

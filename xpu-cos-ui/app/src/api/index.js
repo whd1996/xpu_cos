@@ -42,3 +42,61 @@ export const reqAllorder=()=>{
 }
 
 
+export const reqAllpur=()=>{
+    return requests({
+        method:'GET',
+        url:'/purchaseorder/selectAllPurchaseorderInfo'
+    })
+}
+
+
+export const reqAdduser=(data)=>{
+    return requests({
+        method:'POST',
+        url:'/user-manage-service/userinfo/addUser',
+        data,
+    })
+}
+
+
+export const reqDeuser=(data)=>{
+    return requests({
+        method:'GET',
+        url:`/user-manage-service/userinfo/deleteUserById?uid=${data}`,
+        data,
+    })
+}
+
+export const reqUpdateuser=(data)=>{
+    return requests({
+        method:'POST',
+        url:'/user-manage-service/userinfo/updateUserById',
+        data,
+    })
+}
+
+
+export const requp=(data)=>{
+    return requests({
+        method:'POST',
+        url:`/commodity-manage-service/commodity/updateCommodityById`,
+        data,
+    })
+}
+
+export const reqaddsp=(data)=>{
+    return requests({
+        method:'POST',
+        url:`/commodity-manage-service/commodity/addCommodity`,
+        data,
+    })
+}
+
+
+export const reqdelesp=(data)=>{
+    return requests({
+        method:'GET',
+        url:`/commodity-manage-service/commodity/deleteCommodityById?id=${data}`,
+        data,
+    })
+}
