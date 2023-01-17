@@ -61,8 +61,7 @@ public class LoginController {
                 session.setAttribute("user", loginuser);
                 session.setAttribute("isLogin", true);
                 CookieUtils.setCookie(req, resp,
-                        "loginUserInfo", String.format("%s:%s", user.getUserName(), userMap.get("password")),
-                        7 * 24 * 60 * 60);
+                        "loginUserInfo", String.format("%s:%s", user.getUserName(), userMap.get("password")));
                 if (loginuser.getRoleId() == 1)
                     return new R(true, loginuser, "采购员登录成功");
                 else
@@ -77,9 +76,13 @@ public class LoginController {
             if (loginAdmin != null) {
                 req.getSession().setAttribute("admin", loginAdmin);
                 req.getSession().setAttribute("isLogin", true);
+                CookieUtils.setCookie(req, resp,
+                        "adminInfo", String.format("%s:%s", user.getUserName(), userMap.get("password")));
                 return new R(true, loginAdmin, "管理员登录成功");
-            }else
+            }else{
                 CookieUtils.deleteCookie(req,resp,"loginUserInfo");
+                CookieUtils.deleteCookie(req,resp,"adminInfo");
+            }
         }
         return new R("登录失败");
     }
