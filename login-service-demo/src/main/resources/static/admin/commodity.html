@@ -44,9 +44,9 @@
     </div>
 
     <div class="am-g" style="margin-top: 5px;">
-        <div class="am-u-sm-12" th:fragment="get-response" th:id="id-request-get">
+        <div class="am-u-sm-12">
             <form class="am-form">
-                <table class="am-table am-table-striped am-table-hover table-main">
+                <table class="am-table am-table-striped am-table-hover table-main" id="tableInfos">
                     <thead>
                     <tr>
                         <th class="table-id">
@@ -68,14 +68,14 @@
                     </tr>
                     </thead>
                     <tbody id="tCommodity">
-                    <tr th:each="data : ${data}">
-                        <td><input name="chks" value="701" type="checkbox"></td>
+                    <tr th:each="commodity: ${session.commodityPage.getRecords()}">
+                        <td><input name="chks" th:attr="value=${commodity.getId()}" type="checkbox"></td>
                         <td>
-                            <a href="javascript:void(0)">苹果</a>
+                            <a th:text="${commodity.getCommodityName()}"></a>
                         </td>
-                        <td>1.3</td>
-                        <td>99</td>
-                        <td>是</td>
+                        <td th:text="${commodity.getCommodityPrice()}">1.3</td>
+                        <td th:text="${commodity.getCommodityRepertory()}">99</td>
+                        <td th:text="${commodity.getUpordown()}==1?'是':'否'">是</td>
                         <td>
                             <div class="am-btn-toolbar">
                                 <div class="am-btn-group am-btn-group-xs">
@@ -83,7 +83,7 @@
                                             class="am-btn am-btn-default am-btn-xs am-text-secondary btnedit"><span
                                             class="am-icon-pencil-square-o"></span> 编辑
                                     </button>
-                                    <button type="button" onclick="sharesysfun(701);"
+                                    <button type="button" onclick="sharesysfun([[${commodity.getId()}]]);"
                                             class="am-btn am-btn-default am-btn-xs am-hide-sm-only"><span
                                             class="am-icon-copy"></span> 上架
                                     </button>
@@ -97,30 +97,20 @@
                     </tr>
                     </tbody>
                 </table>
-                <div class="am-cf">
-                    共 15 条记录
+                <div class="am-cf" id="count">
+                    共 [[${session.commodityPage.getTotal()}]] 条记录
                     <div class="am-fr">
-                        <ul class="am-pagination">
-                            <li class="am-disabled">
-                                <a href="#">«</a>
+                        <ul class="am-pagination" >
+                            <li>
+                                <a  th:onclick="toCommodity([[${session.commodityPage.getCurrent()}]]-1,5)">«</a>
                             </li>
                             <li class="am-active">
-                                <a href="#">1</a>
                             </li>
                             <li>
-                                <a href="#">2</a>
+                                <a>[[${session.commodityPage.getCurrent()}]]</a>
                             </li>
                             <li>
-                                <a href="#">3</a>
-                            </li>
-                            <li>
-                                <a href="#">4</a>
-                            </li>
-                            <li>
-                                <a href="#">5</a>
-                            </li>
-                            <li>
-                                <a href="#">»</a>
+                                <a th:if="${session.commodityPage.getCurrent()}<=${session.commodityPage.getPages()} == true" th:onclick="toCommodity([[${session.commodityPage.getCurrent()}]]+1,5)">»</a>
                             </li>
                         </ul>
                     </div>
@@ -134,7 +124,7 @@
 <script src="js/jquery-1.11.3.min.js"></script>
 <!--<![endif]-->
 <script type="text/javascript" src="myplugs/js/plugs.js"></script>
-<script type="text/javascript" th:inline="javascript">
+<script type="text/javascript" th:inline="JavaScript">
     $(function () {
         $(".btnedit").click(function () {
 
@@ -157,16 +147,18 @@
 
         });
     });
-    $.ajax({
-        url: "/commodity/selectALLCommodity",
-        type: 'get',
-        dataType: "json",
-        success: function (data) {
-            console.log(JSON.stringify(data));
-            $("#id-request-get").html(data);
-        }
-    });
+
+    function toCommodity(currentPage,pageSize) {
+        $.ajax({
+            url: "/commodity/selectALLCommodityUsePage?currentPage="+currentPage+"&pageSize="+pageSize,
+            type: 'get',
+            success: function () {
+                location.reload();
+            }
+        });
+    }
 </script>
+
 </body>
 
 </html>

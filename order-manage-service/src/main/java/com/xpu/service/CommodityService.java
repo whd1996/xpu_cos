@@ -9,5 +9,7 @@ public interface CommodityService extends IService<Commodity> {
     Commodity selectCommodityById(int id);
 
     boolean updateCommodity(Commodity good);
+
+
 }
 

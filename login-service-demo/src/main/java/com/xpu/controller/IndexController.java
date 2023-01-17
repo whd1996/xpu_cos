@@ -7,16 +7,18 @@ import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 @Api(tags = "跳转管理")
 @Controller
+@RequestMapping("/index")
 public class IndexController {
     @ApiResponses({
             @ApiResponse(code = 200, message = "页面跳转成功"),
             @ApiResponse(code = 401, message = "无权限")
     })
     @ApiOperation(value = "跳转接口", notes = "页面跳转的说明")
-    @GetMapping("/")
+    @GetMapping("")
     public String toIndex(){
 
         return "login";
@@ -36,5 +38,9 @@ public class IndexController {
     @GetMapping("/customer")
     public String purchaserLogin(){
         return "customer-index";
+    }
+    @GetMapping("/commodity")
+    public String toCommodity(){
+        return "admin/commodity";
     }
 }

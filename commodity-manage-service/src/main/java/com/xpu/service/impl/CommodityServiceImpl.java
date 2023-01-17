@@ -1,6 +1,7 @@
 package com.xpu.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.xpu.dao.CommodityMapper;
 import com.xpu.entity.Commodity;
@@ -47,6 +48,19 @@ public class CommodityServiceImpl extends ServiceImpl<CommodityMapper, Commodity
         QueryWrapper<Commodity> qw = new QueryWrapper<>();
         qw.le("commodity_repertory",10);
         return (ArrayList<Commodity>) commodityMapper.selectList(qw);
+    }
+
+    @Override
+    public Page<Commodity> selectALLCommodityUsePage(Integer currentPage, Integer pageSize) {
+        Page<Commodity> page = new Page<>(currentPage, pageSize);
+        return commodityMapper.selectPage(page,null);
+    }
+
+    @Override
+    public Commodity selectCommodityByName(String commodityName) {
+        QueryWrapper<Commodity> qw = new QueryWrapper<>();
+        qw.eq("commodity_name",commodityName);
+        return commodityMapper.selectOne(qw);
     }
 
 

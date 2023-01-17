@@ -17,6 +17,7 @@ public interface UserService {
 
     ArrayList<User> selectALLUser();
 
+    User selectUserByUserName(String userName);
 }
 
 

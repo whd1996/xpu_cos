@@ -27,6 +27,9 @@ public class UserController {
     @ResponseBody
     @PostMapping("/addUser")
     public R addUser(@RequestBody User user) {
+        User  webUser=userService.selectUserByUserName(user.getUserName());
+        if(webUser!=null)
+            return new R(false,"用户名已被注册");
         System.out.println("前台：user" + user);
         user.setUserPassward(MD5Utils.getMD5(user.getUserPassward()));
         int count = userService.insertUser(user);
@@ -38,6 +41,7 @@ public class UserController {
     @ResponseBody
     @GetMapping("/deleteUserById")
     public R deleteUserById(Integer uid, HttpServletRequest req) {
+        System.out.println("前端id是:"+uid);
         Admin admin = (Admin) req.getSession().getAttribute("admin");
         if(admin==null)
             return new R(false, "管理未登录！");
@@ -67,6 +71,13 @@ public class UserController {
     @GetMapping("/selectUserById")
     public R selectUserById(Integer id) {
         User user = userService.selectUserById(id);
+        boolean flag = (user != null);
+        return new R(flag, user, flag ? "查询成功！" : "无该用户！");
+    }
+    @ResponseBody
+    @GetMapping("/selectUserByUserName")
+    public R selectUserByUserName(String username) {
+        User user = userService.selectUserByUserName(username);
         boolean flag = (user != null);
         return new R(flag, user, flag ? "查询成功！" : "无该用户！");
     }

@@ -20,6 +20,7 @@ public class OrderformServiceImpl extends ServiceImpl<OrderformDao, Orderform> i
 
     @Resource
     OrderformDao orderformDao;
+    @CachePut(cacheNames = "orderInfo",key = "'orderInfo'+#p0.id",unless ="#result==0")
     @Override
     public int addOrder(Orderform orderform) {
         return orderformDao.insert(orderform);
@@ -77,8 +78,7 @@ public class OrderformServiceImpl extends ServiceImpl<OrderformDao, Orderform> i
     @Override
     public Page<Orderform> selectAllOrderUsePage(int currentPage,int pageSize) {
         Page<Orderform> page = new Page<>(currentPage, pageSize);
-        Page<Orderform> orderPage = orderformDao.selectPage(page, null);
-        return orderPage;
+        return orderformDao.selectPage(page, null);
     }
 
 }

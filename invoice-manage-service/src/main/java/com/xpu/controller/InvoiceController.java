@@ -35,6 +35,13 @@ public class InvoiceController {
         boolean flag = (!invoiceList.isEmpty());
         return new R(true, invoiceList, flag ? "查询成功" : "无商品信息");
     }
+    @ResponseBody
+    @GetMapping("/selectALLInvoiceInfo")
+    public R selectALLInvoiceInfo() {
+        ArrayList<HashMap<String, Object>> invoiceList = invoiceService.selectALLInvoiceInfo();
+        boolean flag = (!invoiceList.isEmpty());
+        return new R(true, invoiceList, flag ? "查询成功" : "无商品信息");
+    }
 
            /*   @PostMapping("/addInvoice")
        @ResponseBody

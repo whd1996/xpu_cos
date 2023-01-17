@@ -78,7 +78,8 @@ public class LoginController {
                 req.getSession().setAttribute("admin", loginAdmin);
                 req.getSession().setAttribute("isLogin", true);
                 return new R(true, loginAdmin, "管理员登录成功");
-            }
+            }else
+                CookieUtils.deleteCookie(req,resp,"loginUserInfo");
         }
         return new R("登录失败");
     }

@@ -8,7 +8,6 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 @EnableDiscoveryClient
 public class LoginServiceDemoApplication {
 	public static void main(String[] args) {
-
 		SpringApplication.run(LoginServiceDemoApplication.class, args);
 	}
 

@@ -53,9 +53,8 @@ spring:
           uri: lb://login-service-demo
           order: 0
           predicates:
-            - Path=/userDemo/**,/admin/**
+            - Path=/userDemo/**,/index/**,/admin/**
       globalcors:
-
         corsConfigurations:
           '[/**]':
             allowedHeaders: "*"
