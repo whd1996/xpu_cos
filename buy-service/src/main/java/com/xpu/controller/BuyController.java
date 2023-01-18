@@ -1,7 +1,5 @@
 package com.xpu.controller;
 
-import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.serializer.SerializerFeature;
 import com.xpu.entity.*;
 import com.xpu.service.CommodityService;
 import com.xpu.service.InvoiceService;
@@ -18,7 +16,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import java.util.Date;
-import java.util.HashMap;
 
 @Api(tags = "购买服务接口")
 @Controller
@@ -77,15 +74,10 @@ public class BuyController{
                 invoice.setUserId(loginuser.getId());// 用户id
                 invoice.setInvoiceDrawer("XPU");
                 int invoiceCount = invoiceService.addInvoice(invoice);
+
                 boolean invoiceAddSuccess = invoiceCount > 0;
                 if (commodityUpdateSuccess && invoiceAddSuccess && orderAddSuccess) {
-                    HashMap<String, Object> map = new HashMap<>();
-                    map.put("good", good);//商品信息
-                    map.put("invoice", invoice);//发票信息
-                    map.put("order", order);//订单信息
-                    //格式化时间
-                    String invoiceStr = JSON.toJSONStringWithDateFormat(map, "yyyy-MM-dd HH:mm:ss", SerializerFeature.WriteDateUseDateFormat);
-                    return new R(true,JSON.parse(invoiceStr), "购买成功");
+                    return new R(true, commodityService.selectCommodityById(id),"购买成功");
                 }
 
             } else
