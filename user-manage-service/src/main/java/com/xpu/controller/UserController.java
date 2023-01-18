@@ -93,7 +93,21 @@ public class UserController {
     @ResponseBody
     @PostMapping("/updateUserById")
     public R updateUserById(@RequestBody User user) {
-        System.out.println(user);
+        User oldUser = userService.selectUserById(user.getId());
+        //如果是管理修改用户身份  则不修改密码
+        if(user.getUserPassward().equals("")){
+                user.setUserPassward(oldUser.getUserPassward());
+        }else {
+            //用户自己修改密码
+            //先比较新密码与原密码是否一致
+            if(user.getUserPassward().equals(oldUser.getUserPassward())){
+                //如果一致 对密码不加密
+                user.setUserPassward(oldUser.getUserPassward());
+            }else{
+                //如果不一致  对新密码加密
+                user.setUserPassward(MD5Utils.getMD5(user.getUserPassward()));
+            }
+        }
         int count = userService.updateUser(user);
         boolean flag = (count > 0);
         return new R(flag, flag ? "更新成功！" : "更新失败！");
