@@ -44,7 +44,14 @@ public class CommodityController {
         return new R(true, commodityList, flag ? "查询成功" : "无商品信息");
 
     }
+    @ResponseBody
+    @GetMapping("/selectALLCommodityIsUp")
+    public R selectALLCommodityIsUp() {
+        ArrayList<Commodity> commodityList = CommodityService.selectALLCommodityIsUp();
+        boolean flag = (!commodityList.isEmpty());
+        return new R(true, commodityList, flag ? "查询成功" : "无商品信息");
 
+    }
     @PostMapping("/updateCommodityById")
     @ResponseBody
     @ApiOperation(value = "商品修改接口", notes = "商品修改接口的说明\nid不传参")
