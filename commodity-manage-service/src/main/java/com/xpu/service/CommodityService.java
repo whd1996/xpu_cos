@@ -24,4 +24,6 @@ public interface CommodityService extends IService<Commodity>{
     Page<Commodity> selectALLCommodityUsePage(Integer currentPage, Integer pageSize);
 
     Commodity selectCommodityByName(String commodityName);
+
+    ArrayList<Commodity> selectALLCommodityIsUp();
 }

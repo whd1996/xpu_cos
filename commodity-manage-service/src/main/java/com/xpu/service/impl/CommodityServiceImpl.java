@@ -63,5 +63,12 @@ public class CommodityServiceImpl extends ServiceImpl<CommodityMapper, Commodity
         return commodityMapper.selectOne(qw);
     }
 
+    @Override
+    public ArrayList<Commodity> selectALLCommodityIsUp() {
+        QueryWrapper<Commodity> qw = new QueryWrapper<>();
+        qw.eq("upOrDown",1);
+        return (ArrayList<Commodity>) commodityMapper.selectList(qw);
+    }
+
 
 }
