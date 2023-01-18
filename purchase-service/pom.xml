@@ -19,7 +19,7 @@
 
 	<build>
 		<!-- 打出来的jar包名 -->
-		<finalName>buy-service</finalName>
+		<finalName>purchase-service</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
